@@ -17,7 +17,7 @@ export default function Navbar() {
   const [active, setActive]     = useState('#hero')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
+    const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -42,36 +42,40 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-1 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/90 backdrop-blur-md shadow-lg shadow-black/30' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-[#E8E3DA]'
+          : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
         {/* Logo */}
         <button
           onClick={() => handleClick('#hero')}
-          className="font-bold text-xl tracking-widest"
+          className="font-bold text-lg tracking-[0.12em] transition-opacity hover:opacity-70"
           style={{ fontFamily: 'Playfair Display, serif' }}
         >
-          <span className="text-[#C9A84C]">JF</span>
-          <span className="text-white"> CARNEIRO</span>
+          <span className={scrolled ? 'text-[#C9A84C]' : 'text-white'}>JF</span>
+          <span className={scrolled ? 'text-[#111]' : 'text-white'}> CARNEIRO</span>
         </button>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-7">
+        <ul className="hidden md:flex items-center gap-8">
           {navLinks.map(link => (
             <li key={link.href}>
               <button
                 onClick={() => handleClick(link.href)}
-                className={`text-sm font-medium transition-colors duration-200 relative pb-0.5 ${
+                className={`text-sm font-medium transition-all duration-200 relative ${
                   active === link.href
                     ? 'text-[#C9A84C]'
-                    : 'text-gray-300 hover:text-[#C9A84C]'
+                    : scrolled
+                      ? 'text-[#444] hover:text-[#111]'
+                      : 'text-white/80 hover:text-white'
                 }`}
               >
                 {link.label}
                 {active === link.href && (
-                  <span className="absolute bottom-0 left-0 right-0 h-px bg-[#C9A84C]" />
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#C9A84C] rounded-full" />
                 )}
               </button>
             </li>
@@ -82,14 +86,18 @@ export default function Navbar() {
         <a
           href="#contato"
           onClick={e => { e.preventDefault(); handleClick('#contato') }}
-          className="hidden md:inline-flex btn-primary text-sm"
+          className={`hidden md:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2 rounded-full transition-all duration-300 ${
+            scrolled
+              ? 'bg-[#111] text-white hover:bg-[#333]'
+              : 'bg-white text-[#111] hover:bg-white/90'
+          }`}
         >
           Fale Comigo
         </a>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-white p-1"
+          className={`md:hidden p-1 ${scrolled ? 'text-[#111]' : 'text-white'}`}
           onClick={() => setOpen(o => !o)}
           aria-label="Menu"
         >
@@ -99,13 +107,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-[#222] px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-[#E8E3DA] px-6 py-5 flex flex-col gap-4 shadow-lg">
           {navLinks.map(link => (
             <button
               key={link.href}
               onClick={() => handleClick(link.href)}
               className={`text-left text-base font-medium transition-colors ${
-                active === link.href ? 'text-[#C9A84C]' : 'text-gray-300'
+                active === link.href ? 'text-[#C9A84C]' : 'text-[#333]'
               }`}
             >
               {link.label}
@@ -113,7 +121,7 @@ export default function Navbar() {
           ))}
           <button
             onClick={() => handleClick('#contato')}
-            className="btn-primary w-full justify-center mt-2"
+            className="btn-primary w-full justify-center mt-1"
           >
             Fale Comigo
           </button>

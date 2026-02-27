@@ -1,125 +1,110 @@
 import { useState, useEffect } from 'react'
-import { X, Loader2 } from 'lucide-react'
+import { X, Send } from 'lucide-react'
 
 export default function PopupNewsletter() {
-  const [open, setOpen]     = useState(false)
-  const [form, setForm]     = useState({ nome: '', email: '', telefone: '', instagram: '' })
-  const [status, setStatus] = useState('idle')
+  const [show, setShow] = useState(false)
+  const [form, setForm] = useState({ nome: '', email: '', telefone: '', instagram: '' })
+  const [ok, setOk] = useState(false)
 
   useEffect(() => {
-    if (!sessionStorage.getItem('jfc_popup')) {
-      const timer = setTimeout(() => {
-        sessionStorage.setItem('jfc_popup', 'shown')
-        setOpen(true)
-      }, 3500)
-      return () => clearTimeout(timer)
-    }
+    if (sessionStorage.getItem('jfc_popup')) return
+    const t = setTimeout(() => setShow(true), 3500)
+    return () => clearTimeout(t)
   }, [])
 
-  const handleSubmit = async e => {
-    e.preventDefault()
-    setStatus('loading')
-    await new Promise(r => setTimeout(r, 1200))
-    setStatus('success')
-    setTimeout(() => setOpen(false), 2500)
+  const close = () => {
+    sessionStorage.setItem('jfc_popup', '1')
+    setShow(false)
   }
 
-  if (!open) return null
+  const handleSubmit = e => {
+    e.preventDefault()
+    setOk(true)
+    setTimeout(close, 2500)
+  }
+
+  if (!show) return null
 
   return (
     <div
-      className="fixed inset-0 z-[9998] flex items-center justify-center p-4"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Newsletter José Felipe Carneiro"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+      style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)' }}
+      onClick={e => { if (e.target === e.currentTarget) close() }}
     >
-      {/* Overlay */}
       <div
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-        onClick={() => setOpen(false)}
-      />
+        className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in-up"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Topo colorido */}
+        <div
+          className="px-8 pt-8 pb-6 text-center"
+          style={{ background: 'linear-gradient(135deg, #111 0%, #1e1a10 100%)' }}
+        >
+          <p className="text-xs text-[#C9A84C] uppercase tracking-[0.2em] font-semibold mb-3">
+            Exclusivo
+          </p>
+          <h3
+            className="text-white font-bold text-2xl leading-snug"
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
+            Faça parte dos<br />
+            <em className="not-italic text-[#C9A84C]">meus planos!</em>
+          </h3>
+          <p className="text-white/50 text-sm mt-3 leading-relaxed">
+            Receba insights exclusivos sobre empreendedorismo,<br />performance e negócios.
+          </p>
+        </div>
 
-      {/* Painel */}
-      <div className="relative z-10 w-full max-w-md bg-[#111] border border-[#C9A84C]/30 rounded-2xl p-8 shadow-2xl animate-fade-in-up">
+        {/* Formulário */}
+        <div className="p-8">
+          {ok ? (
+            <div className="text-center py-6">
+              <p className="text-[#C9A84C] text-3xl mb-3">🎉</p>
+              <p className="text-[#111] font-bold text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>
+                Bem-vindo(a)!
+              </p>
+              <p className="text-[#6B6B6B] text-sm mt-2">Em breve você receberá novidades.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {[
+                { k: 'nome',      placeholder: 'Seu nome', type: 'text', req: true },
+                { k: 'email',     placeholder: 'Seu e-mail', type: 'email', req: true },
+                { k: 'telefone',  placeholder: 'Telefone / WhatsApp', type: 'tel', req: false },
+                { k: 'instagram', placeholder: '@seuinstagram', type: 'text', req: false },
+              ].map(f => (
+                <input
+                  key={f.k}
+                  className="input"
+                  type={f.type}
+                  placeholder={f.placeholder}
+                  value={form[f.k]}
+                  onChange={e => setForm(p => ({ ...p, [f.k]: e.target.value }))}
+                  required={f.req}
+                />
+              ))}
+              <button type="submit" className="btn-primary w-full justify-center">
+                <Send size={15} />
+                Quero Fazer Parte
+              </button>
+              <button
+                type="button"
+                onClick={close}
+                className="w-full text-sm text-[#9A9A9A] hover:text-[#444] transition-colors py-1"
+              >
+                Agora não
+              </button>
+            </form>
+          )}
+        </div>
 
         {/* Fechar */}
         <button
-          onClick={() => setOpen(false)}
-          className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
-          aria-label="Fechar popup"
+          onClick={close}
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-all"
         >
-          <X size={20} />
+          <X size={16} />
         </button>
-
-        {/* Linha dourada topo */}
-        <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
-
-        {status === 'success' ? (
-          <div className="text-center py-4">
-            <p className="text-4xl mb-4">🎉</p>
-            <h3 className="text-xl font-bold text-[#C9A84C] mb-2"
-                style={{ fontFamily: 'Playfair Display, serif' }}>
-              Bem-vindo ao time!
-            </h3>
-            <p className="text-gray-400 text-sm">Fique de olho no seu e-mail.</p>
-          </div>
-        ) : (
-          <>
-            <h2 className="text-2xl font-bold text-white mb-2"
-                style={{ fontFamily: 'Playfair Display, serif' }}>
-              Faça parte dos meus planos!
-            </h2>
-            <p className="text-gray-400 text-sm mb-6">
-              Tô feliz que chegou até aqui. Se cadastra e eu te mando conteúdos exclusivos. 🤝
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <input
-                name="nome"
-                value={form.nome}
-                onChange={e => setForm(p => ({ ...p, nome: e.target.value }))}
-                placeholder="Nome"
-                className="input text-sm"
-              />
-              <input
-                name="email"
-                type="email"
-                value={form.email}
-                onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                placeholder="E-mail *"
-                required
-                className="input text-sm"
-              />
-              <input
-                name="telefone"
-                value={form.telefone}
-                onChange={e => setForm(p => ({ ...p, telefone: e.target.value }))}
-                placeholder="Telefone"
-                className="input text-sm"
-              />
-              <input
-                name="instagram"
-                value={form.instagram}
-                onChange={e => setForm(p => ({ ...p, instagram: e.target.value }))}
-                placeholder="@Instagram"
-                className="input text-sm"
-              />
-
-              <button type="submit" disabled={status === 'loading'} className="btn-primary w-full justify-center mt-2">
-                {status === 'loading'
-                  ? <Loader2 size={16} className="animate-spin" />
-                  : 'Cadastrar'}
-              </button>
-            </form>
-
-            <button
-              onClick={() => setOpen(false)}
-              className="w-full text-center text-gray-600 text-xs mt-4 hover:text-gray-400 transition-colors"
-            >
-              Pular por agora
-            </button>
-          </>
-        )}
       </div>
     </div>
   )
