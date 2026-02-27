@@ -37,9 +37,9 @@ export default function Contato() {
           {/* Info */}
           <div className="lg:col-span-2 space-y-6">
             {[
-              { icon: Mail,    label: 'E-mail',    value: 'contato@josefelipecarneiro.com', href: 'mailto:contato@josefelipecarneiro.com' },
-              { icon: Phone,   label: 'WhatsApp',  value: '+55 (11) 99999-9999', href: 'https://wa.me/5511999999999' },
-              { icon: MapPin,  label: 'Localização', value: 'Belo Horizonte, Brasil', href: null },
+              { icon: Mail,    label: 'E-mail',    value: 'contato@josefelipe.com.br', href: 'mailto:contato@josefelipe.com.br' },
+              { icon: Phone,   label: 'WhatsApp',  value: '+55 (31) 99999-9999', href: 'https://wa.me/5531999999999' },
+              { icon: MapPin,  label: 'Localização', value: 'Belo Horizonte, MG', href: null },
             ].map(item => (
               <div key={item.label} className="flex items-start gap-4 bg-[#0A0A0A] border border-[#222] rounded-xl p-5">
                 <div className="w-10 h-10 rounded-full bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -61,7 +61,7 @@ export default function Contato() {
               <div className="flex gap-3">
                 {[
                   { label: 'Instagram', href: 'https://instagram.com/josefelipec' },
-                  { label: 'LinkedIn',  href: '#' },
+                  { label: 'LinkedIn',  href: 'https://linkedin.com/in/josefelipecarneiro' },
                   { label: 'YouTube',   href: '#' },
                 ].map(s => (
                   <a

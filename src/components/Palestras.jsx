@@ -1,18 +1,30 @@
 import { Mic, Check, ArrowRight } from 'lucide-react'
 
-const formatos = [
-  'Keynotes inspiracionais',
-  'Workshops práticos',
-  'Painéis de discussão',
-  'Palestras virtuais',
-  'Eventos corporativos',
-]
-
-const temas = [
-  { titulo: 'Performance Consciente',  desc: 'Alta produtividade com propósito e equilíbrio' },
-  { titulo: 'Liderança Inspiradora',   desc: 'Como mover pessoas pela motivação, não pela pressão' },
-  { titulo: 'Empreendedorismo de Alto Impacto', desc: 'Transformando ideias em negócios bilionários' },
-  { titulo: 'Inovação Estratégica',    desc: 'Como a Zx Ventures revolucionou o mercado' },
+const palestras = [
+  {
+    titulo: 'Coragem',
+    desc: 'Quando temos coragem de entrar na nossa própria história e (re)conhecê-la, temos a chance de escrever o final. Coragem é essencial para se expor, experimentar riscos e inovar, sem abrir mão dos próprios valores.',
+  },
+  {
+    titulo: 'Crescimento Disruptivo',
+    desc: 'Como romper o óbvio e transformar mercados? Casos reais de crescimento acelerado com inovação, execução e visão estratégica.',
+  },
+  {
+    titulo: 'Fermentando Sonhos',
+    desc: 'A transformação da Wäls e de outras empresas. Como transformar sonhos em marcas desejadas, empresas lucrativas e negócios que impactam.',
+  },
+  {
+    titulo: 'Alta Performance nos Negócios',
+    desc: 'Alta performance não é sobre trabalhar mais, é sobre trabalhar certo. Disciplina, clareza, cultura forte e execução impecável.',
+  },
+  {
+    titulo: 'Sede de Vencer',
+    desc: 'Uma palestra visceral e realista. José compartilha erros, acertos, dores e vitórias, mostrando como desenvolver a mentalidade antifrágil.',
+  },
+  {
+    titulo: 'Visão e Execução Estratégica',
+    desc: 'Como o novo líder define visão, executa com velocidade e antecipa problemas, criando ambientes colaborativos e culturas fortes.',
+  },
 ]
 
 export default function Palestras() {
@@ -24,58 +36,36 @@ export default function Palestras() {
           <p className="text-[#C9A84C] uppercase tracking-[0.25em] text-sm font-medium mb-3">
             Inspire sua Equipe
           </p>
-          <h2 className="section-title">Palestras Transformadoras</h2>
+          <h2 className="section-title">Palestras e Eventos</h2>
           <div className="gold-line mx-auto" />
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Palestras que combinam experiência real, storytelling envolvente e
-            metodologias práticas para transformar mindset e resultados.
+            José Felipe leva para o palco sua história de transformação, superação e
+            construção de negócios que quebram padrões e impactam o mercado.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-
-          {/* Formatos */}
-          <div className="bg-[#0A0A0A] border border-[#222] rounded-2xl p-8 hover:border-[#C9A84C]/30 transition-colors">
-            <div className="w-12 h-12 rounded-full bg-[#C9A84C]/10 flex items-center justify-center mb-6">
-              <Mic size={24} className="text-[#C9A84C]" />
+        {/* Grid de palestras */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+          {palestras.map(p => (
+            <div
+              key={p.titulo}
+              className="bg-[#0A0A0A] border border-[#222] rounded-xl p-6 hover:border-[#C9A84C]/40 hover:bg-[#0d0d0d] transition-all duration-300 group"
+            >
+              <div className="w-8 h-1 bg-[#C9A84C] mb-4 group-hover:w-14 transition-all duration-300" />
+              <h3 className="text-white font-bold text-lg mb-3"
+                  style={{ fontFamily: 'Playfair Display, serif' }}>
+                {p.titulo}
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{p.desc}</p>
             </div>
-            <h3 className="text-xl font-bold text-white mb-4"
-                style={{ fontFamily: 'Playfair Display, serif' }}>
-              Formatos Disponíveis
-            </h3>
-            <ul className="space-y-3">
-              {formatos.map(f => (
-                <li key={f} className="flex items-center gap-3 text-sm text-gray-300">
-                  <Check size={15} className="text-[#C9A84C] flex-shrink-0" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Temas — ocupa 2 colunas */}
-          <div className="lg:col-span-2 grid sm:grid-cols-2 gap-5">
-            {temas.map(t => (
-              <div
-                key={t.titulo}
-                className="bg-[#0A0A0A] border border-[#222] rounded-xl p-6 hover:border-[#C9A84C]/40 hover:bg-[#0d0d0d] transition-all duration-300 group"
-              >
-                <div className="w-8 h-1 bg-[#C9A84C] mb-4 group-hover:w-12 transition-all duration-300" />
-                <h4 className="text-white font-semibold mb-2 text-lg"
-                    style={{ fontFamily: 'Playfair Display, serif' }}>
-                  {t.titulo}
-                </h4>
-                <p className="text-gray-400 text-sm leading-relaxed">{t.desc}</p>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
 
         {/* CTA */}
-        <div className="mt-14 text-center bg-gradient-to-r from-[#C9A84C]/5 via-[#C9A84C]/10 to-[#C9A84C]/5 border border-[#C9A84C]/20 rounded-2xl p-10">
+        <div className="text-center bg-gradient-to-r from-[#C9A84C]/5 via-[#C9A84C]/10 to-[#C9A84C]/5 border border-[#C9A84C]/20 rounded-2xl p-10">
           <h3 className="text-2xl font-bold text-white mb-3"
               style={{ fontFamily: 'Playfair Display, serif' }}>
-            Solicite uma Proposta
+            Quero Contratar uma Palestra
           </h3>
           <p className="text-gray-400 mb-6">
             Entre em contato para receber uma proposta personalizada para seu evento.
@@ -86,7 +76,7 @@ export default function Palestras() {
             className="btn-primary"
           >
             <Mic size={18} />
-            Contrate o Palestrante
+            Solicitar Orçamento
             <ArrowRight size={16} />
           </a>
         </div>

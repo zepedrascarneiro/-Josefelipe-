@@ -1,6 +1,5 @@
 export default function Footer() {
   const year = new Date().getFullYear()
-
   const scrollTo = href => {
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -15,17 +14,16 @@ export default function Footer() {
           {/* Marca */}
           <div className="md:col-span-2">
             <p className="text-2xl font-bold mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
-              <span className="text-[#C9A84C]">JF</span>
-              <span className="text-white"> CARNEIRO</span>
+              <span className="text-[#C9A84C]">JFC</span>
             </p>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              Empreendedor Serial, Palestrante e Autor do livro Performance Consciente.
-              Transformando vidas através da alta performance com propósito.
+              Empreendedor, mentor, investidor e palestrante. Transformando vidas
+              através da alta performance, inovação e execução consciente.
             </p>
             <div className="flex gap-3 mt-5">
               {[
                 { l: 'Instagram', h: 'https://instagram.com/josefelipec' },
-                { l: 'LinkedIn',  h: '#' },
+                { l: 'LinkedIn',  h: 'https://linkedin.com/in/josefelipecarneiro' },
                 { l: 'YouTube',   h: '#' },
               ].map(s => (
                 <a
@@ -50,7 +48,7 @@ export default function Footer() {
                 ['Livro',     '#livro'],
                 ['Curso',     '#curso'],
                 ['Palestras', '#palestras'],
-                ['Blog',      '#blog'],
+                ['Blog do Zé','#blog'],
                 ['Contato',   '#contato'],
               ].map(([label, href]) => (
                 <li key={href}>
@@ -70,16 +68,16 @@ export default function Footer() {
             <p className="text-xs text-gray-500 uppercase tracking-widest mb-4">Contato</p>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="mailto:contato@josefelipecarneiro.com" className="hover:text-[#C9A84C] transition-colors break-all">
-                  contato@josefelipecarneiro.com
+                <a href="mailto:contato@josefelipe.com.br" className="hover:text-[#C9A84C] transition-colors break-all">
+                  contato@josefelipe.com.br
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A84C] transition-colors">
-                  +55 (11) 99999-9999
+                <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A84C] transition-colors">
+                  @josefelipec
                 </a>
               </li>
-              <li className="text-gray-600">Belo Horizonte, Brasil</li>
+              <li className="text-gray-600">Belo Horizonte, MG</li>
             </ul>
           </div>
         </div>

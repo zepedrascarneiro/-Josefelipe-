@@ -18,7 +18,7 @@ export default function Hero() {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        poster="https://zxxoolda.manus.space/assets/jose_felipe_foto-AXAoRZwc.jpg"
+        poster="https://josefelipe.com.br/lovable-uploads/d08ef557-2a05-4a2c-a1a6-12bb07b532b7.png"
       >
         <source src="/josefelipereels.mp4" type="video/mp4" />
       </video>
@@ -28,12 +28,14 @@ export default function Hero() {
 
       {/* Conteúdo */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto animate-fade-in">
-        <p className="text-[#C9A84C] uppercase tracking-[0.3em] text-sm font-medium mb-4">
-          Empreendedor Serial · Palestrante · Autor
+        {/* Logo JFC */}
+        <p className="text-[#C9A84C] uppercase tracking-[0.5em] text-2xl font-bold mb-4"
+           style={{ fontFamily: 'Playfair Display, serif' }}>
+          JFC
         </p>
 
         <h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-tight"
           style={{ fontFamily: 'Playfair Display, serif' }}
         >
           José Felipe
@@ -41,16 +43,20 @@ export default function Hero() {
           <span className="text-[#C9A84C]">Carneiro</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Transformando vidas através da{' '}
-          <span className="text-[#C9A84C] font-semibold">Performance Consciente</span>.
-          Co-fundador da AMBEV e criador da Zx Ventures.
+        <p className="text-base md:text-lg text-gray-300 mb-3 uppercase tracking-widest">
+          Empreendedor · Mentor · Investidor · Palestrante
+        </p>
+
+        <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+          Co-fundador da Cervejaria Wäls e da{' '}
+          <span className="text-[#C9A84C] font-semibold">ZX Ventures (Ambev)</span>.
+          Investidor em 30+ países.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button onClick={() => scrollTo('#livro')} className="btn-primary text-base">
             <BookOpen size={18} />
-            Conheça o Livro
+            Quero Minha Edição Agora
           </button>
           <button onClick={() => scrollTo('#palestras')} className="btn-outline text-base">
             <Mic size={18} />
@@ -58,20 +64,17 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-white/10 pt-10">
+        {/* Badges empresas */}
+        <div className="mt-12 flex flex-wrap justify-center gap-6 border-t border-white/10 pt-8">
           {[
-            { value: '30+', label: 'Países' },
-            { value: '50+', label: 'Marcas' },
-            { value: '1000+', label: 'Palestras' },
-            { value: '10K+', label: 'Mentorados' },
-          ].map(stat => (
-            <div key={stat.label} className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#C9A84C]"
-                 style={{ fontFamily: 'Playfair Display, serif' }}>
-                {stat.value}
-              </p>
-              <p className="text-sm text-gray-400 mt-1 uppercase tracking-widest">{stat.label}</p>
+            { nome: 'AMBEV', sub: 'Ex Sócio' },
+            { nome: 'ZX VENTURES', sub: 'Cofundador' },
+            { nome: 'WÄLS', sub: 'Mais Premiada do Mundo' },
+            { nome: '30+ PAÍSES', sub: 'Inovação Global' },
+          ].map(b => (
+            <div key={b.nome} className="text-center">
+              <p className="text-sm font-bold text-[#C9A84C] uppercase tracking-widest">{b.nome}</p>
+              <p className="text-xs text-gray-500 mt-0.5">{b.sub}</p>
             </div>
           ))}
         </div>
