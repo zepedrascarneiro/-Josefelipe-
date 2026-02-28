@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { label: 'Início',    href: '#hero' },
+  { label: 'Inicio',    href: '#hero' },
   { label: 'Sobre',     href: '#sobre' },
   { label: 'Livro',     href: '#livro' },
   { label: 'Curso',     href: '#curso' },
@@ -42,21 +42,21 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-[#E8E3DA]'
+          ? 'bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-white/5'
           : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
         {/* Logo */}
         <button
           onClick={() => handleClick('#hero')}
-          className="font-bold text-lg tracking-[0.12em] transition-opacity hover:opacity-70"
+          className="font-bold text-xl tracking-[0.15em] transition-opacity hover:opacity-70"
           style={{ fontFamily: 'Playfair Display, serif' }}
         >
-          <span className={scrolled ? 'text-[#C9A84C]' : 'text-white'}>JF</span>
-          <span className={scrolled ? 'text-[#111]' : 'text-white'}> CARNEIRO</span>
+          <span className="text-[#C9A84C]">JF</span>
+          <span className="text-white"> CARNEIRO</span>
         </button>
 
         {/* Desktop Links */}
@@ -65,12 +65,10 @@ export default function Navbar() {
             <li key={link.href}>
               <button
                 onClick={() => handleClick(link.href)}
-                className={`text-sm font-medium transition-all duration-200 relative ${
+                className={`text-[0.8rem] font-medium tracking-wider uppercase transition-all duration-200 relative ${
                   active === link.href
                     ? 'text-[#C9A84C]'
-                    : scrolled
-                      ? 'text-[#444] hover:text-[#111]'
-                      : 'text-white/80 hover:text-white'
+                    : 'text-white/50 hover:text-white'
                 }`}
               >
                 {link.label}
@@ -86,34 +84,30 @@ export default function Navbar() {
         <a
           href="#contato"
           onClick={e => { e.preventDefault(); handleClick('#contato') }}
-          className={`hidden md:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2 rounded-full transition-all duration-300 ${
-            scrolled
-              ? 'bg-[#111] text-white hover:bg-[#333]'
-              : 'bg-white text-[#111] hover:bg-white/90'
-          }`}
+          className="hidden md:inline-flex items-center gap-2 text-[0.75rem] font-bold tracking-wider uppercase px-6 py-2.5 rounded bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#E8C96A] transition-all duration-300"
         >
           Fale Comigo
         </a>
 
         {/* Mobile toggle */}
         <button
-          className={`md:hidden p-1 ${scrolled ? 'text-[#111]' : 'text-white'}`}
+          className="md:hidden p-1 text-white"
           onClick={() => setOpen(o => !o)}
           aria-label="Menu"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={26} /> : <Menu size={26} />}
         </button>
       </nav>
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-white border-t border-[#E8E3DA] px-6 py-5 flex flex-col gap-4 shadow-lg">
+        <div className="md:hidden bg-[#0A0A0A] border-t border-white/5 px-6 py-6 flex flex-col gap-4">
           {navLinks.map(link => (
             <button
               key={link.href}
               onClick={() => handleClick(link.href)}
-              className={`text-left text-base font-medium transition-colors ${
-                active === link.href ? 'text-[#C9A84C]' : 'text-[#333]'
+              className={`text-left text-base font-medium uppercase tracking-wider transition-colors ${
+                active === link.href ? 'text-[#C9A84C]' : 'text-white/60 hover:text-white'
               }`}
             >
               {link.label}
@@ -121,7 +115,7 @@ export default function Navbar() {
           ))}
           <button
             onClick={() => handleClick('#contato')}
-            className="btn-primary w-full justify-center mt-1"
+            className="btn-gold w-full justify-center mt-2"
           >
             Fale Comigo
           </button>

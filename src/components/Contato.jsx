@@ -14,7 +14,7 @@ export default function Contato() {
   }
 
   return (
-    <section id="contato" className="py-28 bg-[#F4F1EB]">
+    <section id="contato" className="py-28 bg-[#0A0A0A]">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Header */}
@@ -22,10 +22,10 @@ export default function Contato() {
           <p className="section-label mb-4">Vamos Conversar</p>
           <div className="grid md:grid-cols-2 gap-6 items-end">
             <h2 className="section-title">
-              Bora<br /><em className="not-italic text-[#C9A84C]">Falar?</em>
+              Bora<br /><span className="text-[#C9A84C]">Falar?</span>
             </h2>
-            <p className="text-[#6B6B6B] text-lg leading-relaxed">
-              Preencha o formulário com suas sugestões, ideias ou dúvidas e, em breve,
+            <p className="text-white/50 text-lg leading-relaxed">
+              Preencha o formul&aacute;rio com suas sugest&otilde;es, ideias ou d&uacute;vidas e, em breve,
               farei contato para te ouvir.
             </p>
           </div>
@@ -51,55 +51,52 @@ export default function Contato() {
               },
               {
                 icon: <MapPin size={18} className="text-[#C9A84C]" />,
-                label: 'Localização',
+                label: 'Localiza\u00e7\u00e3o',
                 val: 'Belo Horizonte, MG',
                 href: null,
               },
             ].map(c => (
-              <div key={c.label} className="flex items-start gap-4 bg-white border border-[#E8E3DA] rounded-2xl p-5 card-lift">
-                <div className="w-10 h-10 bg-[#C9A84C]/10 rounded-xl flex items-center justify-center shrink-0">
+              <div key={c.label} className="flex items-start gap-4 bg-[#161616] border border-white/5 rounded-xl p-5 card-lift">
+                <div className="w-10 h-10 bg-[#C9A84C]/10 rounded-lg flex items-center justify-center shrink-0">
                   {c.icon}
                 </div>
                 <div>
-                  <p className="text-xs text-[#9A9A9A] uppercase tracking-widest font-medium mb-1">{c.label}</p>
+                  <p className="text-[0.65rem] text-white/30 uppercase tracking-widest font-bold mb-1">{c.label}</p>
                   {c.href ? (
                     <a href={c.href} target="_blank" rel="noopener noreferrer"
-                       className="text-[#111] font-medium text-sm hover:text-[#C9A84C] transition-colors">
+                       className="text-white font-medium text-sm hover:text-[#C9A84C] transition-colors">
                       {c.val}
                     </a>
                   ) : (
-                    <p className="text-[#111] font-medium text-sm">{c.val}</p>
+                    <p className="text-white font-medium text-sm">{c.val}</p>
                   )}
                 </div>
               </div>
             ))}
 
             {/* Frase motivacional */}
-            <div
-              className="rounded-2xl p-7 mt-4"
-              style={{ background: 'linear-gradient(135deg, #111 0%, #1a1508 100%)' }}
-            >
+            <div className="rounded-xl p-7 mt-4 bg-gradient-to-br from-[#C9A84C]/10 to-[#0A0A0A] border border-[#C9A84C]/20">
               <p
                 className="text-white font-bold text-xl leading-snug mb-3"
                 style={{ fontFamily: 'Playfair Display, serif' }}
               >
-                "A coragem de se mover é o começo de tudo."
+                &ldquo;A coragem de se mover &eacute; o come&ccedil;o de tudo.&rdquo;
               </p>
-              <p className="text-white/40 text-sm">— José Felipe Carneiro</p>
+              <p className="text-white/30 text-sm">&mdash; Jos&eacute; Felipe Carneiro</p>
             </div>
           </div>
 
-          {/* Formulário */}
-          <div className="lg:col-span-3 bg-white border border-[#E8E3DA] rounded-2xl p-8 md:p-10">
+          {/* Formulario */}
+          <div className="lg:col-span-3 bg-[#161616] border border-white/5 rounded-xl p-8 md:p-10">
             {ok ? (
               <div className="flex flex-col items-center justify-center h-full py-16 text-center gap-4">
                 <div className="w-16 h-16 bg-[#C9A84C]/10 rounded-full flex items-center justify-center mb-2">
                   <Send size={28} className="text-[#C9A84C]" />
                 </div>
-                <h3 className="text-[#111] font-bold text-2xl" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h3 className="text-white font-bold text-2xl" style={{ fontFamily: 'Playfair Display, serif' }}>
                   Mensagem Enviada!
                 </h3>
-                <p className="text-[#6B6B6B]">Obrigado! Entrarei em contato em breve.</p>
+                <p className="text-white/40">Obrigado! Entrarei em contato em breve.</p>
                 <button onClick={() => setOk(false)} className="btn-outline mt-4">
                   Enviar outra mensagem
                 </button>
@@ -108,7 +105,7 @@ export default function Contato() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-xs font-semibold text-[#444] uppercase tracking-wide block mb-2">
+                    <label className="text-[0.65rem] font-bold text-white/40 uppercase tracking-widest block mb-2">
                       Nome
                     </label>
                     <input
@@ -120,7 +117,7 @@ export default function Contato() {
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-[#444] uppercase tracking-wide block mb-2">
+                    <label className="text-[0.65rem] font-bold text-white/40 uppercase tracking-widest block mb-2">
                       E-mail
                     </label>
                     <input
@@ -134,7 +131,7 @@ export default function Contato() {
                   </div>
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-[#444] uppercase tracking-wide block mb-2">
+                  <label className="text-[0.65rem] font-bold text-white/40 uppercase tracking-widest block mb-2">
                     Assunto
                   </label>
                   <input
@@ -145,7 +142,7 @@ export default function Contato() {
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-[#444] uppercase tracking-wide block mb-2">
+                  <label className="text-[0.65rem] font-bold text-white/40 uppercase tracking-widest block mb-2">
                     Mensagem
                   </label>
                   <textarea
@@ -157,7 +154,7 @@ export default function Contato() {
                     required
                   />
                 </div>
-                <button type="submit" className="btn-primary w-full justify-center">
+                <button type="submit" className="btn-gold w-full justify-center">
                   <Send size={16} />
                   Enviar Mensagem
                 </button>
