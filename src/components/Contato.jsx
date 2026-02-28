@@ -1,106 +1,113 @@
 import { useState } from 'react'
-
-const infos = [
-  { l: 'PALESTRAS & EVENTOS',  v: 'contato@josefelipe.com.br' },
-  { l: 'MENTORIA & CURSOS',    v: 'mentoria@josefelipe.com.br' },
-  { l: 'ASSESSORIA DE IMPRENSA', v: 'imprensa@josefelipe.com.br' },
-  { l: 'INSTAGRAM',             v: '@josefelipecarneiro' },
-]
+import { Send, Mail, MapPin, Instagram, ArrowRight } from 'lucide-react'
 
 export default function Contato() {
-  const [form, setForm] = useState({ nome: '', email: '', assunto: '', msg: '' })
+  const [form, setForm] = useState({ nome: '', email: '', assunto: '', mensagem: '' })
   const [ok, setOk] = useState(false)
 
-  const change = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
-  const submit = e => {
+  const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
+
+  const handleSubmit = e => {
     e.preventDefault()
-    if (form.nome && form.email && form.msg) setOk(true)
+    setOk(true)
+    setForm({ nome: '', email: '', assunto: '', mensagem: '' })
   }
 
   return (
-    <section id="contato" style={{ background: '#0A0A0A', padding: '7rem 0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2rem' }}>
+    <section id="contato" className="py-28 bg-black text-white">
+      <div className="max-w-5xl mx-auto px-12 lg:px-16">
 
-        <p className="section-label" style={{ marginBottom: '1rem' }}>Fale Comigo</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', alignItems: 'end', marginBottom: '1rem' }}>
-          <h2 className="section-heading">BORA<br /><span style={{ color: '#C9A84C' }}>FALAR?</span></h2>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '1rem', lineHeight: 1.7, fontWeight: 300 }}>
-            Palestras, mentorias, entrevistas ou parcerias — estou disponível para conversas que importam.
-          </p>
-        </div>
-        <div className="gold-bar" style={{ marginBottom: '4rem' }} />
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '5rem', alignItems: 'start' }}>
-
-          {/* Info */}
-          <div>
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', marginBottom: '3rem' }}>
-              {infos.map(({ l, v }) => (
-                <div key={l} style={{ display: 'flex', flexDirection: 'column', padding: '1.2rem 0', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-                  <span style={{ fontSize: '0.65rem', letterSpacing: '0.2em', color: 'rgba(201,168,76,0.7)', textTransform: 'uppercase', marginBottom: '0.3rem' }}>{l}</span>
-                  <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>{v}</span>
-                </div>
-              ))}
+          {/* Lado esquerdo */}
+          <div className="flex flex-col justify-between">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-extrabold leading-[1.05] tracking-tight mb-6">
+                VAMOS<br />CONVERSAR?
+              </h2>
+              <p className="text-gray-400 leading-relaxed mb-12 max-w-sm">
+                Quer levar uma palestra para seu evento, fechar uma parceria ou só trocar uma ideia? Manda uma mensagem.
+              </p>
             </div>
 
-            {/* Quote */}
-            <div style={{ borderLeft: '3px solid #C9A84C', paddingLeft: '1.5rem' }}>
-              <p style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.45)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '0.8rem' }}>
-                "Se você quer um impacto memorável no seu evento, eu me preparo para isso como se fosse o mais importante da minha carreira."
-              </p>
-              <span style={{ fontSize: '0.7rem', letterSpacing: '0.15em', color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase' }}>— José Felipe Carneiro</span>
+            <div className="space-y-6">
+              <a href="mailto:contato@josefelipe.com.br"
+                 className="flex items-center gap-4 group">
+                <div className="w-11 h-11 border border-gray-700 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
+                  <Mail size={18} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold group-hover:underline">contato@josefelipe.com.br</p>
+                </div>
+              </a>
+
+              <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer"
+                 className="flex items-center gap-4 group">
+                <div className="w-11 h-11 border border-gray-700 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
+                  <Instagram size={18} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold group-hover:underline">@josefelipec</p>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4">
+                <div className="w-11 h-11 border border-gray-700 rounded-full flex items-center justify-center">
+                  <MapPin size={18} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">Belo Horizonte, MG</p>
+                </div>
+              </div>
+
+              <div className="pt-8 mt-2 border-t border-gray-800">
+                <p className="text-lg font-bold leading-snug italic text-gray-300">
+                  "A coragem de se mover é o começo de tudo."
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Formulário */}
-          <div>
+          <div className="bg-[#111111] text-white border border-gray-800 rounded-2xl p-8 md:p-10">
             {ok ? (
-              <div style={{ border: '1px solid rgba(201,168,76,0.3)', padding: '3rem 2.5rem', textAlign: 'center' }}>
-                <p style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '2rem', letterSpacing: '0.1em', color: '#C9A84C', marginBottom: '0.6rem' }}>MENSAGEM ENVIADA ✓</p>
-                <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.4)' }}>Retorno em até 48h. Obrigado pelo contato.</p>
+              <div className="flex flex-col items-center justify-center h-full py-16 text-center gap-4">
+                <Send size={28} className="text-white" />
+                <h3 className="text-white font-bold text-2xl">Mensagem Enviada!</h3>
+                <p className="text-gray-500">Obrigado! Entrarei em contato em breve.</p>
+                <button onClick={() => setOk(false)} className="btn-outline mt-4 border-white text-white hover:bg-white hover:text-black">
+                  Enviar outra mensagem
+                </button>
               </div>
             ) : (
-              <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(255,255,255,0.04)' }}>
-                {[
-                  { id: 'nome',    ph: 'SEU NOME COMPLETO',     type: 'text' },
-                  { id: 'email',   ph: 'SEU E-MAIL',             type: 'email' },
-                  { id: 'assunto', ph: 'ASSUNTO',                type: 'text' },
-                ].map(f => (
-                  <input
-                    key={f.id}
-                    name={f.id}
-                    type={f.type}
-                    placeholder={f.ph}
-                    value={form[f.id]}
-                    onChange={change}
-                    className="input-light"
-                    style={{ letterSpacing: '0.08em', fontSize: '0.8rem' }}
-                  />
-                ))}
-                <textarea
-                  name="msg"
-                  placeholder="SUA MENSAGEM"
-                  rows={5}
-                  value={form.msg}
-                  onChange={change}
-                  className="input-light"
-                  style={{ resize: 'none', letterSpacing: '0.08em', fontSize: '0.8rem', lineHeight: 1.6 }}
-                />
-                <button type="submit" className="btn-dark" style={{ marginTop: '1px', padding: '1.1rem 2rem', justifyContent: 'center', background: '#fff', fontSize: '0.8rem' }}>
-                  Enviar Mensagem →
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Nome</label>
+                    <input className="input bg-transparent border-gray-700 text-white placeholder-gray-500 focus:border-white" placeholder="Seu nome" value={form.nome} onChange={e => set('nome', e.target.value)} required />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">E-mail</label>
+                    <input className="input bg-transparent border-gray-700 text-white placeholder-gray-500 focus:border-white" type="email" placeholder="seu@email.com" value={form.email} onChange={e => set('email', e.target.value)} required />
+                  </div>
+                </div>
+                <div>
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Assunto</label>
+                  <input className="input bg-transparent border-gray-700 text-white placeholder-gray-500 focus:border-white" placeholder="Palestra, Mentoria, Curso, Parceria..." value={form.assunto} onChange={e => set('assunto', e.target.value)} />
+                </div>
+                <div>
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Mensagem</label>
+                  <textarea className="input bg-transparent border-gray-700 text-white placeholder-gray-500 focus:border-white resize-none" rows={5} placeholder="Conte-me um pouco sobre sua ideia..." value={form.mensagem} onChange={e => set('mensagem', e.target.value)} required />
+                </div>
+                <button type="submit" className="btn-primary w-full justify-center bg-white text-black hover:bg-gray-200">
+                  <Send size={16} />
+                  Enviar Mensagem
                 </button>
               </form>
             )}
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          #contato > div > div:last-child { grid-template-columns: 1fr !important; }
-          #contato > div > div:nth-child(2) { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   )
 }

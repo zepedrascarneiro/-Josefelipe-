@@ -1,68 +1,67 @@
-const go = href => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-
-const palestras = [
-  { num: '01', titulo: 'CORAGEM', desc: 'Quando temos coragem de entrar na nossa própria história e reconhecê-la, temos a chance de escrever o final. Coragem é essencial para se expor, experimentar riscos e inovar, sem abrir mão dos próprios valores.' },
-  { num: '02', titulo: 'CRESCIMENTO DISRUPTIVO', desc: 'Como romper o óbvio e transformar mercados? Casos reais de crescimento acelerado com inovação, execução e visão estratégica.' },
-  { num: '03', titulo: 'FERMENTANDO SONHOS', desc: 'A transformação da Wäls e de outras empresas. Como transformar sonhos em marcas desejadas, empresas lucrativas e negócios que impactam.' },
-  { num: '04', titulo: 'ALTA PERFORMANCE NOS NEGÓCIOS', desc: 'Alta performance não é sobre trabalhar mais, é sobre trabalhar certo. Disciplina, clareza, cultura forte e execução impecável.' },
-  { num: '05', titulo: 'SEDE DE VENCER', desc: 'Uma palestra visceral e realista. José compartilha erros, acertos, dores e vitórias, mostrando como desenvolver a mentalidade antifrágil.' },
-  { num: '06', titulo: 'VISÃO E EXECUÇÃO ESTRATÉGICA', desc: 'Como o novo líder define visão, executa com velocidade e antecipa problemas, criando ambientes colaborativos e culturas fortes.' },
-]
+import { Mic } from 'lucide-react'
 
 export default function Palestras() {
   return (
-    <section id="palestras" style={{ background: '#111111', padding: '7rem 0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2rem' }}>
+    <section id="palestras" className="py-28 bg-white">
+      <div className="max-w-5xl mx-auto px-12 lg:px-16">
 
-        <p className="section-label" style={{ marginBottom: '1rem' }}>Inspire Sua Equipe</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', alignItems: 'end', marginBottom: '1rem' }}>
-          <h2 className="section-heading">PALESTRAS E<br /><span style={{ color: '#C9A84C' }}>EVENTOS</span></h2>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '1rem', lineHeight: 1.7, fontWeight: 300 }}>
-            José Felipe leva para o palco sua história de transformação, superação e construção de negócios que quebram padrões.
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-black leading-[1.05] tracking-tight mb-6">
+            PALESTRAS
+          </h2>
+          <p className="text-gray-500 max-w-2xl leading-relaxed">
+            José Felipe leva ao palco a energia, a vivência e as estratégias de quem construiu negócios do zero e transformou paixão em resultados reais. Conheça as apresentações completas abaixo.
           </p>
         </div>
-        <div className="gold-bar" style={{ marginBottom: '4rem' }} />
 
-        {/* Lista estilo editorial */}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', marginBottom: '4rem' }}>
-          {palestras.map(p => (
-            <div
-              key={p.num}
-              style={{ display: 'flex', gap: '2rem', padding: '2rem 0', borderBottom: '1px solid rgba(255,255,255,0.07)', cursor: 'default', transition: 'background .2s' }}
-              onMouseEnter={e => e.currentTarget.style.paddingLeft = '1rem'}
-              onMouseLeave={e => e.currentTarget.style.paddingLeft = '0'}
-            >
-              <span style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '1rem', letterSpacing: '0.1em', color: 'rgba(201,168,76,0.5)', minWidth: 32, paddingTop: 4 }}>{p.num}</span>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2rem' }}>
-                  <h3 style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', letterSpacing: '0.08em', color: '#fff', lineHeight: 1, marginBottom: '0.7rem' }}>
-                    {p.titulo}
-                  </h3>
-                  <span style={{ color: '#C9A84C', fontSize: '1.2rem', opacity: 0.5 }}>→</span>
-                </div>
-                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.88rem', lineHeight: 1.7, maxWidth: 600 }}>{p.desc}</p>
-              </div>
+        <div className="space-y-12 mb-20">
+          <div>
+            <p className="text-sm font-bold text-black mb-3">Apresentação Geral</p>
+            <div className="w-full rounded-xl overflow-hidden border border-gray-200" style={{ aspectRatio: '16/9' }}>
+              <iframe
+                src="/palestra-geral.pdf"
+                title="Apresentação José Felipe Carneiro"
+                className="w-full h-full"
+                style={{ border: 'none' }}
+              />
             </div>
-          ))}
+          </div>
+
+          <div>
+            <p className="text-sm font-bold text-black mb-3">Apresentação Agro</p>
+            <div className="w-full rounded-xl overflow-hidden border border-gray-200" style={{ aspectRatio: '16/9' }}>
+              <iframe
+                src="/palestra-agro.pdf"
+                title="Apresentação José Felipe Carneiro — Agro"
+                className="w-full h-full"
+                style={{ border: 'none' }}
+              />
+            </div>
+          </div>
         </div>
 
-        {/* CTA block */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem', padding: '3rem', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.15)' }}>
-          <div>
-            <h3 style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.5rem)', letterSpacing: '0.06em', color: '#fff', marginBottom: '0.4rem' }}>
-              QUERO CONTRATAR UMA PALESTRA
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Receba uma proposta personalizada para o seu evento.</p>
-          </div>
-          <button onClick={() => go('#contato')} className="btn-gold">Solicitar Orçamento</button>
+        <div className="bg-black text-white rounded-xl p-10 md:p-14 text-center">
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-4">
+            Leve essa energia para seu evento
+          </h3>
+          <p className="text-gray-400 mb-3 max-w-xl mx-auto">
+            Contratação exclusiva via DMT Palestras
+          </p>
+          <p className="text-sm text-gray-500 mb-8">
+            <a href="mailto:jose.felipe@dmt.ag" className="text-white hover:underline">jose.felipe@dmt.ag</a>
+            {' · '}
+            <a href="https://www.dmt.ag" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">dmt.ag</a>
+          </p>
+          <a
+            href="#contato"
+            onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <Mic size={16} />
+            Quero Contratar uma Palestra
+          </a>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          #palestras > div > div:nth-child(2) { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   )
 }

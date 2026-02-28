@@ -1,51 +1,50 @@
 import { useState } from 'react'
+import { Send, Check } from 'lucide-react'
 
 export default function Newsletter() {
   const [email, setEmail] = useState('')
   const [ok, setOk] = useState(false)
 
-  const submit = e => {
+  const handleSubmit = e => {
     e.preventDefault()
-    if (email.trim()) setOk(true)
+    if (email) { setOk(true); setEmail('') }
   }
 
   return (
-    <section id="newsletter" style={{ background: '#111111', padding: '7rem 0' }}>
-      <div style={{ maxWidth: 860, margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
-        <p className="section-label" style={{ marginBottom: '1.5rem' }}>Newsletter Semanal</p>
-        <h2 className="section-heading" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', marginBottom: '1rem' }}>
-          TODA SEMANA<br /><span style={{ color: '#C9A84C' }}>NA SUA CAIXA</span>
+    <section className="py-24 bg-black text-white">
+      <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
+        <p className="text-xs font-bold tracking-[0.25em] uppercase text-gray-500 mb-4">
+          Fique por Dentro
+        </p>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+          NEWSLETTER DO ZÉ
         </h2>
-        <div className="gold-bar" style={{ margin: '0 auto 2rem' }} />
-        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '1rem', lineHeight: 1.8, maxWidth: 540, margin: '0 auto 3rem', fontWeight: 300 }}>
-          Reflexões sobre liderança, negócios e performance. Sem spam. Sem fórmulas. Direto ao ponto.
+        <p className="text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
+          Insights sobre empreendedorismo, alta performance e negócios que impactam —
+          direto na sua caixa de entrada.
         </p>
 
         {ok ? (
-          <div style={{ border: '1px solid rgba(201,168,76,0.3)', padding: '2rem 3rem', display: 'inline-block' }}>
-            <p style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '1.4rem', letterSpacing: '0.1em', color: '#C9A84C' }}>INSCRIÇÃO CONFIRMADA ✓</p>
-            <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)', marginTop: '0.4rem' }}>Bem-vindo. Até na próxima edição.</p>
+          <div className="flex items-center justify-center gap-3 text-white font-semibold text-lg">
+            <Check size={20} />
+            Você está dentro! Até a próxima edição
           </div>
         ) : (
-          <form onSubmit={submit} style={{ display: 'flex', gap: '1px', maxWidth: 540, margin: '0 auto', background: 'rgba(255,255,255,0.06)' }}>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
             <input
               type="email"
-              placeholder="SEU MELHOR E-MAIL"
+              placeholder="Seu melhor e-mail"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="input"
               required
-              style={{ flex: 1, letterSpacing: '0.08em', fontSize: '0.8rem' }}
+              className="flex-1 px-5 py-3.5 bg-transparent border-2 border-gray-700 text-white placeholder-gray-600 outline-none focus:border-white transition-colors text-sm"
             />
-            <button type="submit" className="btn-gold" style={{ whiteSpace: 'nowrap' }}>
-              Quero Receber
+            <button type="submit" className="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-black font-bold text-sm uppercase tracking-wider hover:bg-gray-200 transition-all">
+              <Send size={15} />
+              Inscrever
             </button>
           </form>
         )}
-
-        <p style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.2)', marginTop: '1.2rem', letterSpacing: '0.12em' }}>
-          + 12.000 LÍDERES JÁ RECEBEM — SEM SPAM, CANCELE QUANDO QUISER
-        </p>
       </div>
     </section>
   )

@@ -1,107 +1,97 @@
-const go = href => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-
-const modulos = [
-  { n: '01', t: 'Mindset de Alto Performer',    d: 'Reprograme crenças limitantes e instale modelos mentais de quem chega ao topo.' },
-  { n: '02', t: 'Sistemas de Produtividade',     d: 'Método P.A.C.E. para organizar energia, agenda e projetos.' },
-  { n: '03', t: 'Liderança que Inspira',          d: 'Da gestão por controle à influência por propósito.' },
-  { n: '04', t: 'Negociação e Comunicação',       d: 'Frameworks práticos para vendas, acordos e apresentações.' },
-  { n: '05', t: 'Finanças para Empreendedores',   d: 'Fluxo de caixa, métricas essenciais e gestão de risco.' },
-  { n: '06', t: 'Escala com Equilíbrio',           d: 'Crescimento sem burnout: família, saúde e empresa alinhados.' },
-]
+import { GraduationCap, Users, ArrowRight } from 'lucide-react'
 
 export default function Curso() {
   return (
-    <section id="curso" style={{ background: '#0A0A0A', padding: '7rem 0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2rem' }}>
+    <section id="curso" className="py-28 bg-[#f5f5f5]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
-        <p className="section-label" style={{ marginBottom: '1rem' }}>Educação &amp; Mentoria</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', alignItems: 'end', marginBottom: '1rem' }}>
-          <h2 className="section-heading">CURSOS &amp;<br /><span style={{ color: '#C9A84C' }}>MENTORIA</span></h2>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '1rem', lineHeight: 1.7, fontWeight: 300 }}>
-            Conteúdo de alta densidade para quem quer sair do lugar e não tem tempo a perder.
+        <div className="text-center mb-16">
+          <p className="text-sm text-gray-400 font-semibold uppercase tracking-widest mb-4">
+            Transformação Total
           </p>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-black leading-[1.05] tracking-tight">
+            A ARTE DOS NEGÓCIOS
+          </h2>
         </div>
-        <div className="gold-bar" style={{ marginBottom: '4rem' }} />
 
-        {/* Cards de produtos */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1px' }}>
-          {/* A Arte dos Negócios */}
-          <div style={{ background: '#0A0A0A', padding: '3rem 3rem 2.5rem' }}>
-            <p className="section-label" style={{ marginBottom: '0.8rem' }}>Curso Online</p>
-            <h3 style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: 'clamp(2rem, 4vw, 3.2rem)', letterSpacing: '0.04em', color: '#fff', lineHeight: 1.05, marginBottom: '1.5rem' }}>
-              A ARTE DOS<br /><span style={{ color: '#C9A84C' }}>NEGÓCIOS</span>
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: 400 }}>
-              Mais de 12h de conteúdo gravado. Acesso vitalício. Atualizado com novos módulos todo semestre.
+        <div className="grid lg:grid-cols-2 gap-8">
+
+          {/* Curso */}
+          <div className="bg-white border border-gray-200 p-10 hover:border-black transition-colors">
+            <GraduationCap size={28} className="text-black mb-6" />
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">
+              Curso Completo
             </p>
-            <div style={{ display: 'flex', gap: '3rem', marginBottom: '2.5rem' }}>
-              {[['12h+', 'de conteúdo'], ['6', 'módulos'], ['Vitalício', 'acesso']].map(([v, l]) => (
-                <div key={v}>
-                  <p style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '2rem', letterSpacing: '0.06em', color: '#C9A84C', lineHeight: 1 }}>{v}</p>
-                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{l}</p>
-                </div>
+            <h3 className="text-2xl font-bold text-black mb-4">
+              A Arte dos Negócios
+            </h3>
+            <p className="text-sm text-gray-500 mb-6 leading-relaxed">
+              Uma experiência que combina décadas de prática com as mais avançadas
+              metodologias de gestão e liderança empresarial.
+            </p>
+            <ul className="space-y-3 mb-8 text-sm text-gray-600">
+              {[
+                '12 módulos de conteúdo exclusivo',
+                'Mentorias personalizadas ao vivo',
+                'Acesso vitalício ao conteúdo',
+                'Certificado de conclusão',
+                'Comunidade exclusiva de alunos',
+                'Materiais complementares em PDF',
+              ].map(item => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-black rounded-full shrink-0" />
+                  {item}
+                </li>
               ))}
-            </div>
-            <button onClick={() => go('#contato')} className="btn-outline-light">
-              Quero me inscrever →
-            </button>
+            </ul>
+            <a
+              href="#contato"
+              onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
+              className="btn-primary w-full justify-center"
+            >
+              Inscreva-se Agora
+            </a>
           </div>
 
           {/* Mentoria */}
-          <div style={{ background: '#111111', padding: '3rem 3rem 2.5rem', borderLeft: '1px solid rgba(201,168,76,0.08)' }}>
-            <p className="section-label" style={{ marginBottom: '0.8rem', color: '#C9A84C' }}>Mentoria Exclusiva</p>
-            <h3 style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: 'clamp(2rem, 4vw, 3.2rem)', letterSpacing: '0.04em', color: '#fff', lineHeight: 1.05, marginBottom: '1.5rem' }}>
-              TRINCA<br /><span style={{ color: '#C9A84C' }}>PREMIUM</span>
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: 400 }}>
-              Grupos fechados de 10 pessoas. Encontros semanais ao vivo. Acompanhamento pessoal de José Felipe.
+          <div className="bg-black text-white p-10">
+            <Users size={28} className="text-white mb-6" />
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">
+              Grupo Seleto · Exclusivo
             </p>
-            <div style={{ display: 'flex', gap: '3rem', marginBottom: '2.5rem' }}>
-              {[['10', 'vagas/turma'], ['Semanal', 'ao vivo'], ['Personal', 'acompanham.']].map(([v, l]) => (
-                <div key={v}>
-                  <p style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '2rem', letterSpacing: '0.06em', color: '#C9A84C', lineHeight: 1 }}>{v}</p>
-                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{l}</p>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Mentoria da Trinca
+            </h3>
+            <p className="text-sm text-gray-400 mb-8 leading-relaxed">
+              Programa exclusivo de mentoria em grupo pequeno, limitado a apenas{' '}
+              <strong className="text-white">3 participantes por ciclo</strong>.
+              Uma experiência única de aprendizado com foco em resultados práticos.
+            </p>
+
+            <div className="grid grid-cols-3 gap-4 mb-8">
+              {[
+                { n: '3', l: 'Participantes' },
+                { n: '6', l: 'Meses' },
+                { n: '24', l: 'Sessões' },
+              ].map(d => (
+                <div key={d.l} className="text-center border border-gray-700 p-4">
+                  <p className="text-3xl font-extrabold text-white">{d.n}</p>
+                  <p className="text-xs text-gray-500 mt-1">{d.l}</p>
                 </div>
               ))}
             </div>
-            <button onClick={() => go('#contato')} className="btn-gold">
-              Quero a Mentoria →
-            </button>
-          </div>
-        </div>
 
-        {/* Módulos do curso */}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: '4rem', paddingTop: '3rem' }}>
-          <p style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '1.1rem', letterSpacing: '0.15em', color: '#fff', marginBottom: '2rem' }}>MÓDULOS DO CURSO</p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0' }}>
-            {modulos.map((m, i) => (
-              <div
-                key={m.n}
-                style={{
-                  display: 'flex', gap: '1.5rem', padding: '1.5rem 0', alignItems: 'flex-start',
-                  borderBottom: '1px solid rgba(255,255,255,0.06)',
-                  borderRight: i % 2 === 0 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-                  paddingRight: i % 2 === 0 ? '3rem' : 0,
-                  paddingLeft: i % 2 !== 0 ? '3rem' : 0,
-                }}
-              >
-                <span style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '0.85rem', letterSpacing: '0.1em', color: 'rgba(201,168,76,0.5)', minWidth: 24 }}>{m.n}</span>
-                <div>
-                  <p style={{ fontSize: '0.88rem', fontWeight: 600, color: '#fff', marginBottom: 3 }}>{m.t}</p>
-                  <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>{m.d}</p>
-                </div>
-              </div>
-            ))}
+            <a
+              href="#contato"
+              onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
+              className="inline-flex items-center gap-2 w-full justify-center py-4 border-2 border-white text-white font-bold text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-all"
+            >
+              <ArrowRight size={16} />
+              Saiba Mais sobre a Mentoria
+            </a>
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          #curso > div > div:nth-child(2) { grid-template-columns: 1fr !important; }
-          #curso .modulos-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   )
 }

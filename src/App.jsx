@@ -3,10 +3,8 @@ import Navbar            from './components/Navbar'
 import Hero              from './components/Hero'
 import Sobre             from './components/Sobre'
 import Livro             from './components/Livro'
-import Curso             from './components/Curso'
+
 import Palestras         from './components/Palestras'
-import Blog              from './components/Blog'
-import Newsletter        from './components/Newsletter'
 import Contato           from './components/Contato'
 import Footer            from './components/Footer'
 import PopupNewsletter   from './components/PopupNewsletter'
@@ -24,10 +22,8 @@ export default function App() {
         <Hero />
         <Sobre />
         <Livro />
-        <Curso />
+
         <Palestras />
-        <Blog />
-        <Newsletter />
         <Contato />
       </main>
 
