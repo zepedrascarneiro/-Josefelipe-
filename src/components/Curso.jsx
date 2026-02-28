@@ -1,129 +1,107 @@
-import { GraduationCap, Users, Check, ArrowRight } from 'lucide-react'
+const go = href => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
 
-const modulosCurso = [
-  '12 módulos de conteúdo exclusivo',
-  'Mentorias personalizadas ao vivo',
-  'Acesso vitalício ao conteúdo',
-  'Certificado de conclusão',
-  'Comunidade exclusiva de alunos',
-  'Materiais complementares em PDF',
+const modulos = [
+  { n: '01', t: 'Mindset de Alto Performer',    d: 'Reprograme crenças limitantes e instale modelos mentais de quem chega ao topo.' },
+  { n: '02', t: 'Sistemas de Produtividade',     d: 'Método P.A.C.E. para organizar energia, agenda e projetos.' },
+  { n: '03', t: 'Liderança que Inspira',          d: 'Da gestão por controle à influência por propósito.' },
+  { n: '04', t: 'Negociação e Comunicação',       d: 'Frameworks práticos para vendas, acordos e apresentações.' },
+  { n: '05', t: 'Finanças para Empreendedores',   d: 'Fluxo de caixa, métricas essenciais e gestão de risco.' },
+  { n: '06', t: 'Escala com Equilíbrio',           d: 'Crescimento sem burnout: família, saúde e empresa alinhados.' },
 ]
 
 export default function Curso() {
   return (
-    <section id="curso" className="py-28 bg-[#FAFAF8]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="curso" style={{ background: '#0A0A0A', padding: '7rem 0' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2rem' }}>
 
-        <div className="mb-16">
-          <p className="section-label mb-4">Transformação Total</p>
-          <div className="grid md:grid-cols-2 gap-6 items-end">
-            <h2 className="section-title">
-              A Arte dos<br /><em className="not-italic text-[#C9A84C]">Negócios</em>
-            </h2>
-            <p className="text-[#6B6B6B] text-lg leading-relaxed">
-              Mais do que um curso — uma jornada transformadora que combina décadas de
-              experiência prática com as metodologias mais avançadas de gestão.
-            </p>
-          </div>
-          <div className="gold-line" />
+        <p className="section-label" style={{ marginBottom: '1rem' }}>Educação &amp; Mentoria</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', alignItems: 'end', marginBottom: '1rem' }}>
+          <h2 className="section-heading">CURSOS &amp;<br /><span style={{ color: '#C9A84C' }}>MENTORIA</span></h2>
+          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '1rem', lineHeight: 1.7, fontWeight: 300 }}>
+            Conteúdo de alta densidade para quem quer sair do lugar e não tem tempo a perder.
+          </p>
         </div>
+        <div className="gold-bar" style={{ marginBottom: '4rem' }} />
 
-        <div className="grid lg:grid-cols-2 gap-8">
-
-          {/* Curso */}
-          <div className="bg-white border border-[#E8E3DA] rounded-2xl p-8 card-lift">
-            <div className="w-12 h-12 bg-[#111] rounded-xl flex items-center justify-center mb-6">
-              <GraduationCap size={22} className="text-[#C9A84C]" />
-            </div>
-            <p className="text-xs text-[#C9A84C] uppercase tracking-widest font-semibold mb-2">
-              Curso Completo
-            </p>
-            <h3
-              className="text-[#111] font-bold text-2xl mb-4"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              A Arte dos Negócios
+        {/* Cards de produtos */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1px' }}>
+          {/* A Arte dos Negócios */}
+          <div style={{ background: '#0A0A0A', padding: '3rem 3rem 2.5rem' }}>
+            <p className="section-label" style={{ marginBottom: '0.8rem' }}>Curso Online</p>
+            <h3 style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: 'clamp(2rem, 4vw, 3.2rem)', letterSpacing: '0.04em', color: '#fff', lineHeight: 1.05, marginBottom: '1.5rem' }}>
+              A ARTE DOS<br /><span style={{ color: '#C9A84C' }}>NEGÓCIOS</span>
             </h3>
-            <p className="text-[#6B6B6B] mb-6 leading-relaxed text-sm">
-              Uma experiência que combina décadas de prática com as mais avançadas
-              metodologias de gestão e liderança empresarial.
+            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: 400 }}>
+              Mais de 12h de conteúdo gravado. Acesso vitalício. Atualizado com novos módulos todo semestre.
             </p>
-            <ul className="space-y-3 mb-8">
-              {modulosCurso.map(item => (
-                <li key={item} className="flex items-center gap-3 text-sm text-[#444]">
-                  <Check size={15} className="text-[#C9A84C] shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <a
-              href="#contato"
-              onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
-              className="btn-primary w-full justify-center"
-            >
-              <GraduationCap size={16} />
-              Inscreva-se Agora
-            </a>
-          </div>
-
-          {/* Mentoria */}
-          <div
-            className="rounded-2xl p-8 card-lift relative overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, #111 0%, #1e1a10 100%)' }}
-          >
-            {/* Badge */}
-            <div className="absolute top-6 right-6 bg-[#C9A84C] text-[#111] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-              Exclusivo
-            </div>
-
-            <div className="w-12 h-12 bg-[#C9A84C]/15 rounded-xl flex items-center justify-center mb-6">
-              <Users size={22} className="text-[#C9A84C]" />
-            </div>
-            <p className="text-xs text-[#C9A84C] uppercase tracking-widest font-semibold mb-2">
-              Grupo Seleto
-            </p>
-            <h3
-              className="text-white font-bold text-2xl mb-4"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Mentoria da Trinca
-            </h3>
-            <p className="text-white/50 mb-8 leading-relaxed text-sm">
-              Programa exclusivo de mentoria em grupo pequeno, limitado a apenas{' '}
-              <strong className="text-[#C9A84C]">3 participantes por ciclo</strong>.
-              Uma experiência única de aprendizado com foco em resultados práticos.
-            </p>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              {[
-                { n: '3',  l: 'Participantes' },
-                { n: '6',  l: 'Meses' },
-                { n: '24', l: 'Sessões' },
-              ].map(d => (
-                <div key={d.l} className="text-center bg-white/5 rounded-xl p-4 border border-white/10">
-                  <p
-                    className="font-bold text-[#C9A84C] leading-none"
-                    style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem' }}
-                  >
-                    {d.n}
-                  </p>
-                  <p className="text-xs text-white/40 mt-2">{d.l}</p>
+            <div style={{ display: 'flex', gap: '3rem', marginBottom: '2.5rem' }}>
+              {[['12h+', 'de conteúdo'], ['6', 'módulos'], ['Vitalício', 'acesso']].map(([v, l]) => (
+                <div key={v}>
+                  <p style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '2rem', letterSpacing: '0.06em', color: '#C9A84C', lineHeight: 1 }}>{v}</p>
+                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{l}</p>
                 </div>
               ))}
             </div>
+            <button onClick={() => go('#contato')} className="btn-outline-light">
+              Quero me inscrever →
+            </button>
+          </div>
 
-            <a
-              href="#contato"
-              onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
-              className="btn-gold w-full justify-center"
-            >
-              <ArrowRight size={16} />
-              Saiba Mais sobre a Mentoria
-            </a>
+          {/* Mentoria */}
+          <div style={{ background: '#111111', padding: '3rem 3rem 2.5rem', borderLeft: '1px solid rgba(201,168,76,0.08)' }}>
+            <p className="section-label" style={{ marginBottom: '0.8rem', color: '#C9A84C' }}>Mentoria Exclusiva</p>
+            <h3 style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: 'clamp(2rem, 4vw, 3.2rem)', letterSpacing: '0.04em', color: '#fff', lineHeight: 1.05, marginBottom: '1.5rem' }}>
+              TRINCA<br /><span style={{ color: '#C9A84C' }}>PREMIUM</span>
+            </h3>
+            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: 400 }}>
+              Grupos fechados de 10 pessoas. Encontros semanais ao vivo. Acompanhamento pessoal de José Felipe.
+            </p>
+            <div style={{ display: 'flex', gap: '3rem', marginBottom: '2.5rem' }}>
+              {[['10', 'vagas/turma'], ['Semanal', 'ao vivo'], ['Personal', 'acompanham.']].map(([v, l]) => (
+                <div key={v}>
+                  <p style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '2rem', letterSpacing: '0.06em', color: '#C9A84C', lineHeight: 1 }}>{v}</p>
+                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{l}</p>
+                </div>
+              ))}
+            </div>
+            <button onClick={() => go('#contato')} className="btn-gold">
+              Quero a Mentoria →
+            </button>
+          </div>
+        </div>
+
+        {/* Módulos do curso */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: '4rem', paddingTop: '3rem' }}>
+          <p style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '1.1rem', letterSpacing: '0.15em', color: '#fff', marginBottom: '2rem' }}>MÓDULOS DO CURSO</p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0' }}>
+            {modulos.map((m, i) => (
+              <div
+                key={m.n}
+                style={{
+                  display: 'flex', gap: '1.5rem', padding: '1.5rem 0', alignItems: 'flex-start',
+                  borderBottom: '1px solid rgba(255,255,255,0.06)',
+                  borderRight: i % 2 === 0 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                  paddingRight: i % 2 === 0 ? '3rem' : 0,
+                  paddingLeft: i % 2 !== 0 ? '3rem' : 0,
+                }}
+              >
+                <span style={{ fontFamily: 'Bebas Neue, Inter, sans-serif', fontSize: '0.85rem', letterSpacing: '0.1em', color: 'rgba(201,168,76,0.5)', minWidth: 24 }}>{m.n}</span>
+                <div>
+                  <p style={{ fontSize: '0.88rem', fontWeight: 600, color: '#fff', marginBottom: 3 }}>{m.t}</p>
+                  <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>{m.d}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          #curso > div > div:nth-child(2) { grid-template-columns: 1fr !important; }
+          #curso .modulos-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }

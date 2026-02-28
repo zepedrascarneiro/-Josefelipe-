@@ -1,175 +1,147 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap');
 @import "tailwindcss";
 
 :root {
-  --color-primary: #C9A84C;
-  --color-primary-light: #E8C96A;
-  --color-dark: #111111;
-  --color-bg: #FAFAF8;
-  --color-bg2: #F4F1EB;
-  --color-text: #1A1A1A;
-  --color-muted: #6B6B6B;
-  --color-border: #E8E3DA;
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --black: #0A0A0A;
+  --black2: #111111;
+  --black3: #161616;
+  --off-white: #F0EDE6;
+  --muted: #888;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--black);
+  color: var(--off-white);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
+/* ── Títulos estilo Framer/Rony ── */
+.display-title {
+  font-family: 'Bebas Neue', 'Inter', sans-serif;
+  font-size: clamp(3rem, 8vw, 8rem);
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  font-weight: 400;
+  color: #fff;
 }
 
-/* ---- Botões ---- */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 2rem;
-  background-color: var(--color-dark);
-  color: #fff;
-  font-weight: 600;
-  border-radius: 2rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  font-size: 0.875rem;
-  letter-spacing: 0.02em;
-}
-.btn-primary:hover {
-  background-color: #2a2a2a;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 2rem;
-  border: 1.5px solid var(--color-dark);
-  color: var(--color-dark);
-  font-weight: 600;
-  border-radius: 2rem;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  font-size: 0.875rem;
-}
-.btn-outline:hover {
-  background-color: var(--color-dark);
+.section-heading {
+  font-family: 'Bebas Neue', 'Inter', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  letter-spacing: 0.06em;
+  line-height: 1;
   color: #fff;
-  transform: translateY(-2px);
+  font-weight: 400;
+  text-transform: uppercase;
 }
+
+.section-heading-dark {
+  font-family: 'Bebas Neue', 'Inter', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--black);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* ── Botões ── */
+.btn-dark {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .75rem 1.8rem;
+  background: #fff; color: #000;
+  font-size: .8rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: none; cursor: pointer;
+  transition: all .25s;
+  text-decoration: none;
+}
+.btn-dark:hover { background: var(--gold); color: #000; }
+
+.btn-outline-light {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .75rem 1.8rem;
+  background: transparent; color: #fff;
+  font-size: .8rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.35); cursor: pointer;
+  transition: all .25s;
+  text-decoration: none;
+}
+.btn-outline-light:hover { border-color: var(--gold); color: var(--gold); }
 
 .btn-gold {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 2rem;
-  background-color: var(--color-primary);
-  color: #111;
-  font-weight: 700;
-  border-radius: 2rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .75rem 1.8rem;
+  background: var(--gold); color: #000;
+  font-size: .8rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: none; cursor: pointer;
+  transition: all .25s;
   text-decoration: none;
-  font-size: 0.875rem;
-  letter-spacing: 0.02em;
 }
-.btn-gold:hover {
-  background-color: var(--color-primary-light);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201,168,76,0.3);
-}
+.btn-gold:hover { background: var(--gold-light); }
 
-/* ---- Títulos de seção ---- */
-.section-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  font-family: 'Inter', sans-serif;
-}
-
-.section-title {
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 800;
-  color: var(--color-dark);
-  line-height: 1.1;
-  font-family: 'Playfair Display', serif;
-}
-
-.section-title-white {
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 800;
-  color: #fff;
-  line-height: 1.1;
-  font-family: 'Playfair Display', serif;
-}
-
-.gold-line {
-  width: 3rem;
-  height: 3px;
-  background-color: var(--color-primary);
-  margin: 1.2rem 0;
-  border-radius: 2px;
-}
-
-/* ---- Inputs ---- */
+/* ── Input ── */
 .input {
   width: 100%;
-  padding: 0.85rem 1.2rem;
-  background-color: #fff;
-  border: 1.5px solid var(--color-border);
-  border-radius: 0.75rem;
-  color: var(--color-text);
-  outline: none;
-  transition: border-color 0.2s;
-  font-size: 0.9rem;
+  padding: .85rem 1.1rem;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #fff; font-size: .9rem;
   font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color .2s;
 }
-.input::placeholder { color: #aaa; }
-.input:focus { border-color: var(--color-primary); }
+.input::placeholder { color: #555; }
+.input:focus { border-color: var(--gold); }
 
-/* ---- Scrollbar ---- */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #f0ece4; }
-::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #E8C96A; }
+.input-light {
+  width: 100%;
+  padding: .85rem 1.1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #111; font-size: .9rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color .2s;
+}
+.input-light::placeholder { color: #aaa; }
+.input-light:focus { border-color: var(--gold); }
 
-/* ---- Animações ---- */
+/* ── Divider ── */
+.gold-bar {
+  width: 2.5rem; height: 3px;
+  background: var(--gold);
+  margin: 1rem 0;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* ── Animações ── */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
 }
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity:0; } to { opacity:1; }
 }
-.animate-fade-in-up { animation: fadeInUp 0.7s ease forwards; }
-.animate-fade-in    { animation: fadeIn 0.9s ease forwards; }
-
-/* card hover lift */
-.card-lift {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.card-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
-}
+.ani-up  { animation: fadeInUp .7s ease both; }
+.ani-in  { animation: fadeIn .9s ease both; }
