@@ -42,8 +42,6 @@ body {
 
 section, header, footer {
   width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 section > div, footer > div {
@@ -64,6 +62,13 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Imagens posicionadas absolute não devem ter restrição */
+img[style*="position: absolute"],
+img[style*="position:absolute"] {
+  max-width: none;
+  height: 100%;
 }
 
 /* ---- Botões ---- */

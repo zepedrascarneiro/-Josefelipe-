@@ -6,12 +6,18 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-end"
-      style={{ background: '#111' }}
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'flex-end',
+        background: '#111',
+        overflow: 'hidden',
+      }}
     >
-      {/* Foto de fundo horizontal, tela cheia */}
+      {/* Foto de fundo — rosto centralizado */}
       <img
-        src="https://josefelipe.com.br/lovable-uploads/d08ef557-2a05-4a2c-a1a6-12bb07b532b7.png"
+        src="/jose-felipe-opt.jpeg"
         alt="José Felipe Carneiro"
         style={{
           position: 'absolute',
@@ -19,16 +25,17 @@ export default function Hero() {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          objectPosition: 'top center',
+          objectPosition: 'center 30%',
+          maxWidth: 'none',
         }}
       />
 
-      {/* Gradiente escuro na base para o texto ficar legível */}
+      {/* Gradiente: escurece a base para texto legível, mantém o rosto visível */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.18) 40%, rgba(0,0,0,0.82) 100%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.10) 35%, rgba(0,0,0,0.75) 85%, rgba(0,0,0,0.92) 100%)',
         }}
       />
 
