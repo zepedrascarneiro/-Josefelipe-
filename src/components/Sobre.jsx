@@ -12,7 +12,7 @@ const empresas = [
 
 export default function Sobre() {
   return (
-    <section id="sobre" className="py-28 bg-white">
+    <section id="sobre" className="py-40 bg-white">
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">

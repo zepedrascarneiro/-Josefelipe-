@@ -2,7 +2,7 @@ import { BookOpen } from 'lucide-react'
 
 export default function Livro() {
   return (
-    <section id="livro" className="py-28 bg-[#f5f5f5]">
+    <section id="livro" className="py-40 bg-[#f5f5f5]">
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
