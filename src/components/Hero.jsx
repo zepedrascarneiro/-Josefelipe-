@@ -31,12 +31,12 @@ export default function Hero() {
         }}
       />
 
-      {/* Gradiente: só escurece o terço inferior para o texto */}
+      {/* Gradiente contínuo para legibilidade */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.92) 100%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.65) 75%, rgba(0,0,0,0.92) 100%)',
         }}
       />
 
@@ -56,14 +56,14 @@ export default function Hero() {
 
         <p
           className="text-xs font-bold uppercase tracking-[0.3em]"
-          style={{ color: 'rgba(255,255,255,0.55)', marginBottom: '1.8rem' }}
+          style={{ color: 'rgba(255,255,255,0.55)', marginBottom: '1.2rem' }}
         >
           Empreendedor &nbsp;·&nbsp; Mentor &nbsp;·&nbsp; Palestrante
         </p>
 
         <h1
           className="font-extrabold tracking-tight text-white"
-          style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)', lineHeight: 1.05, marginBottom: '1.5rem' }}
+          style={{ fontSize: 'clamp(2.2rem, 5vw, 4.5rem)', lineHeight: 1.1, marginBottom: '1.2rem' }}
         >
           JOSÉ FELIPE<br />CARNEIRO
         </h1>
