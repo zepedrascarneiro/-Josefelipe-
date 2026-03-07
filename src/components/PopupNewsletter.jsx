@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { X, Send, Sparkles } from 'lucide-react'
 
+const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
+
 export default function PopupNewsletter() {
-  const [show, setShow] = useState(false)
-  const [ok, setOk] = useState(false)
-  const [form, setForm] = useState({ nome: '', email: '', telefone: '', instagram: '' })
+  const [show, setShow]     = useState(false)
+  const [form, setForm]     = useState({ nome: '', email: '', telefone: '', instagram: '' })
+  const [status, setStatus] = useState('idle') // idle | sending | ok | error
 
   useEffect(() => {
     if (sessionStorage.getItem('popup-shown')) return
@@ -13,11 +15,43 @@ export default function PopupNewsletter() {
   }, [])
 
   useEffect(() => {
-    if (ok) {
+    if (status === 'ok') {
       const t = setTimeout(() => setShow(false), 2500)
       return () => clearTimeout(t)
     }
-  }, [ok])
+  }, [status])
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    if (!form.nome || !form.email) return
+
+    setStatus('sending')
+    try {
+      const res = await fetch(FORMSUBMIT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          nome:      form.nome,
+          email:     form.email,
+          telefone:  form.telefone || '—',
+          instagram: form.instagram || '—',
+          tipo:      'Popup Newsletter',
+          _subject:  `[josefelipe.com.br] Novo lead do popup — ${form.nome}`,
+          _replyto:  form.email,
+          _captcha:  'false',
+          _template: 'box',
+        }),
+      })
+      const data = await res.json()
+      if (data.success === 'true' || data.success === true) {
+        setStatus('ok')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
 
   if (!show) return null
 
@@ -26,6 +60,7 @@ export default function PopupNewsletter() {
       <div
         className="relative w-full max-w-lg overflow-hidden rounded-2xl shadow-2xl"
         style={{ animation: 'fadeInUp 0.4s ease' }}
+        onClick={e => e.stopPropagation()}
       >
         {/* Topo preto */}
         <div className="bg-black text-white px-8 pt-10 pb-8 text-center">
@@ -47,7 +82,7 @@ export default function PopupNewsletter() {
 
         {/* Corpo branco */}
         <div className="bg-white px-8 pb-8 pt-6">
-          {ok ? (
+          {status === 'ok' ? (
             <div className="text-center py-10">
               <Send size={28} className="mx-auto text-black mb-4" />
               <h3 className="text-xl font-bold text-black mb-2">Bem-vindo(a)!</h3>
@@ -55,13 +90,14 @@ export default function PopupNewsletter() {
             </div>
           ) : (
             <>
-              <form onSubmit={e => { e.preventDefault(); setOk(true) }} className="space-y-3">
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <input
                   className="input"
                   placeholder="Seu nome *"
                   value={form.nome}
                   onChange={e => setForm(f => ({ ...f, nome: e.target.value }))}
                   required
+                  disabled={status === 'sending'}
                 />
                 <input
                   className="input"
@@ -70,22 +106,35 @@ export default function PopupNewsletter() {
                   value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                   required
+                  disabled={status === 'sending'}
                 />
                 <input
                   className="input"
                   placeholder="Telefone (opcional)"
                   value={form.telefone}
                   onChange={e => setForm(f => ({ ...f, telefone: e.target.value }))}
+                  disabled={status === 'sending'}
                 />
                 <input
                   className="input"
                   placeholder="Instagram (opcional)"
                   value={form.instagram}
                   onChange={e => setForm(f => ({ ...f, instagram: e.target.value }))}
+                  disabled={status === 'sending'}
                 />
-                <button type="submit" className="btn-primary w-full justify-center mt-2">
+
+                {status === 'error' && (
+                  <p className="text-sm text-red-500">Erro ao enviar. Tente novamente.</p>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn-primary w-full justify-center mt-2"
+                  disabled={status === 'sending'}
+                  style={{ opacity: status === 'sending' ? 0.6 : 1 }}
+                >
                   <Send size={15} />
-                  Quero Participar
+                  {status === 'sending' ? 'Enviando...' : 'Quero Participar'}
                 </button>
               </form>
               <button
