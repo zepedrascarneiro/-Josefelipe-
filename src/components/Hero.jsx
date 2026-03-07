@@ -11,6 +11,7 @@ export default function Hero() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'flex-end',
+        justifyContent: 'center',
         background: '#111',
         overflow: 'hidden',
       }}
@@ -40,7 +41,18 @@ export default function Hero() {
       />
 
       {/* Conteúdo por cima */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-12 lg:px-16 pb-20 pt-32">
+      <div style={{
+        position: 'relative',
+        zIndex: 10,
+        width: '100%',
+        maxWidth: '72rem',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        paddingLeft: '3rem',
+        paddingRight: '3rem',
+        paddingBottom: '5rem',
+        paddingTop: '8rem',
+      }}>
 
         <p
           className="text-xs font-bold uppercase tracking-[0.3em] mb-5"

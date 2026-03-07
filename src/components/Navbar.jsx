@@ -31,7 +31,7 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-12 lg:px-16 h-20 flex items-center justify-end gap-12">
+      <nav className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20 h-20 flex items-center justify-end gap-12">
 
         <div className="hidden md:flex items-center gap-12">
           <ul className="flex items-center gap-10">

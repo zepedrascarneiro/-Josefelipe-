@@ -40,12 +40,25 @@ body {
   margin: 0 auto;
 }
 
-section, header, footer {
+/* Centraliza o conteúdo dentro de cada seção */
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header, footer {
   width: 100%;
 }
 
 section > div, footer > div {
   width: 100%;
+  max-width: 72rem; /* 1152px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 h1, h2, h3, h4 {

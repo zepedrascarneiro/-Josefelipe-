@@ -3,7 +3,7 @@ import { Mic } from 'lucide-react'
 export default function Palestras() {
   return (
     <section id="palestras" className="py-28 bg-white">
-      <div className="max-w-5xl mx-auto px-12 lg:px-16">
+      <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold text-black leading-[1.05] tracking-tight mb-6">

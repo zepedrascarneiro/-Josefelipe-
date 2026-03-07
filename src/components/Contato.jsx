@@ -41,7 +41,7 @@ export default function Contato() {
 
   return (
     <section id="contato" className="py-28 bg-black text-white">
-      <div className="max-w-5xl mx-auto px-12 lg:px-16">
+      <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
 
