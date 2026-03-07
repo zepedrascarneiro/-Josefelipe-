@@ -16,7 +16,7 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
-      {/* Foto de fundo — rosto centralizado */}
+      {/* Foto de fundo — rosto visível na metade superior */}
       <img
         src="/jose-felipe-opt.jpeg"
         alt="José Felipe Carneiro"
@@ -26,17 +26,17 @@ export default function Hero() {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          objectPosition: 'center 30%',
+          objectPosition: 'center 20%',
           maxWidth: 'none',
         }}
       />
 
-      {/* Gradiente: escurece a base para texto legível, mantém o rosto visível */}
+      {/* Gradiente: só escurece o terço inferior para o texto */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.10) 35%, rgba(0,0,0,0.75) 85%, rgba(0,0,0,0.92) 100%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.92) 100%)',
         }}
       />
 
@@ -55,15 +55,15 @@ export default function Hero() {
       }}>
 
         <p
-          className="text-xs font-bold uppercase tracking-[0.3em] mb-5"
-          style={{ color: 'rgba(255,255,255,0.55)' }}
+          className="text-xs font-bold uppercase tracking-[0.3em]"
+          style={{ color: 'rgba(255,255,255,0.55)', marginBottom: '1.8rem' }}
         >
           Empreendedor &nbsp;·&nbsp; Mentor &nbsp;·&nbsp; Palestrante
         </p>
 
         <h1
-          className="font-extrabold leading-[0.92] tracking-tight mb-6 text-white"
-          style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)' }}
+          className="font-extrabold tracking-tight text-white"
+          style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)', lineHeight: 1.05, marginBottom: '1.5rem' }}
         >
           JOSÉ FELIPE<br />CARNEIRO
         </h1>
