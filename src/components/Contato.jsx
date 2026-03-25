@@ -40,7 +40,7 @@ export default function Contato() {
   }
 
   return (
-    <section id="contato" className="pt-56 pb-40 bg-black text-white">
+    <section id="contato" className="pt-56 pb-64 bg-black text-white">
       <div className="max-w-xl mx-auto px-8">
 
         {/* Título */}
