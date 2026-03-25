@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { X, ShoppingCart, Star } from 'lucide-react'
+import { X, ArrowRight } from 'lucide-react'
 
 export default function PopupNewsletter() {
   const [show, setShow] = useState(false)
@@ -14,75 +14,46 @@ export default function PopupNewsletter() {
 
   return (
     <div
-      className="fixed inset-0 z-[9998] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-[9998] flex items-center justify-center p-4 bg-black/85"
       onClick={() => setShow(false)}
     >
       <div
-        className="relative w-full max-w-sm overflow-hidden rounded-2xl shadow-2xl bg-black text-white"
-        style={{ animation: 'fadeInUp 0.4s ease' }}
+        className="relative w-full max-w-xs overflow-hidden rounded-xl"
+        style={{ animation: 'fadeInUp 0.5s ease' }}
         onClick={e => e.stopPropagation()}
       >
-        {/* Fechar */}
+        {/* Fechar — discreto */}
         <button
           onClick={() => setShow(false)}
-          className="absolute top-3 right-3 z-10 text-gray-600 hover:text-white transition-colors"
+          className="absolute top-3 right-3 z-20 w-7 h-7 flex items-center justify-center rounded-full bg-black/40 text-white/50 hover:text-white transition-colors"
         >
-          <X size={20} />
+          <X size={14} />
         </button>
 
-        {/* Capa do livro — destaque visual */}
-        <div className="relative px-6 pt-10 pb-6 flex justify-center">
-          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 via-transparent to-transparent" />
-          <img
-            src="/livro-capa.jpg"
-            alt="Capa do Livro Performance Consciente"
-            className="w-44 rounded-lg shadow-[0_25px_50px_rgba(0,0,0,0.6)] relative z-10"
-          />
-        </div>
+        {/* Capa do livro — full width, protagonista */}
+        <img
+          src="/livro-capa.jpg"
+          alt="Performance Consciente — José Felipe Carneiro"
+          className="w-full"
+        />
 
-        {/* Conteúdo */}
-        <div className="px-6 pb-8 text-center">
-          {/* Estrelas + best-seller */}
-          <div className="flex items-center justify-center gap-1 mb-1">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} size={12} className="fill-amber-400 text-amber-400" />
-            ))}
-          </div>
-          <p className="text-[11px] text-amber-400/80 font-semibold uppercase tracking-widest mb-5">
-            Novo Lançamento
+        {/* Barra inferior — mínima, elegante */}
+        <div className="bg-[#1a1710] px-5 py-5">
+          <p className="text-[11px] uppercase tracking-[0.25em] text-[#c9a84c] font-semibold mb-2">
+            7 pilares da alta performance
           </p>
-
-          {/* Headline vendedora */}
-          <h3 className="text-xl font-extrabold tracking-tight leading-tight mb-3">
-            Pare de produzir no automático.<br />
-            <span className="text-gray-400">Comece a performar com consciência.</span>
-          </h3>
-
-          <p className="text-gray-500 text-xs leading-relaxed mb-6">
-            O livro que José Felipe escreveu depois de fundar a cervejaria mais premiada do mundo e operar em 30+ países. Não é teoria — é o que funcionou.
+          <p className="text-white/60 text-xs leading-relaxed mb-5">
+            O novo livro de José Felipe Carneiro.
           </p>
-
-          {/* CTA principal */}
           <a
             href="https://a.co/d/0fV9dTgl"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-100 transition-colors"
+            className="flex items-center justify-center gap-2 w-full py-3.5 bg-[#c9a84c] text-black font-bold text-xs uppercase tracking-wider rounded-lg hover:bg-[#d4b55a] transition-colors"
           >
-            <ShoppingCart size={16} />
             Garantir Meu Exemplar
+            <ArrowRight size={14} />
           </a>
-
-          <p className="text-[11px] text-gray-600 mt-3">
-            Disponível na Amazon &middot; Entrega para todo o Brasil
-          </p>
-
-          <button
-            onClick={() => setShow(false)}
-            className="w-full text-center text-xs text-gray-600 mt-5 hover:text-gray-400 transition-colors"
-          >
-            Continuar navegando
-          </button>
         </div>
       </div>
     </div>
