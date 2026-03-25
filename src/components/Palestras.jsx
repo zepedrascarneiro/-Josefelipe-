@@ -40,22 +40,22 @@ export default function Palestras() {
           </div>
         </div>
 
-        <div className="bg-black text-white rounded-xl p-10 md:p-14 text-center">
-          <h3 className="text-2xl md:text-3xl font-extrabold mb-4">
+        <div className="border border-gray-200 rounded-xl p-10 md:p-14 text-center">
+          <h3 className="text-2xl md:text-3xl font-extrabold text-black mb-4">
             Leve essa energia para seu evento
           </h3>
-          <p className="text-gray-400 mb-3 max-w-xl mx-auto">
+          <p className="text-gray-500 mb-3 max-w-xl mx-auto">
             Contratação exclusiva via DMT Palestras
           </p>
-          <p className="text-sm text-gray-500 mb-8">
-            <a href="mailto:jose.felipe@dmt.ag" className="text-white hover:underline">jose.felipe@dmt.ag</a>
+          <p className="text-sm text-gray-400 mb-8">
+            <a href="mailto:jose.felipe@dmt.ag" className="text-black font-semibold hover:underline">jose.felipe@dmt.ag</a>
             {' · '}
-            <a href="https://www.dmt.ag" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">dmt.ag</a>
+            <a href="https://www.dmt.ag" target="_blank" rel="noopener noreferrer" className="text-black font-semibold hover:underline">dmt.ag</a>
           </p>
           <a
             href="#contato"
             onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-100 transition-colors"
+            className="btn-primary inline-flex items-center gap-2"
           >
             <Mic size={16} />
             Quero Contratar uma Palestra
