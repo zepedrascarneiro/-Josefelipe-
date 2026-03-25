@@ -65,20 +65,20 @@ export default function Contato() {
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="grid sm:grid-cols-2 gap-8">
               <div>
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-3">Nome</label>
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-3">Nome</label>
                 <input className="input bg-transparent border-gray-800 text-white placeholder-gray-600 focus:border-white" placeholder="Seu nome" value={form.nome} onChange={e => set('nome', e.target.value)} required disabled={status === 'sending'} />
               </div>
               <div>
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-3">E-mail</label>
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-3">E-mail</label>
                 <input className="input bg-transparent border-gray-800 text-white placeholder-gray-600 focus:border-white" type="email" placeholder="seu@email.com" value={form.email} onChange={e => set('email', e.target.value)} required disabled={status === 'sending'} />
               </div>
             </div>
             <div>
-              <label className="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-3">Assunto</label>
+              <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-3">Assunto</label>
               <input className="input bg-transparent border-gray-800 text-white placeholder-gray-600 focus:border-white" placeholder="Palestra, Mentoria, Parceria..." value={form.assunto} onChange={e => set('assunto', e.target.value)} disabled={status === 'sending'} />
             </div>
             <div>
-              <label className="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-3">Mensagem</label>
+              <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-3">Mensagem</label>
               <textarea className="input bg-transparent border-gray-800 text-white placeholder-gray-600 focus:border-white resize-none" rows={5} placeholder="Conte-me um pouco sobre sua ideia..." value={form.mensagem} onChange={e => set('mensagem', e.target.value)} required disabled={status === 'sending'} />
             </div>
 

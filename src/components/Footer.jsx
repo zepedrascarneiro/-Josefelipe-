@@ -20,23 +20,14 @@ export default function Footer() {
               Empreendedor, mentor, investidor e palestrante. Transformando vidas
               através da alta performance, inovação e execução consciente.
             </p>
-            <div className="flex gap-4">
-              {[
-                { l: 'Instagram', h: 'https://instagram.com/josefelipec' },
-                { l: 'LinkedIn', h: 'https://linkedin.com/in/josefelipecarneiro' },
-                { l: 'YouTube', h: '#' },
-              ].map(s => (
-                <a
-                  key={s.l}
-                  href={s.h}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-white transition-colors"
-                >
-                  {s.l}
-                </a>
-              ))}
-            </div>
+            <a
+              href="https://instagram.com/josefelipec"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-white transition-colors"
+            >
+              Instagram
+            </a>
           </div>
 
           {/* Links */}
