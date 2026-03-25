@@ -45,12 +45,12 @@ export default function Palestras() {
         </div>
 
         {/* CTA */}
-        <div className="bg-black text-white rounded-2xl p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="bg-[#f0f0f0] text-black rounded-2xl p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
               Leve essa energia<br className="hidden md:block" /> para seu evento
             </h3>
-            <p className="text-gray-400 max-w-md">
+            <p className="text-gray-500 max-w-md">
               Palestras sob medida para convenções, eventos corporativos,
               congressos e encontros de liderança.
             </p>
@@ -58,7 +58,7 @@ export default function Palestras() {
           <a
             href="#contato"
             onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="shrink-0 flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-200 transition-colors"
+            className="shrink-0 flex items-center gap-2 px-8 py-4 bg-black text-white font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-800 transition-colors"
           >
             <Mic size={16} />
             Quero Contratar
