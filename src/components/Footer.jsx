@@ -6,10 +6,10 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-black text-white pt-0 pb-10">
+    <footer className="bg-black text-white pt-40 pb-10">
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
-        <div className="border-t border-gray-800 pt-12 grid md:grid-cols-4 gap-10 mb-12 border-b border-gray-800 pb-12">
+        <div className="border-t border-gray-800 pt-16 grid md:grid-cols-4 gap-10 mb-12 border-b border-gray-800 pb-12">
 
           {/* Marca */}
           <div className="md:col-span-2">
