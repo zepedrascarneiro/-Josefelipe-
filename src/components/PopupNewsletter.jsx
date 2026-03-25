@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { X, BookOpen, Star } from 'lucide-react'
+import { X, ShoppingCart, Star } from 'lucide-react'
 
 export default function PopupNewsletter() {
   const [show, setShow] = useState(false)
@@ -14,63 +14,74 @@ export default function PopupNewsletter() {
 
   return (
     <div
-      className="fixed inset-0 z-[9998] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
+      className="fixed inset-0 z-[9998] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
       onClick={() => setShow(false)}
     >
       <div
-        className="relative w-full max-w-md overflow-hidden rounded-2xl shadow-2xl bg-white"
+        className="relative w-full max-w-sm overflow-hidden rounded-2xl shadow-2xl bg-black text-white"
         style={{ animation: 'fadeInUp 0.4s ease' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Fechar */}
         <button
           onClick={() => setShow(false)}
-          className="absolute top-4 right-4 z-10 text-gray-400 hover:text-black transition-colors"
+          className="absolute top-3 right-3 z-10 text-gray-600 hover:text-white transition-colors"
         >
-          <X size={22} />
+          <X size={20} />
         </button>
 
-        {/* Capa do livro */}
-        <div className="bg-gradient-to-b from-black via-neutral-900 to-neutral-800 px-8 pt-10 pb-8 flex flex-col items-center">
+        {/* Capa do livro — destaque visual */}
+        <div className="relative px-6 pt-10 pb-6 flex justify-center">
+          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 via-transparent to-transparent" />
           <img
             src="/livro-capa.jpg"
             alt="Capa do Livro Performance Consciente"
-            className="w-48 rounded-lg shadow-[0_20px_60px_rgba(0,0,0,0.5)] -mb-14 relative z-10"
+            className="w-44 rounded-lg shadow-[0_25px_50px_rgba(0,0,0,0.6)] relative z-10"
           />
         </div>
 
         {/* Conteúdo */}
-        <div className="px-8 pt-18 pb-8 text-center">
-          <div className="flex items-center justify-center gap-1 mb-3">
+        <div className="px-6 pb-8 text-center">
+          {/* Estrelas + best-seller */}
+          <div className="flex items-center justify-center gap-1 mb-1">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
+              <Star key={i} size={12} className="fill-amber-400 text-amber-400" />
             ))}
           </div>
-
-          <h3 className="text-2xl md:text-3xl font-extrabold text-black mb-3 tracking-tight leading-tight">
-            Performance<br />Consciente
-          </h3>
-
-          <p className="text-gray-500 text-sm leading-relaxed mb-6">
-            Faça mais com presença, intenção e domínio.<br />
-            O novo livro de José Felipe Carneiro já está disponível.
+          <p className="text-[11px] text-amber-400/80 font-semibold uppercase tracking-widest mb-5">
+            Novo Lançamento
           </p>
 
+          {/* Headline vendedora */}
+          <h3 className="text-xl font-extrabold tracking-tight leading-tight mb-3">
+            Pare de produzir no automático.<br />
+            <span className="text-gray-400">Comece a performar com consciência.</span>
+          </h3>
+
+          <p className="text-gray-500 text-xs leading-relaxed mb-6">
+            O livro que José Felipe escreveu depois de fundar a cervejaria mais premiada do mundo e operar em 30+ países. Não é teoria — é o que funcionou.
+          </p>
+
+          {/* CTA principal */}
           <a
             href="https://a.co/d/0fV9dTgl"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary w-full justify-center"
+            className="flex items-center justify-center gap-2 w-full py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-100 transition-colors"
           >
-            <BookOpen size={16} />
-            Quero Minha Edição
+            <ShoppingCart size={16} />
+            Garantir Meu Exemplar
           </a>
+
+          <p className="text-[11px] text-gray-600 mt-3">
+            Disponível na Amazon &middot; Entrega para todo o Brasil
+          </p>
 
           <button
             onClick={() => setShow(false)}
-            className="w-full text-center text-sm text-gray-400 mt-4 hover:text-black transition-colors"
+            className="w-full text-center text-xs text-gray-600 mt-5 hover:text-gray-400 transition-colors"
           >
-            Agora não
+            Continuar navegando
           </button>
         </div>
       </div>
