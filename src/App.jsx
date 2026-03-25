@@ -7,7 +7,7 @@ import Livro             from './components/Livro'
 import Palestras         from './components/Palestras'
 import Contato           from './components/Contato'
 import Footer            from './components/Footer'
-
+import PopupNewsletter   from './components/PopupNewsletter'
 
 export default function App() {
   return (
@@ -28,6 +28,9 @@ export default function App() {
       </main>
 
       <Footer />
+
+      {/* Popup do livro (aparece após 3.5s, 1x por sessão) */}
+      <PopupNewsletter />
     </>
   )
 }
