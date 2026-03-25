@@ -36,13 +36,13 @@ export default function Livro() {
               </p>
               <p className="text-gray-400 leading-relaxed">
                 Este livro não foi escrito para ensinar a fazer mais.
-                Foi escrito para ajudar a fazer <strong className="text-white">melhor</strong> —
-                com presença, intenção e domínio.
+                Foi escrito para quem quer fazer <strong className="text-white">melhor</strong>.
+                Com mais presença, mais intenção e mais domínio sobre o próprio ritmo.
               </p>
               <p className="text-gray-500 text-sm leading-relaxed">
-                7 pilares que definem a alta produtividade para qualquer área da vida.
-                Não é teoria — é o que funcionou em décadas construindo negócios
-                em mais de 30 países.
+                São 7 pilares que definem a alta produtividade para qualquer área da vida.
+                Não é teoria. É o que funcionou de verdade, ao longo de décadas
+                construindo negócios em mais de 30 países.
               </p>
             </div>
 

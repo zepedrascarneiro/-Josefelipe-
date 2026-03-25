@@ -48,7 +48,7 @@ export default function Contato() {
           VAMOS<br />CONVERSAR?
         </h2>
         <p className="text-gray-500 text-center mb-16">
-          Palestra, parceria ou só uma ideia — manda aqui.
+          Palestra, parceria ou só trocar uma ideia. Manda aqui.
         </p>
 
         {/* Formulário limpo, sem caixa */}

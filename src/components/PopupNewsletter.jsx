@@ -51,8 +51,8 @@ export default function PopupNewsletter() {
           </h3>
 
           <p className="text-sm text-gray-400 leading-relaxed mb-8">
-            7 pilares para quem quer alta performance sem perder a clareza,
-            a energia e a paz interna. Baseado em décadas de prática real.
+            Os 7 pilares que separam quem rende de quem se esgota.
+            Escrito por quem construiu negócios em mais de 30 países.
           </p>
 
           <a
