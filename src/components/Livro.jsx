@@ -28,8 +28,9 @@ export default function Livro() {
             </p>
 
             <a
-              href="#contato"
-              onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
+              href="https://a.co/d/0fV9dTgl"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary"
             >
               <BookOpen size={16} />
