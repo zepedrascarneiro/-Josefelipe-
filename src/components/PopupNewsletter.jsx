@@ -14,46 +14,60 @@ export default function PopupNewsletter() {
 
   return (
     <div
-      className="fixed inset-0 z-[9998] flex items-center justify-center p-4 bg-black/85"
+      className="fixed inset-0 z-[9998] flex items-center justify-center p-6 bg-black/85"
       onClick={() => setShow(false)}
     >
       <div
-        className="relative w-full max-w-xs overflow-hidden rounded-xl"
+        className="relative w-full max-w-2xl overflow-hidden rounded-2xl bg-[#111] border border-gray-800/50 flex flex-col sm:flex-row"
         style={{ animation: 'fadeInUp 0.5s ease' }}
         onClick={e => e.stopPropagation()}
       >
-        {/* Fechar — discreto */}
+        {/* Fechar */}
         <button
           onClick={() => setShow(false)}
-          className="absolute top-3 right-3 z-20 w-7 h-7 flex items-center justify-center rounded-full bg-black/40 text-white/50 hover:text-white transition-colors"
+          className="absolute top-4 right-4 z-20 text-gray-500 hover:text-white transition-colors"
         >
-          <X size={14} />
+          <X size={18} />
         </button>
 
-        {/* Capa do livro — full width, protagonista */}
-        <img
-          src="/livro-capa.jpg"
-          alt="Performance Consciente — José Felipe Carneiro"
-          className="w-full"
-        />
+        {/* Capa do livro — lado esquerdo */}
+        <div className="sm:w-2/5 bg-black flex items-center justify-center p-8 sm:p-10">
+          <img
+            src="/livro-capa.jpg"
+            alt="Performance Consciente — José Felipe Carneiro"
+            className="w-40 sm:w-full max-w-[200px] rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+          />
+        </div>
 
-        {/* Barra inferior — mínima, elegante */}
-        <div className="bg-[#1a1710] px-5 py-5">
-          <p className="text-[11px] uppercase tracking-[0.25em] text-[#c9a84c] font-semibold mb-2">
-            7 pilares da alta performance
+        {/* Conteúdo — lado direito */}
+        <div className="sm:w-3/5 px-8 py-10 sm:py-12 sm:pr-12 flex flex-col justify-center">
+          <p className="text-[11px] uppercase tracking-[0.25em] text-[#c9a84c] font-semibold mb-4">
+            Novo livro
           </p>
-          <p className="text-white/60 text-xs leading-relaxed mb-5">
-            O novo livro de José Felipe Carneiro.
+
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight tracking-tight mb-4">
+            Produzir mais<br />
+            <span className="text-gray-500">não é o caminho.</span>
+          </h3>
+
+          <p className="text-sm text-gray-400 leading-relaxed mb-8">
+            7 pilares para quem quer alta performance sem perder a clareza,
+            a energia e a paz interna. Baseado em décadas de prática real.
           </p>
+
           <a
             href="https://a.co/d/0fV9dTgl"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full py-3.5 bg-[#c9a84c] text-black font-bold text-xs uppercase tracking-wider rounded-lg hover:bg-[#d4b55a] transition-colors"
+            className="flex items-center justify-center gap-2 w-full py-4 bg-[#c9a84c] text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-[#d4b55a] transition-colors mb-4"
           >
             Garantir Meu Exemplar
-            <ArrowRight size={14} />
+            <ArrowRight size={15} />
           </a>
+
+          <p className="text-[11px] text-gray-600 text-center">
+            Disponível na Amazon · Entrega para todo o Brasil
+          </p>
         </div>
       </div>
     </div>
