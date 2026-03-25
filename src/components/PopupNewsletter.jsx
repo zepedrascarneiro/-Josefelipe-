@@ -34,7 +34,7 @@ export default function PopupNewsletter() {
         <div className="sm:w-2/5 bg-black flex items-center justify-center p-8 sm:p-10">
           <img
             src="/livro-capa.jpg"
-            alt="Performance Consciente — José Felipe Carneiro"
+            alt="Performance Consciente por José Felipe Carneiro"
             className="w-40 sm:w-full max-w-[200px] rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           />
         </div>

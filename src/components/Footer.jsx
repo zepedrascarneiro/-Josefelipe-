@@ -71,13 +71,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-600">
-          <p>&copy; {year} José Felipe Carneiro. Todos os direitos reservados.</p>
-          <div className="flex gap-5">
-            <a href="#" className="hover:text-gray-400 transition-colors">Política de Privacidade</a>
-            <a href="#" className="hover:text-gray-400 transition-colors">Termos de Uso</a>
-          </div>
-        </div>
+        <p className="text-xs text-gray-600 text-center md:text-left">
+          &copy; {year} José Felipe Carneiro. Todos os direitos reservados.
+        </p>
       </div>
     </footer>
   )

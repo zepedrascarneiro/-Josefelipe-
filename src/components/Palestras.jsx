@@ -1,4 +1,17 @@
-import { Mic } from 'lucide-react'
+import { Mic, FileText, ArrowDownToLine } from 'lucide-react'
+
+const palestras = [
+  {
+    titulo: 'Apresentação Geral',
+    descricao: 'A trajetória completa, os aprendizados e como levar alta performance para qualquer equipe.',
+    arquivo: '/palestra-geral.pdf',
+  },
+  {
+    titulo: 'Apresentação Agro',
+    descricao: 'Performance e inovação aplicadas ao agronegócio. Do campo ao mercado global.',
+    arquivo: '/palestra-agro.pdf',
+  },
+]
 
 export default function Palestras() {
   return (
@@ -10,34 +23,34 @@ export default function Palestras() {
             PALESTRAS
           </h2>
           <p className="text-gray-500 max-w-2xl leading-relaxed">
-            José Felipe leva ao palco a energia, a vivência e as estratégias de quem construiu negócios do zero e transformou paixão em resultados reais. Conheça as apresentações completas abaixo.
+            José Felipe leva ao palco a energia, a vivência e as estratégias de quem construiu negócios do zero e transformou paixão em resultados reais.
           </p>
         </div>
 
-        <div className="space-y-12 mb-20">
-          <div>
-            <p className="text-sm font-bold text-black mb-3">Apresentação Geral</p>
-            <div className="w-full rounded-xl overflow-hidden border border-gray-200" style={{ aspectRatio: '16/9' }}>
-              <iframe
-                src="/palestra-geral.pdf"
-                title="Apresentação José Felipe Carneiro"
-                className="w-full h-full"
-                style={{ border: 'none' }}
-              />
-            </div>
-          </div>
-
-          <div>
-            <p className="text-sm font-bold text-black mb-3">Apresentação Agro</p>
-            <div className="w-full rounded-xl overflow-hidden border border-gray-200" style={{ aspectRatio: '16/9' }}>
-              <iframe
-                src="/palestra-agro.pdf"
-                title="Apresentação José Felipe Carneiro — Agro"
-                className="w-full h-full"
-                style={{ border: 'none' }}
-              />
-            </div>
-          </div>
+        <div className="grid sm:grid-cols-2 gap-6 mb-20">
+          {palestras.map(p => (
+            <a
+              key={p.arquivo}
+              href={p.arquivo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border border-gray-200 rounded-xl p-8 hover:border-gray-400 transition-colors flex flex-col"
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-colors">
+                  <FileText size={20} />
+                </div>
+                <div>
+                  <p className="font-bold text-black mb-1">{p.titulo}</p>
+                  <p className="text-sm text-gray-500 leading-relaxed">{p.descricao}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 mt-auto pt-4 text-sm font-semibold text-gray-400 group-hover:text-black transition-colors">
+                <ArrowDownToLine size={14} />
+                Ver apresentação (PDF)
+              </div>
+            </a>
+          ))}
         </div>
 
         <div className="border border-gray-200 rounded-xl p-10 md:p-14 text-center">

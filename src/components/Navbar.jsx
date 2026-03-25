@@ -39,7 +39,11 @@ export default function Navbar() {
               <li key={link.href}>
                 <button
                   onClick={() => handleClick(link.href)}
-                  className="text-sm font-medium text-gray-500 hover:text-black transition-colors"
+                  className={`text-sm font-medium transition-colors ${
+                    scrolled
+                      ? 'text-gray-500 hover:text-black'
+                      : 'text-white/70 hover:text-white'
+                  }`}
                 >
                   {link.label}
                 </button>
@@ -50,14 +54,16 @@ export default function Navbar() {
           <a
             href="#contato"
             onClick={e => { e.preventDefault(); handleClick('#contato') }}
-            className="btn-primary text-xs py-2.5 px-5"
+            className={`btn-primary text-xs py-2.5 px-5 ${
+              scrolled ? '' : 'bg-white text-black hover:bg-gray-200'
+            }`}
           >
             Contato
           </a>
         </div>
 
         <button
-          className="md:hidden p-1 text-black"
+          className={`md:hidden p-1 ${scrolled ? 'text-black' : 'text-white'}`}
           onClick={() => setOpen(o => !o)}
           aria-label="Menu"
         >

@@ -12,6 +12,7 @@ export default function Livro() {
             <img
               src="/livro-capa.jpg"
               alt="Capa do Livro Performance Consciente"
+              loading="lazy"
               className="w-full max-w-sm drop-shadow-[0_30px_60px_rgba(201,168,76,0.15)]"
             />
           </div>

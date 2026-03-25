@@ -1,5 +1,4 @@
 import { ArrowRight } from 'lucide-react'
-// force reload
 
 const empresas = [
   { n: 'Wäls', s: 'Mais Premiada do Mundo' },
@@ -22,6 +21,7 @@ export default function Sobre() {
             <img
               src="/jornada.jpg"
               alt="José Felipe Carneiro no palco"
+              loading="lazy"
               className="w-full h-full object-cover grayscale"
               style={{ objectPosition: 'center center' }}
             />
