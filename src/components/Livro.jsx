@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react'
 
 export default function Livro() {
   return (
-    <section id="livro" className="py-40 bg-black text-white">
+    <section id="livro" className="py-20 md:py-40 bg-black text-white">
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
         <div className="grid lg:grid-cols-2 gap-20 items-center">

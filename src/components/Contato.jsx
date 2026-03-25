@@ -40,11 +40,11 @@ export default function Contato() {
   }
 
   return (
-    <section id="contato" className="pt-56 pb-64 bg-black text-white">
-      <div className="max-w-xl mx-auto px-8">
+    <section id="contato" className="pt-28 md:pt-56 pb-32 md:pb-64 bg-black text-white">
+      <div className="max-w-xl mx-auto px-6 md:px-8">
 
         {/* Título */}
-        <h2 className="text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 text-center">
+        <h2 className="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 text-center">
           VAMOS<br />CONVERSAR?
         </h2>
         <p className="text-gray-500 text-center mb-16">

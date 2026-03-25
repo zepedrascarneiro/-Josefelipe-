@@ -2,7 +2,7 @@ import { Mic, ArrowRight } from 'lucide-react'
 
 export default function Palestras() {
   return (
-    <section id="palestras" className="py-40 bg-white">
+    <section id="palestras" className="py-20 md:py-40 bg-white">
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
         <div className="mb-16">
@@ -45,7 +45,7 @@ export default function Palestras() {
         </div>
 
         {/* CTA */}
-        <div className="bg-[#f0f0f0] text-black rounded-2xl p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="bg-[#f0f0f0] text-black rounded-2xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div>
             <h3 className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
               Leve essa energia<br className="hidden md:block" /> para seu evento

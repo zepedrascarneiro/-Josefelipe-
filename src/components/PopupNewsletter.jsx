@@ -14,7 +14,7 @@ export default function PopupNewsletter() {
 
   return (
     <div
-      className="fixed inset-0 z-[9998] flex items-center justify-center p-6 bg-black/85"
+      className="fixed inset-0 z-[9998] flex items-center justify-center p-4 sm:p-6 bg-black/85"
       onClick={() => setShow(false)}
     >
       <div
@@ -31,7 +31,7 @@ export default function PopupNewsletter() {
         </button>
 
         {/* Capa do livro — lado esquerdo */}
-        <div className="sm:w-2/5 bg-black flex items-center justify-center p-8 sm:p-10">
+        <div className="sm:w-2/5 bg-black flex items-center justify-center p-6 sm:p-10">
           <img
             src="/livro-capa.jpg"
             alt="Performance Consciente por José Felipe Carneiro"
@@ -40,7 +40,7 @@ export default function PopupNewsletter() {
         </div>
 
         {/* Conteúdo — lado direito */}
-        <div className="sm:w-3/5 px-8 py-10 sm:py-12 sm:pr-12 flex flex-col justify-center">
+        <div className="sm:w-3/5 px-6 py-8 sm:py-12 sm:pr-12 flex flex-col justify-center">
           <p className="text-[11px] uppercase tracking-[0.25em] text-[#c9a84c] font-semibold mb-4">
             Novo livro
           </p>

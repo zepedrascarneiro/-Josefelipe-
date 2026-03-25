@@ -48,10 +48,10 @@ export default function Hero() {
         maxWidth: '72rem',
         marginLeft: 'auto',
         marginRight: 'auto',
-        paddingLeft: '3rem',
-        paddingRight: '3rem',
-        paddingBottom: '5rem',
-        paddingTop: '8rem',
+        paddingLeft: '1.5rem',
+        paddingRight: '1.5rem',
+        paddingBottom: '4rem',
+        paddingTop: '6rem',
       }}>
 
         <p

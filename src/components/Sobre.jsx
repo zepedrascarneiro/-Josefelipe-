@@ -11,13 +11,13 @@ const empresas = [
 
 export default function Sobre() {
   return (
-    <section id="sobre" className="py-40 bg-white">
+    <section id="sobre" className="py-20 md:py-40 bg-white">
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
           {/* Foto com título */}
-          <div className="relative overflow-hidden" style={{ height: '700px' }}>
+          <div className="relative overflow-hidden" style={{ height: 'clamp(400px, 60vw, 700px)' }}>
             <img
               src="/jornada.jpg"
               alt="José Felipe Carneiro no palco"
@@ -57,7 +57,7 @@ export default function Sobre() {
               <strong className="text-black">Stadt Jever</strong>.
             </p>
 
-            <div style={{ marginTop: '80px', paddingTop: '40px', borderTop: '1px solid #e5e5e5' }}>
+            <div className="mt-10 pt-6 md:mt-20 md:pt-10 border-t border-gray-200">
             </div>
             <p className="text-sm text-gray-400 font-semibold uppercase tracking-widest mb-4">
               Marcas & Negócios
@@ -71,7 +71,7 @@ export default function Sobre() {
               ))}
             </div>
 
-            <div style={{ marginTop: '80px', paddingTop: '40px', borderTop: '1px solid #e5e5e5' }}>
+            <div className="mt-10 pt-6 md:mt-20 md:pt-10 border-t border-gray-200">
             </div>
             <a
               href="#contato"
