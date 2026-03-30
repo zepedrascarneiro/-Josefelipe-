@@ -5,6 +5,7 @@ import Sobre             from './components/Sobre'
 import Livro             from './components/Livro'
 
 import Palestras         from './components/Palestras'
+import Valuation         from './components/Valuation'
 import Contato           from './components/Contato'
 import Footer            from './components/Footer'
 import PopupNewsletter   from './components/PopupNewsletter'
@@ -24,6 +25,7 @@ export default function App() {
         <Livro />
 
         <Palestras />
+        <Valuation />
         <Contato />
       </main>
 
