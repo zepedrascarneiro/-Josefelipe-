@@ -6,23 +6,26 @@ export default function Valuation() {
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
         <h2 className="text-4xl md:text-5xl font-extrabold text-black leading-[1.05] mb-6 tracking-tight">
-          QUAL MEU
+          QUER DESCOBRIR
           <br />
-          VALUATION?
+          QUANTO VALE A
+          <br />
+          SUA EMPRESA?
         </h2>
 
         <p className="text-gray-500 leading-relaxed max-w-2xl mb-6">
-          Criei uma ferramenta para responder a pergunta que todo empresario
-          faz em algum momento: quanto vale o que eu construi? Seja para
-          vender, captar, dividir com um socio ou planejar o futuro.
+          Essa e uma das perguntas mais importantes na vida de qualquer
+          empresario. Seja para vender, captar investimento, resolver
+          uma sociedade ou simplesmente entender o valor real do que
+          voce construiu ao longo dos anos.
         </p>
 
         <p className="text-gray-500 leading-relaxed max-w-2xl mb-16">
-          A calculadora cruza seus dados com multiplos reais de transacoes
-          de M&A publicados por PwC, KPMG, EY e Deloitte. Sao 6 metodos
-          de avaliacao, 17 setores e 15 indicadores financeiros. Resultado
-          em 3 minutos. O mesmo tipo de analise que boutiques de investimento
-          cobram a partir de R$ 15 mil, por R$ 49.
+          Desenvolvi uma calculadora que cruza os dados da sua empresa
+          com multiplos reais de transacoes de M&A no mercado brasileiro,
+          publicados por PwC, KPMG, EY e Deloitte. Sao 6 metodos de
+          avaliacao, 17 setores e 15 indicadores financeiros. O resultado
+          sai em 3 minutos.
         </p>
 
         <a
