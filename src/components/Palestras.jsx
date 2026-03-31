@@ -20,7 +20,7 @@ export default function Palestras() {
         <div className="grid md:grid-cols-2 gap-8 mb-20">
           <div>
             <p className="text-sm font-bold text-black mb-3">Apresentação Geral</p>
-            <div className="w-full rounded-xl overflow-hidden border border-gray-200" style={{ aspectRatio: '4/3' }}>
+            <div className="w-full rounded-none overflow-hidden border border-gray-200" style={{ aspectRatio: '4/3' }}>
               <iframe
                 src="/palestra-geral.pdf"
                 title="Apresentação José Felipe Carneiro"
@@ -32,7 +32,7 @@ export default function Palestras() {
           </div>
           <div>
             <p className="text-sm font-bold text-black mb-3">Apresentação Agro</p>
-            <div className="w-full rounded-xl overflow-hidden border border-gray-200" style={{ aspectRatio: '4/3' }}>
+            <div className="w-full rounded-none overflow-hidden border border-gray-200" style={{ aspectRatio: '4/3' }}>
               <iframe
                 src="/palestra-agro.pdf"
                 title="Apresentação José Felipe Carneiro Agro"
@@ -45,7 +45,7 @@ export default function Palestras() {
         </div>
 
         {/* CTA */}
-        <div className="bg-black text-white rounded-2xl p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left overflow-hidden">
+        <div className="bg-black text-white rounded-none p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left overflow-hidden">
           <div>
             <h3 className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
               Leve essa energia<br className="hidden md:block" /> para seu evento
@@ -58,7 +58,7 @@ export default function Palestras() {
           <a
             href="#contato"
             onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="shrink-0 flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-200 transition-colors"
+            className="shrink-0 flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-none hover:bg-gray-200 transition-colors"
           >
             <Mic size={16} />
             Quero Contratar

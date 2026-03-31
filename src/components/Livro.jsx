@@ -58,7 +58,7 @@ export default function Livro() {
               href="https://a.co/d/0fV9dTgl"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-[#c9a84c] text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-[#d4b55a] transition-colors"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#c9a84c] text-black font-bold text-sm uppercase tracking-wider rounded-none hover:bg-[#d4b55a] transition-colors"
             >
               Quero Minha Edição
               <ArrowRight size={16} />

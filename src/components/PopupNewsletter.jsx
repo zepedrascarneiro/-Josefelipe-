@@ -18,7 +18,7 @@ export default function PopupNewsletter() {
       onClick={() => setShow(false)}
     >
       <div
-        className="relative w-full max-w-2xl overflow-hidden rounded-2xl bg-[#111] border border-gray-800/50 flex flex-col sm:flex-row"
+        className="relative w-full max-w-2xl overflow-hidden rounded-none bg-[#111] border border-gray-800/50 flex flex-col sm:flex-row"
         style={{ animation: 'fadeInUp 0.5s ease' }}
         onClick={e => e.stopPropagation()}
       >
@@ -35,7 +35,7 @@ export default function PopupNewsletter() {
           <img
             src="/livro-capa.jpg"
             alt="Performance Consciente por José Felipe Carneiro"
-            className="w-40 sm:w-full max-w-[200px] rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            className="w-40 sm:w-full max-w-[200px] rounded-none shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           />
         </div>
 
@@ -59,7 +59,7 @@ export default function PopupNewsletter() {
             href="https://a.co/d/0fV9dTgl"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full py-4 bg-[#c9a84c] text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-[#d4b55a] transition-colors mb-4"
+            className="flex items-center justify-center gap-2 w-full py-4 bg-[#c9a84c] text-black font-bold text-sm uppercase tracking-wider rounded-none hover:bg-[#d4b55a] transition-colors mb-4"
           >
             Garantir Meu Exemplar
             <ArrowRight size={15} />
