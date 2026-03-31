@@ -89,7 +89,7 @@ img[style*="position:absolute"] {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem 2.5rem;
+  padding: 1rem 2rem;
   background-color: var(--color-black);
   color: var(--color-white);
   font-weight: 700;
@@ -132,7 +132,7 @@ img[style*="position:absolute"] {
 /* ---- Inputs ---- */
 .input {
   width: 100%;
-  padding: 1rem 1.2rem;
+  padding: 1rem 1.4rem;
   background-color: var(--color-white);
   border: 1.5px solid var(--color-border);
   border-radius: 8px;

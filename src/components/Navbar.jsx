@@ -54,7 +54,7 @@ export default function Navbar() {
           <a
             href="#contato"
             onClick={e => { e.preventDefault(); handleClick('#contato') }}
-            className={`btn-primary text-xs py-2.5 px-5 ${
+            className={`btn-primary text-xs py-2.5 px-6 ${
               scrolled ? '' : 'bg-white text-black hover:bg-gray-200'
             }`}
           >

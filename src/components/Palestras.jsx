@@ -45,7 +45,7 @@ export default function Palestras() {
         </div>
 
         {/* CTA */}
-        <div className="bg-black text-white rounded-2xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+        <div className="bg-black text-white rounded-2xl p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left overflow-hidden">
           <div>
             <h3 className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
               Leve essa energia<br className="hidden md:block" /> para seu evento
