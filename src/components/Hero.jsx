@@ -73,7 +73,7 @@ export default function Hero() {
           style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.1rem' }}
         >
           Co-fundador da Cervejaria Wäls (mais premiada do mundo) e da ZX Ventures (Ambev).
-          Negócios em mais de <strong className="text-white">30 países</strong>.
+          Negócios em diversos países.
         </p>
 
         <div className="flex flex-wrap gap-4">

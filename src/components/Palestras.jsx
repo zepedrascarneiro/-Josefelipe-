@@ -11,7 +11,7 @@ export default function Palestras() {
           </h2>
           <p className="text-gray-500 max-w-2xl leading-relaxed text-lg">
             A vivência de quem construiu a cervejaria mais premiada do mundo,
-            operou em mais de 30 países e nunca parou de empreender.
+            operou globalmente e nunca parou de empreender.
             No palco, José Felipe entrega experiência real, não teoria.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function Palestras() {
         </div>
 
         {/* CTA */}
-        <div className="bg-[#f0f0f0] text-black rounded-2xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+        <div className="bg-black text-white rounded-2xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div>
             <h3 className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
               Leve essa energia<br className="hidden md:block" /> para seu evento
@@ -58,7 +58,7 @@ export default function Palestras() {
           <a
             href="#contato"
             onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="shrink-0 flex items-center gap-2 px-8 py-4 bg-black text-white font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-800 transition-colors"
+            className="shrink-0 flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-200 transition-colors"
           >
             <Mic size={16} />
             Quero Contratar

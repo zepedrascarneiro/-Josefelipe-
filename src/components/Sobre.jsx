@@ -1,8 +1,9 @@
 import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const empresas = [
   { n: 'Wäls', s: 'Mais Premiada do Mundo' },
-  { n: 'ZX Ventures', s: 'AB InBev · 30+ países' },
+  { n: 'ZX Ventures', s: 'AB InBev · Global' },
   { n: 'Khappy Kombucha', s: 'Líder no Brasil' },
   { n: 'Stadt Jever', s: 'Do Campo ao Copo' },
   { n: 'Novo Brazil', s: 'San Diego, EUA' },
@@ -14,7 +15,13 @@ export default function Sobre() {
     <section id="sobre" className="py-20 md:py-40 bg-white">
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+          className="grid lg:grid-cols-2 gap-16 items-start"
+        >
 
           {/* Foto com título */}
           <div className="relative overflow-hidden" style={{ height: 'clamp(400px, 60vw, 700px)' }}>
@@ -47,7 +54,7 @@ export default function Sobre() {
               Co-fundador da <strong className="text-black">Cervejaria Wäls</strong> ao lado do irmão Tiago,
               se tornou sócio da AMBEV e criou a{' '}
               <strong className="text-black">ZX Ventures</strong>, braço de inovação da AB InBev que atuou
-              em mais de 30 países em apenas três anos.
+              em diversos países em apenas três anos.
             </p>
             <p className="text-gray-500 leading-relaxed mb-6">
               Nos EUA criou a <strong className="text-black">Novo Brazil</strong> e uma das maiores hard
@@ -81,7 +88,7 @@ export default function Sobre() {
               Entre em contato <ArrowRight size={15} />
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

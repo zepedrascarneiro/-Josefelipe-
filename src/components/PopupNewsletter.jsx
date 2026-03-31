@@ -52,7 +52,7 @@ export default function PopupNewsletter() {
 
           <p className="text-sm text-gray-400 leading-relaxed mb-8">
             Os 7 pilares que separam quem rende de quem se esgota.
-            Escrito por quem construiu negócios em mais de 30 países.
+            Escrito por quem construiu negócios ao redor do mundo.
           </p>
 
           <a

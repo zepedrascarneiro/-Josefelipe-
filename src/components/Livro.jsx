@@ -1,11 +1,18 @@
 import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function Livro() {
   return (
     <section id="livro" className="py-20 md:py-40 bg-black text-white">
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
 
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+          className="grid lg:grid-cols-2 gap-20 items-center"
+        >
 
           {/* Capa — primeiro no mobile, visual como protagonista */}
           <div className="flex justify-center lg:order-2">
@@ -43,7 +50,7 @@ export default function Livro() {
               <p className="text-gray-500 text-sm leading-relaxed">
                 São 7 pilares que definem a alta produtividade para qualquer área da vida.
                 Não é teoria. É o que funcionou de verdade, ao longo de décadas
-                construindo negócios em mais de 30 países.
+                construindo negócios ao redor do mundo.
               </p>
             </div>
 
@@ -57,7 +64,7 @@ export default function Livro() {
               <ArrowRight size={16} />
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

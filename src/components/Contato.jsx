@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Send, Mail, MapPin, Instagram } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
 
@@ -44,9 +45,15 @@ export default function Contato() {
       <div className="max-w-xl mx-auto px-6 md:px-8">
 
         {/* Título */}
-        <h2 className="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 text-center"
+        >
           VAMOS<br />CONVERSAR?
-        </h2>
+        </motion.h2>
         <p className="text-gray-500 text-center mb-16">
           Palestra, parceria ou só trocar uma ideia. Manda aqui.
         </p>
