@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Mic, ArrowRight, Check, Star, Users, Globe, Award } from 'lucide-react'
+import { Mic, ArrowRight, Check, Users, Globe, Award } from 'lucide-react'
 
 const temas = [
   {
@@ -33,10 +33,10 @@ const temas = [
 ]
 
 const numeros = [
-  { valor: '50+', label: 'Palestras realizadas', icon: Mic },
-  { valor: '10k+', label: 'Pessoas impactadas', icon: Users },
-  { valor: '6', label: 'Paises de atuacao', icon: Globe },
-  { valor: '25+', label: 'Anos de experiencia', icon: Award },
+  { valor: '300+', label: 'Palestras realizadas', icon: Mic },
+  { valor: '450k+', label: 'Pessoas impactadas', icon: Users },
+  { valor: '25', label: 'Anos de empreendedorismo', icon: Award },
+  { valor: '6', label: 'Países de atuação', icon: Globe },
 ]
 
 const empresas = [
@@ -44,23 +44,6 @@ const empresas = [
   'Sicoob', 'XP Inc', 'Stone', 'Anglo American', 'PwC',
 ]
 
-const depoimentos = [
-  {
-    texto: 'O Jose Felipe trouxe uma energia unica pro nosso evento. As pessoas saiam transformadas. Ja estamos agendando a proxima.',
-    autor: 'Diretora de RH',
-    empresa: 'Multinacional de bebidas',
-  },
-  {
-    texto: 'Palestra mais elogiada do nosso congresso. Pratica, inspiradora e com historias reais que conectam com qualquer publico.',
-    autor: 'Organizador do evento',
-    empresa: 'Congresso Nacional do Agro',
-  },
-  {
-    texto: 'Contratamos para nossa convencao de vendas e o resultado foi impressionante. Time saiu motivado e com ferramentas praticas.',
-    autor: 'CEO',
-    empresa: 'Rede de franquias',
-  },
-]
 
 // Override global section styles
 const sectionStyle = { display: 'block', alignItems: 'unset', width: '100%' }
@@ -130,127 +113,104 @@ export default function PalestrasPage() {
       </div>
 
       {/* Numeros */}
-      <section style={sectionStyle} className="py-16 border-y border-white/5">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div style={{ ...sectionStyle, padding: '60px 24px', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', textAlign: 'center' }}>
           {numeros.map((n, i) => (
-            <div key={i} className="text-center">
-              <n.icon size={24} className="mx-auto mb-3 text-amber-400" />
-              <p className="text-3xl font-extrabold text-white">{n.valor}</p>
-              <p className="text-xs text-gray-500 mt-1">{n.label}</p>
+            <div key={i}>
+              <n.icon size={24} style={{ margin: '0 auto 12px', color: '#f59e0b' }} />
+              <p style={{ fontSize: '2.2rem', fontWeight: 900, color: '#fff' }}>{n.valor}</p>
+              <p style={{ fontSize: '12px', color: '#6b7280', marginTop: '4px' }}>{n.label}</p>
             </div>
           ))}
         </div>
-      </section>
+      </div>
 
       {/* Temas */}
-      <section id="temas" style={sectionStyle} className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">TEMAS</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Palestras sob medida</h2>
-          <p className="text-gray-500 mb-14 max-w-xl">Cada palestra e adaptada ao publico, ao setor e aos objetivos do evento. Escolha o tema que mais faz sentido.</p>
+      <div id="temas" style={{ ...sectionStyle, padding: '100px 24px' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+          <p style={{ fontSize: '13px', fontWeight: 600, color: '#f59e0b', letterSpacing: '3px', marginBottom: '16px' }}>TEMAS</p>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '16px', color: '#fff' }}>Palestras sob medida</h2>
+          <p style={{ color: '#6b7280', marginBottom: '48px', maxWidth: '540px', lineHeight: 1.7 }}>Cada palestra é adaptada ao público, ao setor e aos objetivos do evento. Escolha o tema que mais faz sentido.</p>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: '24px' }}>
             {temas.map((t, i) => (
-              <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-8 hover:border-amber-400/30 transition group">
-                <div className="flex items-start gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-lg bg-amber-400/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Mic size={16} className="text-amber-400" />
+              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '32px' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(245,158,11,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Mic size={16} style={{ color: '#f59e0b' }} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition">{t.titulo}</h3>
-                    <p className="text-sm text-amber-400/60">{t.subtitulo}</p>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '4px' }}>{t.titulo}</h3>
+                    <p style={{ fontSize: '13px', color: 'rgba(245,158,11,0.6)' }}>{t.subtitulo}</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-400 leading-relaxed mb-4">{t.desc}</p>
-                <div className="flex flex-wrap gap-3 text-xs">
-                  <span className="px-3 py-1 bg-white/5 rounded-full text-gray-400">{t.ideal}</span>
-                  <span className="px-3 py-1 bg-white/5 rounded-full text-gray-400">{t.duracao}</span>
+                <p style={{ fontSize: '14px', color: '#9ca3af', lineHeight: 1.7, marginBottom: '16px' }}>{t.desc}</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                  <span style={{ padding: '4px 12px', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', fontSize: '12px', color: '#9ca3af' }}>{t.ideal}</span>
+                  <span style={{ padding: '4px 12px', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', fontSize: '12px', color: '#9ca3af' }}>{t.duracao}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Empresas */}
-      <section style={sectionStyle} className="py-16 border-y border-white/5">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <p className="text-xs text-gray-500 tracking-widest mb-8">QUEM JA CONTOU COM JOSE FELIPE</p>
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
+      <div style={{ ...sectionStyle, padding: '60px 24px', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: '11px', color: '#6b7280', letterSpacing: '3px', marginBottom: '32px' }}>QUEM JÁ CONTOU COM JOSÉ FELIPE</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px 40px' }}>
             {empresas.map((e, i) => (
-              <span key={i} className="text-sm font-medium text-gray-400/60 hover:text-white transition">{e}</span>
+              <span key={i} style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(156,163,175,0.6)' }}>{e}</span>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Depoimentos */}
-      <section style={sectionStyle} className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">DEPOIMENTOS</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-14">O que dizem os organizadores</h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {depoimentos.map((d, i) => (
-              <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-8">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, j) => <Star key={j} size={14} className="text-amber-400 fill-amber-400" />)}
-                </div>
-                <p className="text-sm text-gray-300 leading-relaxed mb-6 italic">"{d.texto}"</p>
-                <div>
-                  <p className="text-sm font-bold text-white">{d.autor}</p>
-                  <p className="text-xs text-gray-500">{d.empresa}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* Apresentacoes */}
-      <section style={sectionStyle} className="py-24 px-6 bg-white/[0.02]">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">PREVIEW</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-14">Veja as apresentacoes</h2>
+      <div style={{ ...sectionStyle, padding: '100px 24px', background: 'rgba(255,255,255,0.02)' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+          <p style={{ fontSize: '13px', fontWeight: 600, color: '#f59e0b', letterSpacing: '3px', marginBottom: '16px' }}>PREVIEW</p>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '48px', color: '#fff' }}>Veja as apresentações</h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '32px' }}>
             <div>
-              <p className="text-sm font-bold text-white mb-3">Apresentacao Geral</p>
-              <div className="w-full rounded-xl overflow-hidden border border-white/10" style={{ aspectRatio: '16/9' }}>
-                <iframe src="/palestra-geral.pdf" title="Apresentacao Geral" className="w-full h-full" style={{ border: 'none' }} />
+              <p style={{ fontSize: '14px', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>Apresentação Geral</p>
+              <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', aspectRatio: '16/9' }}>
+                <iframe src="/palestra-geral.pdf" title="Apresentação Geral" style={{ width: '100%', height: '100%', border: 'none' }} />
               </div>
             </div>
             <div>
-              <p className="text-sm font-bold text-white mb-3">Apresentacao Agro</p>
-              <div className="w-full rounded-xl overflow-hidden border border-white/10" style={{ aspectRatio: '16/9' }}>
-                <iframe src="/palestra-agro.pdf" title="Apresentacao Agro" className="w-full h-full" style={{ border: 'none' }} />
+              <p style={{ fontSize: '14px', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>Apresentação Agro</p>
+              <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', aspectRatio: '16/9' }}>
+                <iframe src="/palestra-agro.pdf" title="Apresentação Agro" style={{ width: '100%', height: '100%', border: 'none' }} />
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Como funciona */}
-      <section style={sectionStyle} className="py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">PROCESSO</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-14">Como contratar</h2>
+      <div style={{ ...sectionStyle, padding: '100px 24px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: '13px', fontWeight: 600, color: '#f59e0b', letterSpacing: '3px', marginBottom: '16px' }}>PROCESSO</p>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '48px', color: '#fff' }}>Como contratar</h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
             {[
-              { step: '01', title: 'Escolha o tema', desc: 'Selecione o tema que mais se encaixa no seu evento ou peca uma palestra personalizada.' },
-              { step: '02', title: 'Envie sua solicitacao', desc: 'Preencha o formulario abaixo com os detalhes do evento. Retorno em ate 24h.' },
-              { step: '03', title: 'Receba a proposta', desc: 'Voce recebe uma proposta completa com valor, logistica e termos. Sem surpresas.' },
+              { step: '01', title: 'Escolha o tema', desc: 'Selecione o tema que mais se encaixa no seu evento ou peça uma palestra personalizada.' },
+              { step: '02', title: 'Envie sua solicitação', desc: 'Preencha o formulário abaixo com os detalhes do evento. Retorno em até 24h.' },
+              { step: '03', title: 'Receba a proposta', desc: 'Você recebe uma proposta completa com valor, logística e termos. Sem surpresas.' },
             ].map((s, i) => (
-              <div key={i} className="text-center">
-                <div className="w-12 h-12 rounded-full bg-amber-400/10 text-amber-400 font-bold text-sm flex items-center justify-center mx-auto mb-4">{s.step}</div>
-                <h3 className="font-bold text-white mb-2">{s.title}</h3>
-                <p className="text-sm text-gray-500">{s.desc}</p>
+              <div key={i} style={{ textAlign: 'center' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(245,158,11,0.1)', color: '#f59e0b', fontWeight: 700, fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>{s.step}</div>
+                <h3 style={{ fontWeight: 700, color: '#fff', marginBottom: '8px' }}>{s.title}</h3>
+                <p style={{ fontSize: '14px', color: '#6b7280', lineHeight: 1.6 }}>{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Formulario */}
       <section id="contratar" style={sectionStyle} className="py-24 px-6 bg-white/[0.02] border-t border-white/5">
