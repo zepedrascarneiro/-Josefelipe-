@@ -88,7 +88,7 @@ export default function PalestrasPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div style={{ minHeight: '100vh', backgroundColor: '#000', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
       {/* Nav simples */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -103,31 +103,31 @@ export default function PalestrasPage() {
       </nav>
 
       {/* Hero */}
-      <section style={sectionStyle} className="pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm font-medium text-amber-400 tracking-widest mb-6">PALESTRANTE</p>
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6">
-            A vivencia de quem construiu<br />
-            <span className="text-amber-400">a cervejaria mais premiada do mundo</span>
+      <div style={{ ...sectionStyle, paddingTop: '140px', paddingBottom: '80px', paddingLeft: '24px', paddingRight: '24px' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: '13px', fontWeight: 600, color: '#f59e0b', letterSpacing: '3px', marginBottom: '24px' }}>PALESTRANTE</p>
+          <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.08, letterSpacing: '-0.02em', marginBottom: '24px', color: '#fff' }}>
+            A vivência de quem construiu{' '}
+            <span style={{ color: '#f59e0b' }}>a cervejaria mais premiada do mundo</span>
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Co-fundador da Wals e da ZX Ventures (AB InBev). No palco, Jose Felipe entrega
-            experiencia real, energia e ferramentas praticas que transformam plateia em acao.
+          <p style={{ fontSize: '1.1rem', color: '#9ca3af', maxWidth: '640px', margin: '0 auto 40px', lineHeight: 1.7 }}>
+            Co-fundador da Wäls e da ZX Ventures (AB InBev). No palco, José Felipe entrega
+            experiência real, energia e ferramentas práticas que transformam plateia em ação.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
             <a href="#contratar" onClick={e => { e.preventDefault(); document.querySelector('#contratar')?.scrollIntoView({ behavior: 'smooth' }) }}
-              className="inline-flex items-center justify-center gap-2 bg-white text-black font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition text-sm">
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#fff', color: '#000', fontWeight: 700, padding: '16px 32px', borderRadius: '10px', fontSize: '14px', textDecoration: 'none', transition: 'opacity 0.2s' }}>
               <Mic size={18} />
               Quero Contratar
             </a>
             <a href="#temas" onClick={e => { e.preventDefault(); document.querySelector('#temas')?.scrollIntoView({ behavior: 'smooth' }) }}
-              className="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-medium px-8 py-4 rounded-lg hover:bg-white/5 transition text-sm">
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontWeight: 500, padding: '16px 32px', borderRadius: '10px', fontSize: '14px', textDecoration: 'none', transition: 'background 0.2s' }}>
               Ver Temas de Palestra
               <ArrowRight size={16} />
             </a>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Numeros */}
       <section style={sectionStyle} className="py-16 border-y border-white/5">
