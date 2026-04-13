@@ -6,20 +6,13 @@ const AMAZON = 'https://a.co/d/0fV9dTgl'
 const gold = '#c9a84c'
 
 const pilares = [
-  { icon: Target, titulo: 'Clareza de Propósito', desc: 'Saber exatamente por que você faz o que faz. Sem propósito claro, produtividade vira agitação.' },
-  { icon: Clock, titulo: 'Domínio do Tempo', desc: 'Não é sobre gerenciar horas. É sobre proteger energia e alocar atenção no que realmente importa.' },
-  { icon: Zap, titulo: 'Energia Sustentável', desc: 'Alta performance sem burnout. Como manter o ritmo sem destruir o corpo e a mente no processo.' },
-  { icon: Focus, titulo: 'Foco Radical', desc: 'Dizer não para o bom pra dizer sim para o essencial. A disciplina de fazer menos, melhor.' },
-  { icon: Brain, titulo: 'Disciplina Flexível', desc: 'Rotinas que se adaptam à vida real. Consistência sem rigidez, estrutura sem prisão.' },
-  { icon: Users, titulo: 'Inteligência Relacional', desc: 'Ninguém constrói nada sozinho. Como se cercar das pessoas certas e multiplicar resultados.' },
-  { icon: Eye, titulo: 'Presença e Consciência', desc: 'O pilar que sustenta todos os outros. Estar inteiro no que faz, sem viver no automático.' },
-]
-
-const depoimentos = [
-  { texto: 'Li em dois dias. Simples, direto e com a profundidade de quem viveu cada palavra. Mudou minha forma de organizar a semana.', autor: 'Mariana K.', desc: 'Empresária, São Paulo' },
-  { texto: 'Não é mais um livro de produtividade. É um tapa na cara de quem vive no piloto automático. Recomendo para qualquer líder.', autor: 'Ricardo F.', desc: 'CEO, Belo Horizonte' },
-  { texto: 'O capítulo sobre energia sustentável me fez repensar toda a minha rotina. Resultado: mais entrega com menos exaustão.', autor: 'Camila T.', desc: 'Diretora de Marketing' },
-  { texto: 'Comprei pra mim e acabei comprando pra todo o meu time. É o tipo de livro que você sublinha inteiro.', autor: 'André L.', desc: 'Founder, Startup de Tech' },
+  { num: '01', icon: Target, titulo: 'Clareza de Propósito', desc: 'Saber exatamente por que você faz o que faz. Sem isso, produtividade vira agitação.' },
+  { num: '02', icon: Clock, titulo: 'Domínio do Tempo', desc: 'Não é sobre fazer mais. É sobre fazer o que importa, na hora certa, com intenção.' },
+  { num: '03', icon: Zap, titulo: 'Energia Sustentável', desc: 'Performance de verdade exige um corpo que aguente. Sono, alimentação e movimento.' },
+  { num: '04', icon: Focus, titulo: 'Foco Radical', desc: 'Dizer não para o que distrai e sim para o que transforma. Priorizar com coragem.' },
+  { num: '05', icon: Brain, titulo: 'Disciplina Flexível', desc: 'Rotinas que sustentam, não que aprisionam. Consistência sem rigidez.' },
+  { num: '06', icon: Users, titulo: 'Inteligência Relacional', desc: 'Resultados se constroem com pessoas. Liderar, inspirar e manter relações saudáveis.' },
+  { num: '07', icon: Eye, titulo: 'Presença e Consciência', desc: 'O pilar que sustenta todos os outros. Estar presente no que faz, com clareza mental.' },
 ]
 
 export default function LivroPage() {
@@ -89,19 +82,15 @@ export default function LivroPage() {
           <p style={{ fontSize: '13px', fontWeight: 600, color: gold, letterSpacing: '3px', marginBottom: '16px' }}>O CONTEÚDO</p>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '16px', color: '#fff' }}>Os 7 pilares</h2>
           <p style={{ color: '#6b7280', marginBottom: '48px', maxWidth: '540px', lineHeight: 1.7 }}>
-            Cada pilar é um capítulo. Cada capítulo é uma ferramenta prática que você pode aplicar imediatamente.
+            Cada pilar foi construído na prática, ao longo de décadas empreendendo, liderando equipes e tomando decisões sob pressão.
           </p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '20px' }}>
             {pilares.map((p, i) => (
-              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '28px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(201,168,76,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <p.icon size={16} style={{ color: gold }} />
-                  </div>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#fff' }}>{p.titulo}</h3>
-                </div>
-                <p style={{ fontSize: '13px', color: '#9ca3af', lineHeight: 1.7 }}>{p.desc}</p>
+              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '28px', transition: 'border-color 0.3s' }}>
+                <p style={{ fontSize: '11px', color: gold, fontWeight: 700, letterSpacing: '2px', marginBottom: '12px' }}>PILAR {p.num}</p>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '10px' }}>{p.titulo}</h3>
+                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.7 }}>{p.desc}</p>
               </div>
             ))}
           </div>
@@ -118,24 +107,6 @@ export default function LivroPage() {
             <p style={{ fontSize: '15px', color: '#9ca3af', lineHeight: 1.8 }}>
               Co-fundador da Cervejaria Wäls (mais premiada do mundo), da ZX Ventures (AB InBev) e de negócios em 6 países. Mais de 300 palestras e 450 mil pessoas impactadas. Escreveu este livro para compartilhar os princípios que guiaram 25 anos de empreendedorismo sem perder a saúde, a família e o propósito.
             </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Depoimentos */}
-      <div style={{ ...s, padding: '100px 24px' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <p style={{ fontSize: '13px', fontWeight: 600, color: gold, letterSpacing: '3px', marginBottom: '16px' }}>LEITORES</p>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '48px', color: '#fff' }}>O que estão dizendo</h2>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '20px' }}>
-            {depoimentos.map((d, i) => (
-              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '28px' }}>
-                <p style={{ fontSize: '14px', color: '#d1d5db', lineHeight: 1.7, marginBottom: '20px', fontStyle: 'italic' }}>"{d.texto}"</p>
-                <p style={{ fontSize: '14px', fontWeight: 700, color: '#fff' }}>{d.autor}</p>
-                <p style={{ fontSize: '12px', color: '#6b7280' }}>{d.desc}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>
