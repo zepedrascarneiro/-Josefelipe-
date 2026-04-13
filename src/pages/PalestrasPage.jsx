@@ -47,6 +47,7 @@ const empresas = [
 
 // Override global section styles
 const sectionStyle = { display: 'block', alignItems: 'unset', width: '100%' }
+const inputStyle = { width: '100%', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 16px', fontSize: '14px', color: '#fff', outline: 'none', fontFamily: 'inherit' }
 
 export default function PalestrasPage() {
   const [form, setForm] = useState({ nome: '', email: '', empresa: '', evento: '', tema: '', mensagem: '' })
@@ -213,90 +214,85 @@ export default function PalestrasPage() {
       </div>
 
       {/* Formulario */}
-      <section id="contratar" style={sectionStyle} className="py-24 px-6 bg-white/[0.02] border-t border-white/5">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">CONTRATE</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Solicite uma proposta</h2>
-            <p className="text-gray-500">Contratacao exclusiva via <a href="https://www.dmt.ag" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">DMT Palestras</a></p>
+      <div id="contratar" style={{ ...sectionStyle, padding: '100px 24px', background: 'rgba(255,255,255,0.02)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <p style={{ fontSize: '13px', fontWeight: 600, color: '#f59e0b', letterSpacing: '3px', marginBottom: '16px' }}>CONTRATE</p>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '16px', color: '#fff' }}>Solicite uma proposta</h2>
+            <p style={{ color: '#6b7280' }}>Contratação exclusiva via <a href="https://www.dmt.ag" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}>DMT Palestras</a></p>
           </div>
 
           {enviado ? (
-            <div className="text-center py-12">
-              <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
-                <Check size={32} className="text-green-500" />
+            <div style={{ textAlign: 'center', padding: '48px 0' }}>
+              <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                <Check size={32} style={{ color: '#22c55e' }} />
               </div>
-              <h3 className="text-xl font-bold mb-2">Solicitacao enviada!</h3>
-              <p className="text-gray-500">Seu email foi aberto com os dados preenchidos. Retorno em ate 24h.</p>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '8px' }}>Solicitação enviada!</h3>
+              <p style={{ color: '#6b7280' }}>Seu email foi aberto com os dados preenchidos. Retorno em até 24h.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid md:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                 <div>
-                  <label className="block text-xs font-medium text-gray-400 mb-1.5">Seu nome</label>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Seu nome</label>
                   <input required value={form.nome} onChange={e => setForm({ ...form, nome: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-amber-400/50 focus:outline-none transition"
-                    placeholder="Jose da Silva" />
+                    style={inputStyle} placeholder="José da Silva" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-400 mb-1.5">E-mail</label>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>E-mail</label>
                   <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-amber-400/50 focus:outline-none transition"
-                    placeholder="jose@empresa.com" />
+                    style={inputStyle} placeholder="jose@empresa.com" />
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-5">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                 <div>
-                  <label className="block text-xs font-medium text-gray-400 mb-1.5">Empresa / Organizacao</label>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Empresa / Organização</label>
                   <input required value={form.empresa} onChange={e => setForm({ ...form, empresa: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-amber-400/50 focus:outline-none transition"
-                    placeholder="Nome da empresa" />
+                    style={inputStyle} placeholder="Nome da empresa" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-400 mb-1.5">Nome do evento</label>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Nome do evento</label>
                   <input value={form.evento} onChange={e => setForm({ ...form, evento: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-amber-400/50 focus:outline-none transition"
-                    placeholder="Convencao de Vendas 2026" />
+                    style={inputStyle} placeholder="Convenção de Vendas 2026" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1.5">Tema de interesse</label>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Tema de interesse</label>
                 <select value={form.tema} onChange={e => setForm({ ...form, tema: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-amber-400/50 focus:outline-none transition appearance-none">
-                  <option value="" className="bg-black">Selecione um tema</option>
-                  {temas.map((t, i) => <option key={i} value={t.titulo} className="bg-black">{t.titulo}</option>)}
-                  <option value="Personalizada" className="bg-black">Palestra personalizada</option>
+                  style={{ ...inputStyle, appearance: 'none' }}>
+                  <option value="" style={{ background: '#000' }}>Selecione um tema</option>
+                  {temas.map((t, i) => <option key={i} value={t.titulo} style={{ background: '#000' }}>{t.titulo}</option>)}
+                  <option value="Personalizada" style={{ background: '#000' }}>Palestra personalizada</option>
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1.5">Detalhes do evento</label>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Detalhes do evento</label>
                 <textarea rows={4} value={form.mensagem} onChange={e => setForm({ ...form, mensagem: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-amber-400/50 focus:outline-none transition resize-none"
-                  placeholder="Data, local, numero de participantes, objetivos..." />
+                  style={{ ...inputStyle, resize: 'none' }} placeholder="Data, local, número de participantes, objetivos..." />
               </div>
               <button type="submit"
-                className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-100 transition text-sm flex items-center justify-center gap-2">
+                style={{ width: '100%', backgroundColor: '#fff', color: '#000', fontWeight: 700, padding: '16px', borderRadius: '10px', border: 'none', fontSize: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                 <Mic size={18} />
                 Solicitar Proposta
               </button>
-              <p className="text-center text-xs text-gray-600">Retorno em ate 24h uteis</p>
+              <p style={{ textAlign: 'center', fontSize: '12px', color: '#4b5563' }}>Retorno em até 24h úteis</p>
             </form>
           )}
         </div>
-      </section>
+      </div>
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-white/5">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-center md:text-left">
-            <p className="text-sm font-bold text-white/80">Jose Felipe Carneiro</p>
-            <p className="text-xs text-gray-600">Empreendedor, mentor e palestrante</p>
+      <footer style={{ padding: '48px 24px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+          <div>
+            <p style={{ fontSize: '14px', fontWeight: 700, color: 'rgba(255,255,255,0.8)' }}>José Felipe Carneiro</p>
+            <p style={{ fontSize: '12px', color: '#4b5563' }}>Empreendedor, mentor e palestrante</p>
           </div>
-          <div className="flex gap-6 text-xs text-gray-500">
-            <a href="/" className="hover:text-white transition">Home</a>
-            <a href="https://www.qualmeuvaluation.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Valuation Pro</a>
-            <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Instagram</a>
-            <a href="mailto:jose.felipe@dmt.ag" className="hover:text-white transition">jose.felipe@dmt.ag</a>
+          <div style={{ display: 'flex', gap: '24px', fontSize: '12px' }}>
+            <a href="/" style={{ color: '#6b7280', textDecoration: 'none' }}>Home</a>
+            <a href="https://www.qualmeuvaluation.com.br" target="_blank" rel="noopener noreferrer" style={{ color: '#6b7280', textDecoration: 'none' }}>Valuation Pro</a>
+            <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" style={{ color: '#6b7280', textDecoration: 'none' }}>Instagram</a>
+            <a href="mailto:jose.felipe@dmt.ag" style={{ color: '#6b7280', textDecoration: 'none' }}>jose.felipe@dmt.ag</a>
           </div>
         </div>
       </footer>
