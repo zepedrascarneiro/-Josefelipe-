@@ -92,7 +92,7 @@ export default function NucleoxPage() {
               Ver os 7 Pilares
             </a>
           </div>
-          <p style={{ marginTop: '32px', fontSize: '13px', color: dim }}>Entrega instantânea por e-mail · Bilíngue (PT-BR + EN) · Garantia de 7 dias</p>
+          <p style={{ marginTop: '32px', fontSize: '13px', color: dim }}>Entrega instantânea por e-mail · Bilíngue (PT-BR + EN)</p>
         </div>
       </div>
 
@@ -153,7 +153,7 @@ export default function NucleoxPage() {
           <div>
             <p style={badge}>O AUTOR</p>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 900, marginBottom: '16px' }}>José Felipe Carneiro</h2>
-            <p style={{ fontSize: '15px', color: muted, lineHeight: 1.8, marginBottom: '12px' }}>Co-fundador da Cervejaria Wäls (mais premiada do mundo) e da ZX Ventures (AB InBev). Construiu negócios em 6 países ao longo de 25 anos.</p>
+            <p style={{ fontSize: '15px', color: muted, lineHeight: 1.8, marginBottom: '12px' }}>Co-fundador da Cervejaria Wäls (mais premiada do mundo) e da ZX Ventures (AB InBev).</p>
             <p style={{ fontSize: '15px', color: muted, lineHeight: 1.8 }}>O NUCLEOx nasceu da necessidade de estruturar o caos mental que acompanha quem constrói do zero. É o método que ele usa todos os dias.</p>
           </div>
         </div>
@@ -215,7 +215,7 @@ export default function NucleoxPage() {
             <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap', fontSize: '13px', color: dim }}>
               <span>✓ Pix, Cartão ou Boleto</span>
               <span>✓ Entrega instantânea</span>
-              <span>✓ Garantia de 7 dias</span>
+              <span>✓ Acesso imediato após pagamento</span>
             </div>
           </>
         )}
