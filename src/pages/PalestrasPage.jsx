@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Mic, ArrowRight, Check, Star, Users, Building2, Globe, Award } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Mic, ArrowRight, Check, Star, Users, Globe, Award } from 'lucide-react'
 
 const temas = [
   {
@@ -62,9 +62,22 @@ const depoimentos = [
   },
 ]
 
+// Override global section styles
+const sectionStyle = { display: 'block', alignItems: 'unset', width: '100%' }
+
 export default function PalestrasPage() {
   const [form, setForm] = useState({ nome: '', email: '', empresa: '', evento: '', tema: '', mensagem: '' })
   const [enviado, setEnviado] = useState(false)
+
+  useEffect(() => {
+    document.body.style.backgroundColor = '#000'
+    document.body.style.color = '#fff'
+    document.title = 'Jose Felipe Carneiro — Palestras | Palestrante de Empreendedorismo'
+    return () => {
+      document.body.style.backgroundColor = ''
+      document.body.style.color = ''
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -90,7 +103,7 @@ export default function PalestrasPage() {
       </nav>
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
+      <section style={sectionStyle} className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm font-medium text-amber-400 tracking-widest mb-6">PALESTRANTE</p>
           <h1 className="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6">
@@ -117,7 +130,7 @@ export default function PalestrasPage() {
       </section>
 
       {/* Numeros */}
-      <section className="py-16 border-y border-white/5">
+      <section style={sectionStyle} className="py-16 border-y border-white/5">
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           {numeros.map((n, i) => (
             <div key={i} className="text-center">
@@ -130,7 +143,7 @@ export default function PalestrasPage() {
       </section>
 
       {/* Temas */}
-      <section id="temas" className="py-24 px-6">
+      <section id="temas" style={sectionStyle} className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">TEMAS</p>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Palestras sob medida</h2>
@@ -160,7 +173,7 @@ export default function PalestrasPage() {
       </section>
 
       {/* Empresas */}
-      <section className="py-16 border-y border-white/5">
+      <section style={sectionStyle} className="py-16 border-y border-white/5">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <p className="text-xs text-gray-500 tracking-widest mb-8">QUEM JA CONTOU COM JOSE FELIPE</p>
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
@@ -172,7 +185,7 @@ export default function PalestrasPage() {
       </section>
 
       {/* Depoimentos */}
-      <section className="py-24 px-6">
+      <section style={sectionStyle} className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">DEPOIMENTOS</p>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-14">O que dizem os organizadores</h2>
@@ -195,7 +208,7 @@ export default function PalestrasPage() {
       </section>
 
       {/* Apresentacoes */}
-      <section className="py-24 px-6 bg-white/[0.02]">
+      <section style={sectionStyle} className="py-24 px-6 bg-white/[0.02]">
         <div className="max-w-5xl mx-auto">
           <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">PREVIEW</p>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-14">Veja as apresentacoes</h2>
@@ -218,7 +231,7 @@ export default function PalestrasPage() {
       </section>
 
       {/* Como funciona */}
-      <section className="py-24 px-6">
+      <section style={sectionStyle} className="py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">PROCESSO</p>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-14">Como contratar</h2>
@@ -240,7 +253,7 @@ export default function PalestrasPage() {
       </section>
 
       {/* Formulario */}
-      <section id="contratar" className="py-24 px-6 bg-white/[0.02] border-t border-white/5">
+      <section id="contratar" style={sectionStyle} className="py-24 px-6 bg-white/[0.02] border-t border-white/5">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-sm font-medium text-amber-400 tracking-widest mb-4">CONTRATE</p>
