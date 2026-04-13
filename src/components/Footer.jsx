@@ -57,11 +57,6 @@ export default function Footer() {
             <p className="text-xs text-gray-600 uppercase tracking-widest font-bold mb-5">Contato</p>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="mailto:contato@josefelipe.com.br" className="text-gray-500 hover:text-white transition-colors break-all">
-                  contato@josefelipe.com.br
-                </a>
-              </li>
-              <li>
                 <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
                   @josefelipec
                 </a>

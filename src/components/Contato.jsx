@@ -91,8 +91,7 @@ export default function Contato() {
 
             {status === 'error' && (
               <p className="text-sm text-red-400">
-                Erro ao enviar. Tente por{' '}
-                <a href={`mailto:contato@josefelipe.com.br?subject=${encodeURIComponent(form.assunto || 'Contato')}`} className="underline">e-mail direto</a>.
+                Erro ao enviar. Tente novamente ou entre em contato pelo Instagram.
               </p>
             )}
 
@@ -110,10 +109,6 @@ export default function Contato() {
 
         {/* Contato direto — discreto */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-20 pt-12 border-t border-gray-800">
-          <a href="mailto:contato@josefelipe.com.br" className="text-sm text-gray-500 hover:text-white transition-colors">
-            contato@josefelipe.com.br
-          </a>
-          <span className="hidden sm:inline text-gray-700">·</span>
           <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 hover:text-white transition-colors">
             @josefelipec
           </a>
