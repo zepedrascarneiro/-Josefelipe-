@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 const s = { display: 'block', alignItems: 'unset', width: '100%' }
-const VOOMP = 'https://pay.voompcreators.com.br/11811/offer/m4HKL6'
+const MP_LINK = 'https://mpago.la/1nuezTB'
+const PDF_PT = '/nx-d7f3a2e9.pdf'
+const PDF_EN = '/nx-en-b4c8e1f2.pdf'
 const gold = '#D4AF37'
 const goldLight = '#FFD700'
 const muted = 'rgba(255,255,255,0.5)'
@@ -23,10 +25,30 @@ const before = ['Pensamento disperso e reativo', 'Decisões baseadas em emoção
 const after = ['Pensamento estruturado e intencional', 'Decisões com critérios verificáveis', 'Execução com clareza e foco', 'Filtro natural do essencial', 'Ação com método e disciplina']
 
 export default function NucleoxPage() {
+  const [unlocked, setUnlocked] = useState(() => {
+    const saved = localStorage.getItem('nx_unlocked')
+    if (!saved) return false
+    const days = (Date.now() - parseInt(localStorage.getItem('nx_unlock_date') || '0')) / (1000 * 60 * 60 * 24)
+    if (days > 30) { localStorage.removeItem('nx_unlocked'); localStorage.removeItem('nx_unlock_date'); return false }
+    return true
+  })
+
   useEffect(() => {
     document.body.style.backgroundColor = '#000'
     document.body.style.color = '#fff'
     document.title = 'NUCLEOx — A Geometria do Pensamento | E-book'
+
+    // Check Mercado Pago return
+    const params = new URLSearchParams(window.location.search)
+    const status = params.get('status') || params.get('collection_status') || ''
+    const paymentId = params.get('payment_id') || params.get('collection_id') || ''
+    if (status === 'approved' || paymentId) {
+      localStorage.setItem('nx_unlocked', 'true')
+      localStorage.setItem('nx_unlock_date', Date.now().toString())
+      setUnlocked(true)
+      window.history.replaceState({}, '', '/nucleox')
+    }
+
     return () => { document.body.style.backgroundColor = ''; document.body.style.color = '' }
   }, [])
 
@@ -43,7 +65,7 @@ export default function NucleoxPage() {
           <a href="/" style={{ fontSize: '16px', fontWeight: 800, letterSpacing: '1px', color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>
             NUCLEO<sup style={{ color: gold, fontSize: '0.65em' }}>x</sup>
           </a>
-          <a href={VOOMP} target="_blank" rel="noopener noreferrer"
+          <a href={MP_LINK} target="_blank" rel="noopener noreferrer"
             style={{ backgroundColor: gold, color: '#000', fontSize: '12px', fontWeight: 700, padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', letterSpacing: '1px' }}>
             GARANTIR ACESSO
           </a>
@@ -61,7 +83,7 @@ export default function NucleoxPage() {
             O padrão invisível em todas as mentes brilhantes. 7 pilares do pensamento estruturado, baseados em neurociência aplicada. Dominável em 21 dias.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href={VOOMP} target="_blank" rel="noopener noreferrer"
+            <a href={MP_LINK} target="_blank" rel="noopener noreferrer"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: gold, color: '#000', fontWeight: 700, padding: '18px 40px', borderRadius: '10px', fontSize: '15px', textDecoration: 'none' }}>
               Garantir Meu Acesso
             </a>
@@ -152,29 +174,51 @@ export default function NucleoxPage() {
         </div>
       </div>
 
-      {/* Preço */}
+      {/* Preço / Download */}
       <div style={{ ...s, padding: '100px 24px', textAlign: 'center' }}>
-        <p style={badge}>OFERTA ESPECIAL</p>
-        <h2 style={heading}>Invista na sua mente</h2>
-        <div style={{ background: 'linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(212,175,55,0.04) 100%)', border: '2px solid rgba(212,175,55,0.4)', borderRadius: '20px', padding: '48px 40px', textAlign: 'center', maxWidth: '500px', margin: '48px auto 0' }}>
-          <p style={{ fontSize: '20px', textDecoration: 'line-through', color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>De R$ 69,90</p>
-          <p style={{ fontSize: 'clamp(56px, 14vw, 80px)', fontWeight: 900, color: goldLight, lineHeight: 1, letterSpacing: '-2px', margin: '8px 0' }}>R$ 49,90</p>
-          <div style={{ display: 'inline-block', background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.3)', borderRadius: '50px', padding: '6px 16px', fontSize: '12px', fontWeight: 600, color: gold, margin: '12px 0' }}>
-            30% OFF — Economia de R$ 20,00
-          </div>
-          <p style={{ marginTop: '12px', fontSize: '15px', color: 'rgba(255,255,255,0.7)' }}>ou em até <strong style={{ color: gold }}>12x de R$ 4,16</strong> sem juros</p>
-        </div>
-        <div style={{ marginTop: '40px' }}>
-          <a href={VOOMP} target="_blank" rel="noopener noreferrer"
-            style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: gold, color: '#000', fontWeight: 700, padding: '20px 48px', borderRadius: '10px', fontSize: '17px', textDecoration: 'none', width: '100%', maxWidth: '420px' }}>
-            Garantir Meu Acesso Agora
-          </a>
-        </div>
-        <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap', fontSize: '13px', color: dim }}>
-          <span>✓ Pagamento 100% seguro</span>
-          <span>✓ Entrega instantânea</span>
-          <span>✓ Garantia de 7 dias</span>
-        </div>
+        {unlocked ? (
+          <>
+            <p style={badge}>ACESSO LIBERADO</p>
+            <h2 style={heading}>Seu e-book está pronto!</h2>
+            <p style={{ color: muted, marginBottom: '48px', maxWidth: '480px', margin: '0 auto 48px', lineHeight: 1.7 }}>
+              Obrigado pela compra. Baixe seus arquivos abaixo. Acesso disponível por 30 dias.
+            </p>
+            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href={PDF_PT} download="NUCLEOx_PT.pdf"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', backgroundColor: gold, color: '#000', fontWeight: 700, padding: '20px 40px', borderRadius: '10px', fontSize: '16px', textDecoration: 'none' }}>
+                📖 Baixar E-book (PT-BR)
+              </a>
+              <a href={PDF_EN} download="NUCLEOx_EN.pdf"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', backgroundColor: 'transparent', color: '#fff', fontWeight: 600, padding: '20px 40px', borderRadius: '10px', fontSize: '16px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.2)' }}>
+                🌍 Download E-book (EN)
+              </a>
+            </div>
+          </>
+        ) : (
+          <>
+            <p style={badge}>OFERTA ESPECIAL</p>
+            <h2 style={heading}>Invista na sua mente</h2>
+            <div style={{ background: 'linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(212,175,55,0.04) 100%)', border: '2px solid rgba(212,175,55,0.4)', borderRadius: '20px', padding: '48px 40px', textAlign: 'center', maxWidth: '500px', margin: '48px auto 0' }}>
+              <p style={{ fontSize: '20px', textDecoration: 'line-through', color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>De R$ 69,90</p>
+              <p style={{ fontSize: 'clamp(56px, 14vw, 80px)', fontWeight: 900, color: goldLight, lineHeight: 1, letterSpacing: '-2px', margin: '8px 0' }}>R$ 49,90</p>
+              <div style={{ display: 'inline-block', background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.3)', borderRadius: '50px', padding: '6px 16px', fontSize: '12px', fontWeight: 600, color: gold, margin: '12px 0' }}>
+                30% OFF — Economia de R$ 20,00
+              </div>
+              <p style={{ marginTop: '12px', fontSize: '15px', color: 'rgba(255,255,255,0.7)' }}>ou em até <strong style={{ color: gold }}>12x de R$ 4,16</strong> sem juros</p>
+            </div>
+            <div style={{ marginTop: '40px' }}>
+              <a href={MP_LINK}
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: gold, color: '#000', fontWeight: 700, padding: '20px 48px', borderRadius: '10px', fontSize: '17px', textDecoration: 'none', width: '100%', maxWidth: '420px' }}>
+                Garantir Meu Acesso Agora
+              </a>
+            </div>
+            <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap', fontSize: '13px', color: dim }}>
+              <span>✓ Pix, Cartão ou Boleto</span>
+              <span>✓ Entrega instantânea</span>
+              <span>✓ Garantia de 7 dias</span>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Footer */}
