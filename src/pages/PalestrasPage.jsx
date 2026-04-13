@@ -292,7 +292,7 @@ export default function PalestrasPage() {
             <a href="/" style={{ color: '#6b7280', textDecoration: 'none' }}>Home</a>
             <a href="https://www.qualmeuvaluation.com.br" target="_blank" rel="noopener noreferrer" style={{ color: '#6b7280', textDecoration: 'none' }}>Valuation Pro</a>
             <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" style={{ color: '#6b7280', textDecoration: 'none' }}>Instagram</a>
-            <a href="mailto:zepedrascarneiro@gmail.com" style={{ color: '#6b7280', textDecoration: 'none' }}>zepedrascarneiro@gmail.com</a>
+            <a href="#contratar" onClick={e => { e.preventDefault(); document.querySelector('#contratar')?.scrollIntoView({ behavior: 'smooth' }) }} style={{ color: '#6b7280', textDecoration: 'none' }}>Contato</a>
           </div>
         </div>
       </footer>
