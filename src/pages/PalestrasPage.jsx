@@ -67,7 +67,7 @@ export default function PalestrasPage() {
     e.preventDefault()
     const subject = encodeURIComponent(`Palestra: ${form.tema || 'Contato'} - ${form.empresa}`)
     const body = encodeURIComponent(`Nome: ${form.nome}\nEmpresa: ${form.empresa}\nEvento: ${form.evento}\nTema: ${form.tema}\n\n${form.mensagem}`)
-    window.location.href = `mailto:jose.felipe@dmt.ag?subject=${subject}&body=${body}`
+    window.location.href = `mailto:zepedrascarneiro@gmail.com?subject=${subject}&body=${body}`
     setEnviado(true)
   }
 
@@ -219,7 +219,7 @@ export default function PalestrasPage() {
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontSize: '13px', fontWeight: 600, color: '#f59e0b', letterSpacing: '3px', marginBottom: '16px' }}>CONTRATE</p>
             <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '16px', color: '#fff' }}>Solicite uma proposta</h2>
-            <p style={{ color: '#6b7280' }}>Contratação exclusiva via <a href="https://www.dmt.ag" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}>DMT Palestras</a></p>
+            <p style={{ color: '#6b7280' }}>Preencha o formulário abaixo e receba uma proposta personalizada.</p>
           </div>
 
           {enviado ? (
@@ -292,7 +292,7 @@ export default function PalestrasPage() {
             <a href="/" style={{ color: '#6b7280', textDecoration: 'none' }}>Home</a>
             <a href="https://www.qualmeuvaluation.com.br" target="_blank" rel="noopener noreferrer" style={{ color: '#6b7280', textDecoration: 'none' }}>Valuation Pro</a>
             <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" style={{ color: '#6b7280', textDecoration: 'none' }}>Instagram</a>
-            <a href="mailto:jose.felipe@dmt.ag" style={{ color: '#6b7280', textDecoration: 'none' }}>jose.felipe@dmt.ag</a>
+            <a href="mailto:zepedrascarneiro@gmail.com" style={{ color: '#6b7280', textDecoration: 'none' }}>zepedrascarneiro@gmail.com</a>
           </div>
         </div>
       </footer>
