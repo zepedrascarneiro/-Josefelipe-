@@ -46,6 +46,21 @@ export default function NucleoxPage() {
       localStorage.setItem('nx_unlocked', 'true')
       localStorage.setItem('nx_unlock_date', Date.now().toString())
       setUnlocked(true)
+      // Google Ads conversion — only on confirmed payment
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-18029764921/NX_PURCHASE',
+          value: 49.90,
+          currency: 'BRL',
+          transaction_id: paymentId || Date.now().toString()
+        })
+        window.gtag('event', 'purchase', {
+          value: 49.90,
+          currency: 'BRL',
+          transaction_id: paymentId || Date.now().toString(),
+          items: [{ item_name: 'NUCLEOx E-book', price: 49.90 }]
+        })
+      }
       window.history.replaceState({}, '', '/nucleox')
     }
 
