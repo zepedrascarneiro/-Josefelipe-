@@ -47,21 +47,21 @@ export default function Palestras() {
         </div>
 
         {/* CTA */}
-        <div className="bg-black text-white rounded-none p-10 md:p-16 text-center overflow-hidden">
+        <div className="bg-black text-white p-12 md:p-20 text-center overflow-hidden" style={{ borderRadius: '16px' }}>
           <h3 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
             Leve essa energia para seu evento
           </h3>
-          <p className="text-gray-400 max-w-lg mx-auto mb-10 text-lg">
+          <p className="text-gray-400 max-w-lg mx-auto mb-12 text-lg leading-relaxed">
             Palestras sob medida para convenções, eventos corporativos,
             congressos e encontros de liderança.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <a
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-10 py-5 font-bold text-base uppercase tracking-wider rounded-lg transition-all"
-              style={{ backgroundColor: '#25D366', color: '#fff' }}
+              className="flex items-center justify-center gap-3 px-10 py-5 font-bold text-base uppercase tracking-wider transition-all"
+              style={{ backgroundColor: '#25D366', color: '#fff', borderRadius: '12px', minWidth: '260px' }}
             >
               <MessageCircle size={20} />
               Falar no WhatsApp
@@ -69,7 +69,8 @@ export default function Palestras() {
             <a
               href="#contato"
               onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
-              className="flex items-center gap-3 px-10 py-5 bg-white text-black font-bold text-base uppercase tracking-wider rounded-lg hover:bg-gray-200 transition-colors"
+              className="flex items-center justify-center gap-3 px-10 py-5 font-bold text-base uppercase tracking-wider transition-colors"
+              style={{ backgroundColor: 'transparent', color: '#fff', border: '2px solid rgba(255,255,255,0.4)', borderRadius: '12px', minWidth: '260px' }}
             >
               <Mic size={18} />
               Solicitar Proposta
