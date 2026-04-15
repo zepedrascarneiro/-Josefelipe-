@@ -47,7 +47,7 @@ export default function Palestras() {
         </div>
 
         {/* CTA */}
-        <div className="bg-black text-white p-12 md:p-20 text-center overflow-hidden" style={{ borderRadius: '16px' }}>
+        <div className="bg-black text-white text-center overflow-hidden" style={{ borderRadius: '16px', padding: 'clamp(48px, 6vw, 80px) clamp(32px, 4vw, 64px)' }}>
           <h3 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
             Leve essa energia para seu evento
           </h3>
