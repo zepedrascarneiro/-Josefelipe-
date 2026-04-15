@@ -1,4 +1,6 @@
-import { Mic, ArrowRight } from 'lucide-react'
+import { Mic, ArrowRight, MessageCircle } from 'lucide-react'
+
+const WA_LINK = 'https://wa.me/5511976372211?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20palestras%20do%20Jos%C3%A9%20Felipe.'
 
 export default function Palestras() {
   return (
@@ -45,25 +47,35 @@ export default function Palestras() {
         </div>
 
         {/* CTA */}
-        <div className="bg-black text-white rounded-none p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left overflow-hidden">
-          <div>
-            <h3 className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
-              Leve essa energia<br className="hidden md:block" /> para seu evento
-            </h3>
-            <p className="text-gray-500 max-w-md">
-              Palestras sob medida para convenções, eventos corporativos,
-              congressos e encontros de liderança.
-            </p>
+        <div className="bg-black text-white rounded-none p-10 md:p-16 text-center overflow-hidden">
+          <h3 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
+            Leve essa energia para seu evento
+          </h3>
+          <p className="text-gray-400 max-w-lg mx-auto mb-10 text-lg">
+            Palestras sob medida para convenções, eventos corporativos,
+            congressos e encontros de liderança.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-10 py-5 font-bold text-base uppercase tracking-wider rounded-lg transition-all"
+              style={{ backgroundColor: '#25D366', color: '#fff' }}
+            >
+              <MessageCircle size={20} />
+              Falar no WhatsApp
+            </a>
+            <a
+              href="#contato"
+              onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
+              className="flex items-center gap-3 px-10 py-5 bg-white text-black font-bold text-base uppercase tracking-wider rounded-lg hover:bg-gray-200 transition-colors"
+            >
+              <Mic size={18} />
+              Solicitar Proposta
+              <ArrowRight size={16} />
+            </a>
           </div>
-          <a
-            href="#contato"
-            onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="shrink-0 flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-none hover:bg-gray-200 transition-colors"
-          >
-            <Mic size={16} />
-            Quero Contratar
-            <ArrowRight size={15} />
-          </a>
         </div>
       </div>
     </section>
