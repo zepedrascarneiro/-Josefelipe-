@@ -31,7 +31,18 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20 h-20 flex items-center justify-end gap-12">
+      <nav className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20 h-20 flex items-center justify-between gap-12">
+
+        {/* Marca — leva ao topo */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className={`font-extrabold tracking-tight text-lg transition-colors ${
+            scrolled ? 'text-black' : 'text-white'
+          }`}
+          aria-label="José Felipe Carneiro — topo"
+        >
+          JOSÉ&nbsp;FELIPE
+        </button>
 
         <div className="hidden md:flex items-center gap-12">
           <ul className="flex items-center gap-10">
