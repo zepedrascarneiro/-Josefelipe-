@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { X, ArrowRight } from 'lucide-react'
+import { X, ArrowRight, Star } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function PopupNewsletter() {
@@ -52,12 +52,16 @@ export default function PopupNewsletter() {
           <X size={16} />
         </button>
 
-        {/* Capa do livro — brilho dourado atrás */}
+        {/* Capa do livro com brilho dourado atrás */}
         <div className="relative sm:w-2/5 flex items-center justify-center p-8 sm:p-10 overflow-hidden">
           <div
             className="absolute inset-0 pointer-events-none"
             style={{ background: 'radial-gradient(circle at 50% 45%, rgba(201,168,76,0.22) 0%, rgba(201,168,76,0) 65%)' }}
           />
+          {/* Selo Best Seller */}
+          <span className="absolute top-5 left-5 z-10 flex items-center gap-1 bg-[#c9a84c] text-black text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1">
+            <Star size={11} fill="currentColor" strokeWidth={0} /> Best Seller
+          </span>
           <img
             src="/livro-capa.jpg"
             alt="Performance Consciente por José Felipe Carneiro"
@@ -80,8 +84,8 @@ export default function PopupNewsletter() {
           </h3>
 
           <p className="text-sm text-gray-400 leading-relaxed mb-6">
-            Os <strong className="text-white">7 pilares</strong> que separam quem rende de quem se esgota —
-            de quem construiu a cervejaria mais premiada do mundo e negócios em diversos países.
+            Os <strong className="text-white">7 pilares</strong> que separam quem rende de quem se esgota.
+            De quem construiu a cervejaria mais premiada do mundo e negócios em diversos países.
           </p>
 
           <a

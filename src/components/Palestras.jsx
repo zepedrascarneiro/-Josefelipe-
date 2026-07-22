@@ -19,12 +19,12 @@ const temas = [
   {
     n: '03',
     titulo: 'Inovação & Reinvenção',
-    desc: 'Como criar categorias novas e reinventar mercados — da ZX Ventures às hard kombuchas nos EUA e no Brasil.',
+    desc: 'Como criar categorias novas e reinventar mercados, da ZX Ventures às hard kombuchas nos EUA e no Brasil.',
   },
   {
     n: '04',
     titulo: 'Alta Performance no Agronegócio',
-    desc: 'Inovação, estratégia e execução para o agro — a mentalidade do campo ao copo aplicada a quem produz de verdade.',
+    desc: 'Inovação, estratégia e execução para o agro. A mentalidade do campo ao copo, aplicada a quem produz de verdade.',
   },
 ]
 
@@ -32,7 +32,7 @@ const temas = [
 const decks = [
   {
     titulo: 'Apresentação Geral',
-    desc: 'Media kit completo — trajetória, temas e formatos de palestra.',
+    desc: 'Media kit completo com trajetória, temas e formatos de palestra.',
     thumb: '/palestra-geral-thumb.jpg',
     pdf: '/palestra-geral.pdf',
   },

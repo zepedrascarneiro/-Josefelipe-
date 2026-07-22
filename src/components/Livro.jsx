@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Star } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function Livro() {
@@ -14,14 +14,19 @@ export default function Livro() {
           className="grid lg:grid-cols-2 gap-20 items-center"
         >
 
-          {/* Capa — primeiro no mobile, visual como protagonista */}
+          {/* Capa (primeiro no mobile, visual como protagonista) */}
           <div className="flex justify-center lg:order-2">
-            <img
-              src="/livro-capa.jpg"
-              alt="Capa do Livro Performance Consciente"
-              loading="lazy"
-              className="w-full max-w-sm drop-shadow-[0_30px_60px_rgba(201,168,76,0.15)]"
-            />
+            <div className="relative w-full max-w-sm">
+              <span className="absolute -top-4 -left-4 z-10 flex items-center gap-1.5 bg-[#c9a84c] text-black text-xs font-extrabold uppercase tracking-wider px-3.5 py-2 shadow-[0_10px_25px_rgba(201,168,76,0.35)]">
+                <Star size={13} fill="currentColor" strokeWidth={0} /> Best Seller
+              </span>
+              <img
+                src="/livro-capa.jpg"
+                alt="Capa do Livro Performance Consciente"
+                loading="lazy"
+                className="w-full drop-shadow-[0_30px_60px_rgba(201,168,76,0.15)]"
+              />
+            </div>
           </div>
 
           {/* Conteúdo — escaneável e impactante */}
