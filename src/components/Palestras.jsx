@@ -104,9 +104,11 @@ export default function Palestras() {
           </p>
         </motion.div>
 
-        {/* Vídeo no palco (prova social) */}
-        <div className="mb-24">
-          <VideoPalco />
+        {/* Vídeo no palco (prova social) — largura contida pra não ampliar o 480p e manter nitidez */}
+        <div className="mb-24 flex justify-center">
+          <div style={{ width: '100%', maxWidth: '640px' }}>
+            <VideoPalco />
+          </div>
         </div>
 
         {/* Temas de palestra */}
