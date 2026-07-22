@@ -1,5 +1,42 @@
-import { Mic, ArrowRight, MessageCircle, FileText } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { Mic, ArrowRight, MessageCircle, FileText, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
+
+// Player do reel de palco: mostra o poster + botão; controles nativos ao dar play.
+function VideoPalco() {
+  const ref = useRef(null)
+  const [playing, setPlaying] = useState(false)
+  const start = () => { ref.current?.play(); setPlaying(true) }
+
+  return (
+    <div className="relative w-full overflow-hidden bg-black border border-gray-200" style={{ aspectRatio: '16/9' }}>
+      <video
+        ref={ref}
+        src="/josefelipe-palco.mp4"
+        poster="/palco-poster.jpg"
+        preload="metadata"
+        controls={playing}
+        playsInline
+        className="w-full h-full object-cover"
+      />
+      {!playing && (
+        <button
+          onClick={start}
+          aria-label="Assistir vídeo no palco"
+          className="absolute inset-0 flex flex-col items-center justify-center group"
+        >
+          <span className="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition-colors" />
+          <span className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/95 shadow-lg transition-transform group-hover:scale-105">
+            <Play size={26} className="text-black ml-1" fill="currentColor" strokeWidth={0} />
+          </span>
+          <span className="relative mt-4 text-white text-xs font-bold uppercase tracking-widest drop-shadow">
+            Veja no palco
+          </span>
+        </button>
+      )}
+    </div>
+  )
+}
 
 const WA_LINK = 'https://wa.me/5511976372211?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20palestras%20do%20Jos%C3%A9%20Felipe.'
 
@@ -66,6 +103,11 @@ export default function Palestras() {
             No palco, José Felipe entrega experiência real, não teoria.
           </p>
         </motion.div>
+
+        {/* Vídeo no palco (prova social) */}
+        <div className="mb-24">
+          <VideoPalco />
+        </div>
 
         {/* Temas de palestra */}
         <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-8">
