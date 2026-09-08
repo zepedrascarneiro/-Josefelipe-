@@ -55,10 +55,10 @@ export default function Hero() {
       }}>
 
         <p
-          className="text-xs font-bold uppercase tracking-[0.3em]"
+          className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.3em]"
           style={{ color: 'rgba(255,255,255,0.55)', marginBottom: '1.2rem' }}
         >
-          Empreendedor &nbsp;·&nbsp; Mentor &nbsp;·&nbsp; Palestrante
+          Empreendedor &nbsp;·&nbsp; Mentor &nbsp;·&nbsp; Palestrante &nbsp;·&nbsp; Autor Best Seller de Performance Consciente
         </p>
 
         <h1
