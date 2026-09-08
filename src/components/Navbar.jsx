@@ -5,6 +5,7 @@ const navLinks = [
   { label: 'Sobre',     href: '#sobre' },
   { label: 'Livro',     href: '#livro' },
   { label: 'Palestras', href: '#palestras' },
+  { label: 'Valuation', href: '#valuation' },
 ]
 
 export default function Navbar() {
