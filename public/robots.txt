@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://josefelipe.com.br/sitemap.xml
