@@ -8,6 +8,8 @@ const empresas = [
   { n: 'Stadt Jever', s: 'Do Campo ao Copo' },
   { n: 'Novo Brazil', s: 'San Diego, EUA' },
   { n: 'Fazenda Cervejeira', s: 'Belo Horizonte' },
+  { n: 'Investidor', s: 'Etus Media Holding · Anunciagro · Brazilian Coffee King' },
+  { n: 'Campo Villa Ipioca', s: 'Capela Ipioca · Casamar Beach Club · Fazenda Alagoas' },
 ]
 
 export default function Sobre() {
