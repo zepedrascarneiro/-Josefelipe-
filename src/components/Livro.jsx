@@ -15,7 +15,7 @@ export default function Livro() {
         >
 
           {/* Capa (primeiro no mobile, visual como protagonista) */}
-          <div className="flex justify-center lg:order-2">
+          <div className="flex flex-col items-center lg:order-2">
             <div className="relative w-full max-w-sm">
               <span className="absolute -top-4 -left-4 z-10 flex items-center gap-1.5 bg-[#c9a84c] text-black text-xs font-extrabold uppercase tracking-wider px-3.5 py-2 shadow-[0_10px_25px_rgba(201,168,76,0.35)]">
                 <Star size={13} fill="currentColor" strokeWidth={0} /> Best Seller
@@ -27,6 +27,9 @@ export default function Livro() {
                 className="w-full drop-shadow-[0_30px_60px_rgba(201,168,76,0.15)]"
               />
             </div>
+            <p className="text-[11px] text-gray-500 mt-4 text-center">
+              Reconhecido por PublishNews, Veja e BookInfo
+            </p>
           </div>
 
           {/* Conteúdo — escaneável e impactante */}
