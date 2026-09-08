@@ -41,7 +41,7 @@ export default function Contato() {
   }
 
   return (
-    <section id="contato" className="pt-28 md:pt-56 pb-32 md:pb-64 bg-black text-white">
+    <section id="contato" className="scroll-mt-24 pt-28 md:pt-56 pb-32 md:pb-64 bg-black text-white">
       <div className="max-w-xl mx-auto px-6 md:px-8">
 
         {/* Título */}

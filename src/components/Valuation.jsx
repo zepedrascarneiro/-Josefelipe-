@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 export default function Valuation() {
   return (
-    <section id="valuation" className="py-20 md:py-40 bg-white">
+    <section id="valuation" className="scroll-mt-24 py-20 md:py-40 bg-white">
       <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
