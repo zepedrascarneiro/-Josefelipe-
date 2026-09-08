@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Mic, ArrowRight, Check, Users, Globe, Award } from 'lucide-react'
+import { Mic, ArrowRight, Check, Users, Globe, Award, Loader2 } from 'lucide-react'
+
+const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
 
 const temas = [
   {
@@ -47,11 +49,11 @@ const empresas = [
 
 // Override global section styles
 const sectionStyle = { display: 'block', alignItems: 'unset', width: '100%' }
-const inputStyle = { width: '100%', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 16px', fontSize: '14px', color: '#fff', outline: 'none', fontFamily: 'inherit' }
+const inputStyle = { width: '100%', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 16px', fontSize: '16px', color: '#fff', outline: 'none', fontFamily: 'inherit' }
 
 export default function PalestrasPage() {
   const [form, setForm] = useState({ nome: '', email: '', empresa: '', evento: '', tema: '', mensagem: '' })
-  const [enviado, setEnviado] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | sending | ok | error
 
   useEffect(() => {
     document.body.style.backgroundColor = '#000'
@@ -63,12 +65,46 @@ export default function PalestrasPage() {
     }
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Palestra: ${form.tema || 'Contato'} - ${form.empresa}`)
-    const body = encodeURIComponent(`Nome: ${form.nome}\nEmpresa: ${form.empresa}\nEvento: ${form.evento}\nTema: ${form.tema}\n\n${form.mensagem}`)
-    window.location.href = `mailto:zepedrascarneiro@gmail.com?subject=${subject}&body=${body}`
-    setEnviado(true)
+    setStatus('sending')
+    try {
+      const res = await fetch(FORMSUBMIT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          nome: form.nome,
+          email: form.email,
+          empresa: form.empresa,
+          evento: form.evento,
+          tema: form.tema || '(não informado)',
+          mensagem: form.mensagem,
+          _subject: `[Palestras] ${form.tema || 'Solicitação de proposta'} — ${form.empresa}`,
+          _replyto: form.email,
+          _captcha: 'false',
+          _template: 'box',
+        }),
+      })
+      const data = await res.json()
+      if (data.success === 'true' || data.success === true) {
+        setStatus('ok')
+        // Google Analytics — lead qualificado de palestra
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'generate_lead', {
+            event_category: 'palestras',
+            event_label: form.tema || 'nao_informado',
+          })
+          // TODO: trocar send_to pelo código real assim que a ação de
+          // conversão "Lead — Palestras" existir no Google Ads
+          // (Ferramentas e configurações > Conversões > Nova ação).
+          // window.gtag('event', 'conversion', { send_to: 'AW-18029764921/SEU_LABEL_AQUI' })
+        }
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -175,18 +211,19 @@ export default function PalestrasPage() {
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '48px', color: '#fff' }}>Veja as apresentações</h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '32px' }}>
-            <div>
-              <p style={{ fontSize: '14px', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>Apresentação Geral</p>
-              <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', aspectRatio: '16/9' }}>
-                <iframe src="/palestra-geral.pdf" title="Apresentação Geral" style={{ width: '100%', height: '100%', border: 'none' }} />
-              </div>
-            </div>
-            <div>
-              <p style={{ fontSize: '14px', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>Apresentação Agro</p>
-              <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', aspectRatio: '16/9' }}>
-                <iframe src="/palestra-agro.pdf" title="Apresentação Agro" style={{ width: '100%', height: '100%', border: 'none' }} />
-              </div>
-            </div>
+            {[
+              { titulo: 'Apresentação Geral', thumb: '/palestra-geral-thumb.jpg', pdf: '/palestra-geral.pdf' },
+              { titulo: 'Apresentação Agro', thumb: '/palestra-agro-thumb.jpg', pdf: '/palestra-agro.pdf' },
+            ].map(d => (
+              <a key={d.pdf} href={d.pdf} target="_blank" rel="noopener noreferrer"
+                style={{ display: 'block', textDecoration: 'none' }}>
+                <p style={{ fontSize: '14px', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>{d.titulo}</p>
+                <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', aspectRatio: '16/9' }}>
+                  <img src={d.thumb} alt={`Capa da ${d.titulo}`} loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </div>
@@ -222,13 +259,13 @@ export default function PalestrasPage() {
             <p style={{ color: '#6b7280' }}>Preencha o formulário abaixo e receba uma proposta personalizada.</p>
           </div>
 
-          {enviado ? (
+          {status === 'ok' ? (
             <div style={{ textAlign: 'center', padding: '48px 0' }}>
               <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                 <Check size={32} style={{ color: '#22c55e' }} />
               </div>
               <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '8px' }}>Solicitação enviada!</h3>
-              <p style={{ color: '#6b7280' }}>Seu email foi aberto com os dados preenchidos. Retorno em até 24h.</p>
+              <p style={{ color: '#6b7280' }}>Obrigado! Retorno em até 24h úteis.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -236,30 +273,30 @@ export default function PalestrasPage() {
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Seu nome</label>
                   <input required value={form.nome} onChange={e => setForm({ ...form, nome: e.target.value })}
-                    style={inputStyle} placeholder="José da Silva" />
+                    style={inputStyle} placeholder="José da Silva" disabled={status === 'sending'} />
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>E-mail</label>
                   <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
-                    style={inputStyle} placeholder="jose@empresa.com" />
+                    style={inputStyle} placeholder="jose@empresa.com" disabled={status === 'sending'} />
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Empresa / Organização</label>
                   <input required value={form.empresa} onChange={e => setForm({ ...form, empresa: e.target.value })}
-                    style={inputStyle} placeholder="Nome da empresa" />
+                    style={inputStyle} placeholder="Nome da empresa" disabled={status === 'sending'} />
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Nome do evento</label>
                   <input value={form.evento} onChange={e => setForm({ ...form, evento: e.target.value })}
-                    style={inputStyle} placeholder="Convenção de Vendas 2026" />
+                    style={inputStyle} placeholder="Convenção de Vendas 2026" disabled={status === 'sending'} />
                 </div>
               </div>
               <div>
                 <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Tema de interesse</label>
                 <select value={form.tema} onChange={e => setForm({ ...form, tema: e.target.value })}
-                  style={{ ...inputStyle, appearance: 'none' }}>
+                  style={{ ...inputStyle, appearance: 'none' }} disabled={status === 'sending'}>
                   <option value="" style={{ background: '#000' }}>Selecione um tema</option>
                   {temas.map((t, i) => <option key={i} value={t.titulo} style={{ background: '#000' }}>{t.titulo}</option>)}
                   <option value="Personalizada" style={{ background: '#000' }}>Palestra personalizada</option>
@@ -268,12 +305,17 @@ export default function PalestrasPage() {
               <div>
                 <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#9ca3af', marginBottom: '8px' }}>Detalhes do evento</label>
                 <textarea rows={4} value={form.mensagem} onChange={e => setForm({ ...form, mensagem: e.target.value })}
-                  style={{ ...inputStyle, resize: 'none' }} placeholder="Data, local, número de participantes, objetivos..." />
+                  style={{ ...inputStyle, resize: 'none' }} placeholder="Data, local, número de participantes, objetivos..." disabled={status === 'sending'} />
               </div>
-              <button type="submit"
-                style={{ width: '100%', backgroundColor: '#fff', color: '#000', fontWeight: 700, padding: '16px', borderRadius: '10px', border: 'none', fontSize: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                <Mic size={18} />
-                Solicitar Proposta
+              {status === 'error' && (
+                <p style={{ fontSize: '13px', color: '#f87171', textAlign: 'center' }}>
+                  Erro ao enviar. Tente novamente ou fale pelo WhatsApp.
+                </p>
+              )}
+              <button type="submit" disabled={status === 'sending'}
+                style={{ width: '100%', backgroundColor: '#fff', color: '#000', fontWeight: 700, padding: '16px', borderRadius: '10px', border: 'none', fontSize: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', opacity: status === 'sending' ? 0.6 : 1 }}>
+                {status === 'sending' ? <Loader2 size={18} className="animate-spin" /> : <Mic size={18} />}
+                {status === 'sending' ? 'Enviando...' : 'Solicitar Proposta'}
               </button>
               <p style={{ textAlign: 'center', fontSize: '12px', color: '#4b5563' }}>Retorno em até 24h úteis</p>
             </form>
@@ -309,6 +351,7 @@ export default function PalestrasPage() {
         }}
         onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
         onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+        onClick={() => { if (typeof window.gtag === 'function') window.gtag('event', 'contact_whatsapp', { event_category: 'palestras' }) }}
         aria-label="Contato via WhatsApp"
       >
         <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff">
