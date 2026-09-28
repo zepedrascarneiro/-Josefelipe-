@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
-import { X, ArrowRight, Star } from 'lucide-react'
+import { X, ArrowRight, Star, Award } from 'lucide-react'
 import { motion } from 'framer-motion'
+
+const listas = ['Publish News', 'Veja', 'BookInfo']
 
 export default function PopupNewsletter() {
   const [show, setShow] = useState(false)
@@ -58,10 +60,14 @@ export default function PopupNewsletter() {
             className="absolute inset-0 pointer-events-none"
             style={{ background: 'radial-gradient(circle at 50% 45%, rgba(201,168,76,0.22) 0%, rgba(201,168,76,0) 65%)' }}
           />
-          {/* Selo Best Seller */}
-          <span className="absolute top-5 left-5 z-10 flex items-center gap-1 bg-[#c9a84c] text-black text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1">
-            <Star size={11} fill="currentColor" strokeWidth={0} /> Best Seller
-          </span>
+          {/* Selo Best Seller — emblema circular, estilo carimbo */}
+          <div
+            className="absolute -top-2 -left-2 z-10 w-[74px] h-[74px] rounded-full flex flex-col items-center justify-center text-center -rotate-12 border-2 border-[#c9a84c]"
+            style={{ background: 'radial-gradient(circle, #1a1a1a 60%, #0c0c0c 100%)', boxShadow: '0 4px 14px rgba(0,0,0,0.5)' }}
+          >
+            <Award size={16} className="text-[#c9a84c] mb-0.5" strokeWidth={1.75} />
+            <p className="text-[9px] font-extrabold uppercase tracking-wide text-[#c9a84c] leading-tight">Best<br />Seller</p>
+          </div>
           <img
             src="/livro-capa.jpg"
             alt="Performance Consciente por José Felipe Carneiro"
@@ -78,10 +84,23 @@ export default function PopupNewsletter() {
             </p>
           </div>
 
-          <h3 className="text-2xl sm:text-[1.9rem] font-extrabold text-white leading-[1.1] tracking-tight mb-4">
+          <h3 className="text-2xl sm:text-[1.9rem] font-extrabold text-white leading-[1.1] tracking-tight mb-3">
             Produzir mais<br />
             <span className="text-gray-500">não é o caminho.</span>
           </h3>
+
+          <div className="flex items-center gap-1.5 mb-5">
+            <Star size={12} fill="#c9a84c" strokeWidth={0} className="shrink-0" />
+            <p className="text-[11px] text-gray-400 leading-snug">
+              <strong className="text-white font-semibold">Best Seller</strong> nas listas da{' '}
+              {listas.map((l, i) => (
+                <span key={l}>
+                  <strong className="text-[#c9a84c] font-semibold">{l}</strong>
+                  {i < listas.length - 2 ? ', ' : i === listas.length - 2 ? ' e ' : ''}
+                </span>
+              ))}
+            </p>
+          </div>
 
           <p className="text-sm text-gray-400 leading-relaxed mb-6">
             Os <strong className="text-white">7 pilares</strong> que separam quem rende de quem se esgota.
