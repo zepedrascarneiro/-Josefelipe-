@@ -1,40 +1,32 @@
-import { useRef, useState } from 'react'
-import { Mic, ArrowRight, MessageCircle, FileText, Play } from 'lucide-react'
+import { useState } from 'react'
+import { Mic, ArrowRight, MessageCircle, FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-// Player do reel de palco: mostra o poster + botão; controles nativos ao dar play.
+// Player do reel de palco: embed do YouTube, entra tocando mudo ao chegar na viewport
+// (navegadores bloqueiam autoplay com som sem interação prévia — o próprio player do YouTube
+// tem o ícone de som pro usuário ativar com 1 clique).
+const YOUTUBE_ID = 'O5_QGnakRf8' // "Performance Consciente | José Felipe Carneiro" — DMT Palestras
+
 function VideoPalco() {
-  const ref = useRef(null)
-  const [playing, setPlaying] = useState(false)
-  const start = () => { ref.current?.play(); setPlaying(true) }
+  const [loaded, setLoaded] = useState(false)
 
   return (
-    <div className="relative w-full overflow-hidden bg-black border border-gray-200" style={{ aspectRatio: '16/9' }}>
-      <video
-        ref={ref}
-        src="/josefelipe-palco.mp4"
-        poster="/palco-poster.jpg"
-        preload="metadata"
-        controls={playing}
-        playsInline
-        className="w-full h-full object-cover"
-      />
-      {!playing && (
-        <button
-          onClick={start}
-          aria-label="Assistir vídeo no palco"
-          className="absolute inset-0 flex flex-col items-center justify-center group"
-        >
-          <span className="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition-colors" />
-          <span className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/95 shadow-lg transition-transform group-hover:scale-105">
-            <Play size={26} className="text-black ml-1" fill="currentColor" strokeWidth={0} />
-          </span>
-          <span className="relative mt-4 text-white text-xs font-bold uppercase tracking-widest drop-shadow">
-            Veja no palco
-          </span>
-        </button>
+    <motion.div
+      onViewportEnter={() => setLoaded(true)}
+      viewport={{ once: true, amount: 0.4 }}
+      className="relative w-full overflow-hidden bg-black border border-gray-200"
+      style={{ aspectRatio: '16/9' }}
+    >
+      {loaded && (
+        <iframe
+          src={`https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&mute=1&playsinline=1`}
+          title="Performance Consciente | José Felipe Carneiro"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full"
+        />
       )}
-    </div>
+    </motion.div>
   )
 }
 

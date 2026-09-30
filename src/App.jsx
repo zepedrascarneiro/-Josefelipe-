@@ -3,6 +3,7 @@ import Navbar            from './components/Navbar'
 import Hero              from './components/Hero'
 import Sobre             from './components/Sobre'
 import Livro             from './components/Livro'
+import JornadaVideo      from './components/JornadaVideo'
 
 import Palestras         from './components/Palestras'
 import Valuation         from './components/Valuation'
@@ -23,6 +24,7 @@ export default function App() {
         <Hero />
         <Sobre />
         <Livro />
+        <JornadaVideo />
 
         <Palestras />
         <Valuation />
