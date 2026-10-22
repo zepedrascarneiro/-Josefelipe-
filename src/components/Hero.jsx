@@ -27,7 +27,7 @@ export default function Hero() {
       ref={heroRef}
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: '100svh',
         display: 'flex',
         alignItems: 'flex-end',
         justifyContent: 'center',

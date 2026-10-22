@@ -58,33 +58,33 @@ export default function Sobre() {
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
-          {/* Foto com título — entra com wipe (clip-path) + parallax sutil no scroll */}
-          <motion.div
-            ref={imgRef}
-            initial={{ clipPath: 'inset(0 0 100% 0)' }}
-            whileInView={{ clipPath: 'inset(0 0 0% 0)' }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="relative overflow-hidden"
-            style={{ height: 'clamp(400px, 60vw, 700px)' }}
-          >
-            <motion.img
-              src="/jornada.jpg"
-              alt="José Felipe Carneiro no palco"
-              loading="lazy"
-              className="w-full h-full object-cover grayscale"
-              style={{ objectPosition: 'center center', y: imgY, scale: 1.15 }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
-            <h2
-              className="absolute top-8 left-8 font-extrabold text-white leading-[0.9] tracking-tight"
-              style={{ fontSize: 'clamp(3.5rem, 7vw, 6rem)' }}
+          {/* Foto com título — entra com fade+subida e tem parallax sutil no scroll. */}
+          <div ref={imgRef} className="relative overflow-hidden" style={{ height: 'clamp(400px, 60vw, 700px)' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0"
             >
-              MINHA
-              <br />
-              JORNADA
-            </h2>
-          </motion.div>
+              <motion.img
+                src="/jornada.jpg"
+                alt="José Felipe Carneiro no palco"
+                loading="lazy"
+                className="w-full h-full object-cover grayscale"
+                style={{ objectPosition: 'center center', y: imgY, scale: 1.15 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+              <h2
+                className="absolute top-8 left-8 font-extrabold text-white leading-[0.9] tracking-tight"
+                style={{ fontSize: 'clamp(3.5rem, 7vw, 6rem)' }}
+              >
+                MINHA
+                <br />
+                JORNADA
+              </h2>
+            </motion.div>
+          </div>
 
           {/* Bio */}
           <motion.div
