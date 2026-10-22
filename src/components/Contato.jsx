@@ -3,6 +3,7 @@ import { Send, Mail, MapPin, Instagram } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
+const BENE_CONTATOS_URL = 'https://159-65-201-242.sslip.io/api/site-contatos'
 
 const FORMATOS = ['Presencial', 'Online', 'A combinar']
 
@@ -28,6 +29,24 @@ export default function Contato() {
   const handleSubmit = async e => {
     e.preventDefault()
     setStatus('sending')
+
+    // Dashboard do Bene — melhor esforço, nunca deve travar o envio do e-mail.
+    try {
+      fetch(BENE_CONTATOS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: form.nome,
+          email: form.email,
+          assunto: form.assunto,
+          mensagem: form.mensagem,
+          dataEvento: form.dataEvento,
+          formatoEvento: form.formatoEvento,
+          participantes: form.participantes,
+        }),
+      }).catch(() => {})
+    } catch { /* falha silenciosa — nunca deve afetar o envio do formulário */ }
+
     try {
       const res = await fetch(FORMSUBMIT_URL, {
         method: 'POST',
