@@ -1,6 +1,7 @@
 import ReadingProgress   from './components/ReadingProgress'
 import Navbar            from './components/Navbar'
 import Hero              from './components/Hero'
+import ClientLogos       from './components/ClientLogos'
 import Sobre             from './components/Sobre'
 import Livro             from './components/Livro'
 import JornadaVideo      from './components/JornadaVideo'
@@ -22,6 +23,7 @@ export default function App() {
 
       <main>
         <Hero />
+        <ClientLogos />
         <Sobre />
         <Livro />
         <JornadaVideo />

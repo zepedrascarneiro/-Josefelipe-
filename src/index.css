@@ -157,6 +157,18 @@ img[style*="position:absolute"] {
 .section-light { background-color: var(--color-light); }
 .section-dark { background-color: var(--color-black); color: var(--color-white); }
 
+/* ---- Esteira de logos de clientes ---- */
+@keyframes logo-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-logo-marquee {
+  animation: logo-marquee 36s linear infinite;
+}
+.animate-logo-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* ---- Selection ---- */
 ::selection {
   background-color: var(--color-black);

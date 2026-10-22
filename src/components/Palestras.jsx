@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mic, ArrowRight, MessageCircle, FileText } from 'lucide-react'
+import { Mic, ArrowRight, MessageCircle, FileText, Clock, Monitor, Zap } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTilt } from '../hooks/useTilt'
 
@@ -154,6 +154,31 @@ export default function Palestras() {
           </p>
         </motion.div>
 
+        {/* Formato/prazo — informação que um RH filtra antes de escrever */}
+        <div className="flex flex-wrap gap-x-10 gap-y-5 mb-16 pb-10 border-b border-gray-100">
+          <div className="flex items-center gap-3">
+            <Clock className="text-[#c9a84c] shrink-0" size={22} strokeWidth={1.75} />
+            <div>
+              <p className="text-sm font-bold text-black">40–60 min</p>
+              <p className="text-xs text-gray-400">Duração da palestra</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <Monitor className="text-[#c9a84c] shrink-0" size={22} strokeWidth={1.75} />
+            <div>
+              <p className="text-sm font-bold text-black">Presencial ou online</p>
+              <p className="text-xs text-gray-400">Formato sob medida pro evento</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <Zap className="text-[#c9a84c] shrink-0" size={22} strokeWidth={1.75} />
+            <div>
+              <p className="text-sm font-bold text-black">Resposta em até 48h</p>
+              <p className="text-xs text-gray-400">Pra toda proposta recebida</p>
+            </div>
+          </div>
+        </div>
+
         {/* Vídeo no palco (prova social) — largura contida pra não ampliar o 480p e manter nitidez */}
         <div className="mb-24 flex justify-center">
           <div style={{ width: '100%', maxWidth: '640px' }}>
@@ -203,7 +228,11 @@ export default function Palestras() {
             </a>
             <a
               href="#contato"
-              onClick={e => { e.preventDefault(); document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' }) }}
+              onClick={e => {
+                e.preventDefault()
+                window.dispatchEvent(new CustomEvent('abrir-proposta-palestra'))
+                document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' })
+              }}
               className="flex items-center justify-center gap-3 px-10 py-5 font-bold text-base uppercase tracking-wider transition-colors hover:bg-white hover:text-black"
               style={{ backgroundColor: 'transparent', color: '#fff', border: '2px solid rgba(255,255,255,0.4)', minWidth: '260px' }}
             >
