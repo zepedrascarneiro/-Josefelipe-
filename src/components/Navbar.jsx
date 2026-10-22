@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const navLinks = [
   { label: 'Sobre',     href: '#sobre' },
@@ -11,11 +12,32 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [active, setActive] = useState('')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Marca o link ativo conforme a seção visível na tela.
+  useEffect(() => {
+    const sections = navLinks
+      .map(link => document.querySelector(link.href))
+      .filter(Boolean)
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (visible) setActive(`#${visible.target.id}`)
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    )
+
+    sections.forEach(section => observer.observe(section))
+    return () => observer.disconnect()
   }, [])
 
   const handleClick = (href) => {
@@ -47,20 +69,30 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-12">
           <ul className="flex items-center gap-10">
-            {navLinks.map(link => (
-              <li key={link.href}>
-                <button
-                  onClick={() => handleClick(link.href)}
-                  className={`text-sm font-medium transition-colors ${
-                    scrolled
-                      ? 'text-gray-500 hover:text-black'
-                      : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  {link.label}
-                </button>
-              </li>
-            ))}
+            {navLinks.map(link => {
+              const isActive = active === link.href
+              return (
+                <li key={link.href}>
+                  <button
+                    onClick={() => handleClick(link.href)}
+                    className={`relative pb-2 text-sm font-medium transition-colors ${
+                      scrolled
+                        ? isActive ? 'text-black' : 'text-gray-500 hover:text-black'
+                        : isActive ? 'text-white' : 'text-white/70 hover:text-white'
+                    }`}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="navActive"
+                        className={`absolute left-0 right-0 bottom-0 h-px ${scrolled ? 'bg-black' : 'bg-white'}`}
+                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                  </button>
+                </li>
+              )
+            })}
           </ul>
 
           <a
@@ -89,7 +121,9 @@ export default function Navbar() {
             <button
               key={link.href}
               onClick={() => handleClick(link.href)}
-              className="text-left text-base font-medium text-gray-600 hover:text-black transition-colors"
+              className={`text-left text-base font-medium transition-colors ${
+                active === link.href ? 'text-black font-bold' : 'text-gray-600 hover:text-black'
+              }`}
             >
               {link.label}
             </button>

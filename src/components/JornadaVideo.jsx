@@ -1,9 +1,15 @@
 import { useRef, useState } from 'react'
 import { Volume2, VolumeX } from 'lucide-react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function JornadaVideo() {
   const ref = useRef(null)
+  const sectionRef = useRef(null)
   const [muted, setMuted] = useState(true)
+
+  // Parallax sutil: o vídeo se move mais devagar que o scroll da página.
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
+  const videoY = useTransform(scrollYProgress, [0, 1], ['-8%', '8%'])
 
   const toggleSom = () => {
     const next = !muted
@@ -13,10 +19,11 @@ export default function JornadaVideo() {
 
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden bg-black"
       style={{ height: 'clamp(320px, 60vw, 640px)' }}
     >
-      <video
+      <motion.video
         ref={ref}
         src="/jornada.mp4"
         autoPlay
@@ -24,6 +31,7 @@ export default function JornadaVideo() {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
+        style={{ y: videoY, scale: 1.15 }}
       />
       <div
         className="absolute inset-0"

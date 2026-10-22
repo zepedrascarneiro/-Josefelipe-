@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Mic, ArrowRight, MessageCircle, FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useTilt } from '../hooks/useTilt'
 
 // Player do reel de palco: embed do YouTube, entra tocando mudo ao chegar na viewport
 // (navegadores bloqueiam autoplay com som sem interação prévia — o próprio player do YouTube
@@ -27,6 +28,63 @@ function VideoPalco() {
         />
       )}
     </motion.div>
+  )
+}
+
+// Card de tema com tilt 3D leve seguindo o mouse.
+function TemaCard({ t, i }) {
+  const tilt = useTilt(5)
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: i % 2 === 0 ? -28 : 28 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.55, delay: (i % 2) * 0.08 }}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      style={tilt.style}
+      className="relative bg-white p-8 md:p-10 flex flex-col transition-shadow duration-300 hover:shadow-[0_24px_48px_rgba(0,0,0,0.14)] hover:z-10"
+    >
+      <span className="text-sm font-bold text-[#c9a84c] tracking-widest mb-5">{t.n}</span>
+      <h3 className="text-xl md:text-2xl font-extrabold text-black tracking-tight mb-3">
+        {t.titulo}
+      </h3>
+      <p className="text-gray-500 leading-relaxed text-[15px]">{t.desc}</p>
+    </motion.div>
+  )
+}
+
+// Card de apresentação (deck) com o mesmo tilt 3D.
+function DeckCard({ d }) {
+  const tilt = useTilt(5)
+  return (
+    <motion.a
+      href={d.pdf}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      style={tilt.style}
+      className="group relative block border border-gray-200 hover:border-black transition-[box-shadow,border-color] duration-300 hover:shadow-[0_24px_48px_rgba(0,0,0,0.14)] hover:z-10"
+    >
+      <div className="overflow-hidden border-b border-gray-200" style={{ aspectRatio: '16/9' }}>
+        <img
+          src={d.thumb}
+          alt={`Capa da ${d.titulo}`}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+      </div>
+      <div className="p-6 flex items-start justify-between gap-4">
+        <div>
+          <p className="text-base font-bold text-black mb-1">{d.titulo}</p>
+          <p className="text-sm text-gray-500 leading-relaxed">{d.desc}</p>
+        </div>
+        <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-400 group-hover:text-black transition-colors whitespace-nowrap mt-1">
+          <FileText size={14} /> Ver
+        </span>
+      </div>
+    </motion.a>
   )
 }
 
@@ -109,20 +167,7 @@ export default function Palestras() {
         </p>
         <div className="grid sm:grid-cols-2 gap-px bg-gray-200 border border-gray-200 mb-24">
           {temas.map((t, i) => (
-            <motion.div
-              key={t.n}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: (i % 2) * 0.08 }}
-              className="bg-white p-8 md:p-10 flex flex-col"
-            >
-              <span className="text-sm font-bold text-[#c9a84c] tracking-widest mb-5">{t.n}</span>
-              <h3 className="text-xl md:text-2xl font-extrabold text-black tracking-tight mb-3">
-                {t.titulo}
-              </h3>
-              <p className="text-gray-500 leading-relaxed text-[15px]">{t.desc}</p>
-            </motion.div>
+            <TemaCard key={t.n} t={t} i={i} />
           ))}
         </div>
 
@@ -132,31 +177,7 @@ export default function Palestras() {
         </p>
         <div className="grid md:grid-cols-2 gap-8 mb-20">
           {decks.map(d => (
-            <a
-              key={d.pdf}
-              href={d.pdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block border border-gray-200 hover:border-black transition-colors"
-            >
-              <div className="overflow-hidden border-b border-gray-200" style={{ aspectRatio: '16/9' }}>
-                <img
-                  src={d.thumb}
-                  alt={`Capa da ${d.titulo}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="p-6 flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-base font-bold text-black mb-1">{d.titulo}</p>
-                  <p className="text-sm text-gray-500 leading-relaxed">{d.desc}</p>
-                </div>
-                <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-400 group-hover:text-black transition-colors whitespace-nowrap mt-1">
-                  <FileText size={14} /> Ver
-                </span>
-              </div>
-            </a>
+            <DeckCard key={d.pdf} d={d} />
           ))}
         </div>
 

@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
+import CountUp from './CountUp'
 
 export default function Valuation() {
   return (
@@ -49,17 +50,17 @@ export default function Valuation() {
             </div>
             <div className="lg:col-span-2 flex flex-col items-center justify-center text-center border-t lg:border-t-0 lg:border-l border-gray-200 pt-10 lg:pt-0 lg:pl-10 mt-4 lg:mt-0">
               <div className="mb-6">
-                <p className="text-6xl md:text-7xl font-extrabold text-black tracking-tight">6</p>
+                <p className="text-6xl md:text-7xl font-extrabold text-black tracking-tight"><CountUp end={6} /></p>
                 <p className="text-sm text-gray-400 mt-1">métodos de avaliação</p>
               </div>
               <div className="w-12 h-px bg-gray-200 mb-6"></div>
               <div className="mb-6">
-                <p className="text-6xl md:text-7xl font-extrabold text-black tracking-tight">17</p>
+                <p className="text-6xl md:text-7xl font-extrabold text-black tracking-tight"><CountUp end={17} /></p>
                 <p className="text-sm text-gray-400 mt-1">setores cobertos</p>
               </div>
               <div className="w-12 h-px bg-gray-200 mb-6"></div>
               <div>
-                <p className="text-6xl md:text-7xl font-extrabold text-black tracking-tight">3<span className="text-3xl text-gray-300">min</span></p>
+                <p className="text-6xl md:text-7xl font-extrabold text-black tracking-tight"><CountUp end={3} /><span className="text-3xl text-gray-300">min</span></p>
                 <p className="text-sm text-gray-400 mt-1">para seu resultado</p>
               </div>
             </div>
