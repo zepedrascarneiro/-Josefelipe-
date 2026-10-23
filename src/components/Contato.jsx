@@ -12,6 +12,21 @@ const initialForm = {
   dataEvento: '', formatoEvento: '', participantes: '',
 }
 
+// Evento de conversão no GA4. "generate_lead" é o nome recomendado pelo Google
+// pra geração de lead — GA4 já sugere marcá-lo como evento-chave sozinho, e é
+// o formato mais direto de importar como conversão assim que a conta de
+// Google Ads tiver uma Ação de Conversão configurada (Ferramentas > Conversões
+// > Importar > Google Analytics 4). Nunca trava o envio se o gtag falhar.
+function registrarConversaoGA4(form, ehPalestra) {
+  try {
+    if (typeof window.gtag !== 'function') return
+    window.gtag('event', 'generate_lead', {
+      lead_type: ehPalestra ? 'palestra' : 'geral',
+      assunto: form.assunto || '(sem assunto)',
+    })
+  } catch { /* nunca deve afetar o envio do formulário */ }
+}
+
 export default function Contato() {
   const [form, setForm]     = useState(initialForm)
   const [status, setStatus] = useState('idle') // idle | sending | ok | error
@@ -69,6 +84,7 @@ export default function Contato() {
       })
       const data = await res.json()
       if (data.success === 'true' || data.success === true) {
+        registrarConversaoGA4(form, ehPalestra)
         setStatus('ok')
         setForm(initialForm)
       } else {
