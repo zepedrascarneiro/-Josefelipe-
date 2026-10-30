@@ -88,7 +88,7 @@ function DeckCard({ d }) {
   )
 }
 
-const WA_LINK = 'https://wa.me/5511976372211?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20palestras%20do%20Jos%C3%A9%20Felipe.'
+const WA_LINK = 'https://wa.me/5531990997409?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20palestras%20do%20Jos%C3%A9%20Felipe.'
 
 // Temas de palestra — RASCUNHO para o José revisar/ajustar o texto.
 // Todos ancorados na trajetória real (livro Performance Consciente + Wäls/AmBev/ZX + agro).

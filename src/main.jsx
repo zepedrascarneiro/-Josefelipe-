@@ -7,6 +7,7 @@ import PalestrasPage from './pages/PalestrasPage.jsx'
 import LivroPage from './pages/LivroPage.jsx'
 import NucleoxPage from './pages/NucleoxPage.jsx'
 import SiteTracker from './components/SiteTracker.jsx'
+import WhatsAppFloat from './components/WhatsAppFloat.jsx'
 
 // GitHub Pages SPA redirect handler
 const redirect = sessionStorage.getItem('spa-redirect')
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <SiteTracker />
+      <WhatsAppFloat />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/palestras" element={<PalestrasPage />} />
