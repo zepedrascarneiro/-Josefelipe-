@@ -336,6 +336,7 @@ export default function UsaPage() {
                   <img src="/usa/novo-otay.jpg" alt="Salão lotado numa unidade da Novo Brazil" loading="lazy" />
                   <img src="/usa/novo-eastlake.jpg" alt="Pátio externo com música ao vivo numa unidade da Novo Brazil" loading="lazy" />
                 </div>
+                <p className="desc">A NOVA, kombucha da casa, é a bebida oficial do Snapdragon Stadium e do San Diego Wave FC (futebol feminino da NWSL), com dois bares da marca dentro do estádio. Parceria também com o basquete masculino da San Diego State University via MESA Foundation, incluindo US$24 mil doados em gift cards aos atletas. No social, apoio recorrente à Ronald McDonald House San Diego no Giving Tuesday e ao iHeartRadio Rady Children's Giveathon.</p>
                 <p className="asterisk">Números financeiros e participação disponíveis sob NDA, na conversa.</p>
               </div>
             </div>
