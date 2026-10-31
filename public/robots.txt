@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /usa
+Disallow: /go-miles
 
 Sitemap: https://josefelipe.com.br/sitemap.xml
