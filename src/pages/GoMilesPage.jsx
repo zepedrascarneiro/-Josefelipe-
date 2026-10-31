@@ -381,7 +381,7 @@ export default function GoMilesPage() {
           <p style={{ fontSize: '14px', fontWeight: 700, color: 'rgba(255,255,255,0.8)', marginBottom: '8px' }}>Performance Consciente</p>
           <p style={{ fontSize: '12px', color: '#4b5563', marginBottom: '40px' }}>José Felipe Carneiro</p>
 
-          <div style={{ display: 'flex', gap: '40px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
+          <div style={{ display: 'flex', gap: '120px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
             <div>
               <img src="/go-miles-qr-livro.png" alt="QR code para comprar o livro na Amazon" style={{ width: '140px', height: '140px', borderRadius: '10px' }} />
               <p style={{ fontSize: '11px', fontWeight: 700, color: '#9ca3af', letterSpacing: '1px', textTransform: 'uppercase', marginTop: '10px' }}>Comprar o livro</p>
