@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /usa
 
 Sitemap: https://josefelipe.com.br/sitemap.xml

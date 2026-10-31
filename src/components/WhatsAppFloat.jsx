@@ -1,10 +1,14 @@
 import { MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 
 const WA_LINK = 'https://wa.me/5531990997409?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20palestras%20do%20Jos%C3%A9%20Felipe.'
 
 // Botão único, fixo em todas as páginas do site (home, /livro, /palestras, /nucleox).
+// Fora do ar em /usa: a oferta de palestras não faz sentido nessa página de prospecção de investidores.
 export default function WhatsAppFloat() {
+  const { pathname } = useLocation()
+  if (pathname.startsWith('/usa')) return null
   return (
     <motion.a
       href={WA_LINK}

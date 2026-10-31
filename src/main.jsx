@@ -6,6 +6,7 @@ import App from './App.jsx'
 import PalestrasPage from './pages/PalestrasPage.jsx'
 import LivroPage from './pages/LivroPage.jsx'
 import NucleoxPage from './pages/NucleoxPage.jsx'
+import UsaPage from './pages/UsaPage.jsx'
 import SiteTracker from './components/SiteTracker.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
 
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/palestras" element={<PalestrasPage />} />
         <Route path="/livro" element={<LivroPage />} />
         <Route path="/nucleox" element={<NucleoxPage />} />
+        <Route path="/usa" element={<UsaPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
