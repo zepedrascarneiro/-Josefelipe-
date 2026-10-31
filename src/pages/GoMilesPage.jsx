@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { Volume2, VolumeX } from 'lucide-react'
 
 const gold = '#c9a84c'
 const s = { display: 'block', alignItems: 'unset', width: '100%' }
@@ -74,10 +75,18 @@ const pilares = [
   },
 ]
 
-const SPOTIFY_TRACK = '57bgtoPSgt236HzfBOd8kj' // AC/DC — Thunderstruck
+const YT_THUNDERSTRUCK = 'v2AC41dglnM' // AC/DC — Thunderstruck (Official Video)
 
 export default function GoMilesPage() {
   const [playing, setPlaying] = useState(false)
+  const [somAtivo, setSomAtivo] = useState(false)
+  const videoRef = useRef(null)
+
+  const toggleSom = () => {
+    const next = !somAtivo
+    setSomAtivo(next)
+    if (videoRef.current) videoRef.current.muted = !next
+  }
 
   useEffect(() => {
     document.body.style.backgroundColor = '#000'
@@ -98,17 +107,31 @@ export default function GoMilesPage() {
     <div style={{ minHeight: '100vh', backgroundColor: '#000', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
 
       {/* Vídeo de abertura */}
-      <div style={{ position: 'relative', overflow: 'hidden', height: 'clamp(320px, 60vw, 640px)' }}>
+      <div style={{ position: 'relative', background: '#000' }}>
         <video
+          ref={videoRef}
           src="/jornada.mp4"
           autoPlay
           muted
           loop
           playsInline
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ display: 'block', width: '100%', maxHeight: '82vh', objectFit: 'contain' }}
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.85) 100%)' }} />
-        <div style={{ position: 'absolute', bottom: '32px', left: '24px', right: '24px' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.85) 100%)', pointerEvents: 'none' }} />
+        <button
+          onClick={toggleSom}
+          aria-label={somAtivo ? 'Silenciar' : 'Ativar som'}
+          style={{
+            position: 'absolute', top: '20px', right: '20px',
+            width: '44px', height: '44px', borderRadius: '50%',
+            background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(6px)',
+            border: 'none', color: '#fff', cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          {somAtivo ? <Volume2 size={19} /> : <VolumeX size={19} />}
+        </button>
+        <div style={{ position: 'absolute', bottom: '24px', left: '24px', right: '24px' }}>
           <p style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(255,255,255,0.6)', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '10px' }}>
             Wäls · Novo Brazil · Stadt Jever · Cask.Co · Fazenda Cervejeira
           </p>
@@ -151,7 +174,7 @@ export default function GoMilesPage() {
             ) : (
               <iframe
                 title="AC/DC — Thunderstruck"
-                src={`https://open.spotify.com/embed/track/${SPOTIFY_TRACK}?autoplay=1`}
+                src="https://open.spotify.com/embed/track/57bgtoPSgt236HzfBOd8kj?autoplay=1"
                 width="100%"
                 height="152"
                 style={{ maxWidth: '420px', border: 'none', borderRadius: '12px' }}
