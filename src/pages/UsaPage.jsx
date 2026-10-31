@@ -318,7 +318,7 @@ export default function UsaPage() {
           <div className="ops">
             <div className="op west">
               <div className="op-media">
-                <img src="/usa/tiago-carneiro.jpg" alt="Tiago Carneiro, fundador da Novo Brazil" loading="lazy" />
+                <img src="/usa/tiago-carneiro.jpg" alt="Tiago Carneiro, fundador da Novo Brazil" loading="lazy" style={{ objectPosition: 'center 20%' }} />
                 <p className="press">Destaque na Entrepreneur.com</p>
               </div>
               <div className="op-body">
