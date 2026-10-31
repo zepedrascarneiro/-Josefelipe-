@@ -319,7 +319,7 @@ export default function UsaPage() {
             <div className="op west">
               <div className="op-media">
                 <img src="/usa/tiago-carneiro.jpg" alt="Tiago Carneiro, fundador da Novo Brazil" loading="lazy" style={{ objectPosition: 'center 20%' }} />
-                <p className="press">Destaque na Entrepreneur.com</p>
+                <p className="press">Destaque na Entrepreneur.com, Times of San Diego e San Diego Magazine</p>
               </div>
               <div className="op-body">
                 <p className="op-tag"><span className="dot" />Califórnia &amp; Texas</p>
@@ -327,6 +327,7 @@ export default function UsaPage() {
                 <p className="role">Fundador operador · restaurantes &amp; hospitalidade</p>
                 <div><span className="biz">Novo Brazil</span><span className="biz">Novo Restaurants</span><span className="biz">Nova Kombucha</span><span className="biz">My Vision iOS</span></div>
                 <p className="desc">Meu irmão. Vem de família de restaurante em Belo Horizonte, meu pai trocou padaria por restaurante e depois fundou uma rede de hambúrguer e uma marca de refrigerante artesanal. Tiago seguiu o caminho da cervejaria da família, a Wäls, e replicou o modelo nos EUA: hoje são seis casas na Califórnia e a primeira unidade no Texas, em San Antonio, aberta em 2025.</p>
+                <p className="desc">A unidade de Mission Valley, aberta no espaço do antigo Tilted Kilt, tem 11.500 sq ft (salão + pátio), capacidade para quase 600 pessoas e 64 torneiras de chope — a imprensa local comparou ao lendário Seau's, do jogador Junior Seau, pela proposta de virar ponto de encontro da cidade.</p>
                 <div className="stats">
                   <div className="stat"><b>7</b><span>Unidades ativas</span></div>
                   <div className="stat"><b>2015</b><span>Fundação em San Diego</span></div>
@@ -357,6 +358,12 @@ export default function UsaPage() {
                   <div className="stat"><b>41</b><span>Pessoas no time</span></div>
                   <div className="stat"><b>2005</b><span>Fundação em Miami</span></div>
                 </div>
+                <div className="proof-strip">
+                  <img src="/usa/piquet-palmbeach.jpg" alt="Mansão à beira-mar em Palm Beach, listada pela Piquet Realty por US$157 milhões" loading="lazy" />
+                  <img src="/usa/piquet-miamibeach.jpg" alt="Residência contemporânea em Miami Beach, listada pela Piquet Realty por US$100 milhões" loading="lazy" />
+                  <img src="/usa/piquet-keybiscayne.jpg" alt="Sala de estar com vista pra baía em Key Biscayne, listada pela Piquet Realty por US$237 milhões" loading="lazy" />
+                </div>
+                <p className="desc">Três listagens ativas da Piquet Realty: uma mansão histórica em Palm Beach (US$157M), um projeto novo em Miami Beach (US$100M) e uma propriedade frente-mar em Key Biscayne (US$237M).</p>
                 <p className="asterisk">Números financeiros e participação disponíveis sob NDA, na conversa.</p>
               </div>
             </div>
