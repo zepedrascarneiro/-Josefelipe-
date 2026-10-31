@@ -1,7 +1,18 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const gold = '#c9a84c'
 const s = { display: 'block', alignItems: 'unset', width: '100%' }
+
+const marcas = [
+  { nome: 'Wäls', sub: 'Mais Premiada do Mundo' },
+  { nome: 'ZX Ventures', sub: 'AB InBev · Global' },
+  { nome: 'Khappy Kombucha', sub: 'Líder no Brasil' },
+  { nome: 'Stadt Jever', sub: 'Do Campo ao Copo' },
+  { nome: 'Novo Brazil', sub: 'San Diego, EUA' },
+  { nome: 'Fazenda Cervejeira', sub: 'Belo Horizonte' },
+  { nome: 'Investidor', sub: 'Etus Media Holding · Anunciagro · Brazilian Coffee King' },
+  { nome: 'Villa Ipioca', sub: 'Capela Ipioca · Casamar Beach Club · Fazenda Alagoas' },
+]
 
 const pilares = [
   {
@@ -63,7 +74,11 @@ const pilares = [
   },
 ]
 
+const SPOTIFY_TRACK = '57bgtoPSgt236HzfBOd8kj' // AC/DC — Thunderstruck
+
 export default function GoMilesPage() {
+  const [playing, setPlaying] = useState(false)
+
   useEffect(() => {
     document.body.style.backgroundColor = '#000'
     document.body.style.color = '#fff'
@@ -82,6 +97,27 @@ export default function GoMilesPage() {
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#000', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
 
+      {/* Vídeo de abertura */}
+      <div style={{ position: 'relative', overflow: 'hidden', height: 'clamp(320px, 60vw, 640px)' }}>
+        <video
+          src="/jornada.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.85) 100%)' }} />
+        <div style={{ position: 'absolute', bottom: '32px', left: '24px', right: '24px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(255,255,255,0.6)', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '10px' }}>
+            Wäls · Novo Brazil · Stadt Jever · Cask.Co · Fazenda Cervejeira
+          </p>
+          <h2 style={{ fontSize: 'clamp(1.6rem, 4.5vw, 2.6rem)', fontWeight: 900, letterSpacing: '-0.01em', margin: 0, color: '#fff' }}>
+            A família mais premiada em cerveja do mundo
+          </h2>
+        </div>
+      </div>
+
       {/* Hero */}
       <div style={{ ...s, padding: '120px 24px 90px', textAlign: 'center', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div style={{ maxWidth: '760px', margin: '0 auto' }}>
@@ -93,6 +129,54 @@ export default function GoMilesPage() {
             Sete pilares, ditos do jeito que estão no livro. Sem filtro, sem enfeite — só o que precisa ser dito pra mudar como você performa.
           </p>
           <p style={{ fontSize: '12px', color: '#4b5563', marginTop: '30px', letterSpacing: '1px' }}>José Felipe Carneiro</p>
+
+          <div style={{ marginTop: '40px' }}>
+            {!playing ? (
+              <button
+                onClick={() => setPlaying(true)}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '12px',
+                  background: gold, color: '#000', border: 'none',
+                  padding: '16px 30px', fontSize: '14px', fontWeight: 800,
+                  letterSpacing: '1px', cursor: 'pointer',
+                }}
+              >
+                <span style={{
+                  width: 0, height: 0,
+                  borderTop: '7px solid transparent', borderBottom: '7px solid transparent',
+                  borderLeft: '11px solid #000',
+                }} />
+                THUNDERSTRUCK
+              </button>
+            ) : (
+              <iframe
+                title="AC/DC — Thunderstruck"
+                src={`https://open.spotify.com/embed/track/${SPOTIFY_TRACK}?autoplay=1`}
+                width="100%"
+                height="152"
+                style={{ maxWidth: '420px', border: 'none', borderRadius: '12px' }}
+                allow="autoplay; encrypted-media; clipboard-write"
+                loading="lazy"
+              />
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Marcas & Negócios */}
+      <div style={{ ...s, padding: '70px 24px 80px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+          <p style={{ fontSize: '12px', fontWeight: 700, color: gold, letterSpacing: '3px', marginBottom: '36px', textTransform: 'uppercase', textAlign: 'center' }}>
+            Marcas &amp; Negócios
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '2px', background: 'rgba(255,255,255,0.06)' }}>
+            {marcas.map((m, i) => (
+              <div key={i} style={{ background: '#000', padding: '22px 24px' }}>
+                <p style={{ fontSize: '17px', fontWeight: 800, margin: '0 0 4px', color: '#fff' }}>{m.nome}</p>
+                <p style={{ fontSize: '12.5px', color: '#6b7280', margin: 0, letterSpacing: '0.2px' }}>{m.sub}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
