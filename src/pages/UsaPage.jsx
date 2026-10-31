@@ -19,7 +19,6 @@ const CAPITAL_OPCOES = [
   'USD 250 mil a 1 milhão',
   'USD 1 a 5 milhões',
   'Acima de USD 5 milhões',
-  'Prefiro não informar',
 ]
 
 const initialForm = {
