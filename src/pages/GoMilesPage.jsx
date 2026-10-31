@@ -75,8 +75,6 @@ const pilares = [
   },
 ]
 
-const YT_THUNDERSTRUCK = 'v2AC41dglnM' // AC/DC — Thunderstruck (Official Video)
-
 export default function GoMilesPage() {
   const [playing, setPlaying] = useState(false)
   const [somAtivo, setSomAtivo] = useState(false)
@@ -91,7 +89,7 @@ export default function GoMilesPage() {
   useEffect(() => {
     document.body.style.backgroundColor = '#000'
     document.body.style.color = '#fff'
-    document.title = 'Go Miles · Performance Consciente — José Felipe Carneiro'
+    document.title = 'Go Miles · Performance Consciente · José Felipe Carneiro'
     const meta = document.createElement('meta')
     meta.name = 'robots'
     meta.content = 'noindex, nofollow'
@@ -148,10 +146,7 @@ export default function GoMilesPage() {
           <h1 style={{ fontSize: 'clamp(2.4rem, 6vw, 4rem)', fontWeight: 900, lineHeight: 1.08, letterSpacing: '-0.02em', marginBottom: '26px' }}>
             PERFORMANCE<br />CONSCIENTE
           </h1>
-          <p style={{ fontSize: '1.05rem', color: '#9ca3af', lineHeight: 1.7, maxWidth: '520px', margin: '0 auto' }}>
-            Sete pilares, ditos do jeito que estão no livro. Sem filtro, sem enfeite — só o que precisa ser dito pra mudar como você performa.
-          </p>
-          <p style={{ fontSize: '12px', color: '#4b5563', marginTop: '30px', letterSpacing: '1px' }}>José Felipe Carneiro</p>
+          <p style={{ fontSize: '12px', color: '#4b5563', marginTop: '14px', letterSpacing: '1px' }}>José Felipe Carneiro</p>
 
           <div style={{ marginTop: '40px' }}>
             {!playing ? (
@@ -173,7 +168,7 @@ export default function GoMilesPage() {
               </button>
             ) : (
               <iframe
-                title="AC/DC — Thunderstruck"
+                title="AC/DC · Thunderstruck"
                 src="https://open.spotify.com/embed/track/57bgtoPSgt236HzfBOd8kj?autoplay=1"
                 width="100%"
                 height="152"
@@ -209,7 +204,7 @@ export default function GoMilesPage() {
           <div style={{ maxWidth: '760px', margin: '0 auto' }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '18px', marginBottom: '48px' }}>
               <span style={{ fontSize: '15px', fontWeight: 900, color: gold, letterSpacing: '2px' }}>PILAR {p.num}</span>
-              <span style={{ fontSize: '12px', color: '#4b5563', letterSpacing: '1px' }}>—</span>
+              <span style={{ fontSize: '12px', color: '#4b5563', letterSpacing: '1px' }}>·</span>
               <h2 style={{ fontSize: 'clamp(1.3rem, 2.6vw, 1.7rem)', fontWeight: 800, margin: 0 }}>{p.titulo}</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
