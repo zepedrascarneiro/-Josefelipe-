@@ -101,7 +101,7 @@
 .usa-page .op .stat span { font-family: var(--label); font-weight: 700; font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--faint); }
 .usa-page .op .asterisk { font-family: var(--label); font-size: 11.5px; letter-spacing: .02em; color: var(--faint); margin-top: 16px; }
 .usa-page .ops-more { font-family: var(--label); font-weight: 700; font-size: 13px; letter-spacing: .04em; color: var(--faint); margin-top: 28px; text-align: center; }
-.usa-page .proof-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 2px; }
+.usa-page .proof-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 2px; }
 .usa-page .proof-strip img { aspect-ratio: 4/3; object-fit: cover; }
 
 .usa-page .benefits { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--paper-3); border-left: 2px solid var(--paper-3); margin-top: 40px; }

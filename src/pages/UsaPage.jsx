@@ -318,14 +318,14 @@ export default function UsaPage() {
           <div className="ops">
             <div className="op west">
               <div className="op-media">
-                <img src="/usa/novo-mission-valley.jpg" alt="Fachada da Novo Brazil, San Diego" loading="lazy" />
+                <img src="/usa/tiago-carneiro.jpg" alt="Tiago Carneiro, fundador da Novo Brazil" loading="lazy" />
                 <p className="press">Destaque na Entrepreneur.com</p>
               </div>
               <div className="op-body">
                 <p className="op-tag"><span className="dot" />Califórnia &amp; Texas</p>
                 <h3>Tiago Carneiro</h3>
                 <p className="role">Fundador operador · restaurantes &amp; hospitalidade</p>
-                <div><span className="biz">Novo Brazil</span><span className="biz">Nova Kombucha</span></div>
+                <div><span className="biz">Novo Brazil</span><span className="biz">Novo Restaurants</span><span className="biz">Nova Kombucha</span><span className="biz">My Vision iOS</span></div>
                 <p className="desc">Meu irmão. Vem de família de restaurante em Belo Horizonte, meu pai trocou padaria por restaurante e depois fundou uma rede de hambúrguer e uma marca de refrigerante artesanal. Tiago seguiu o caminho da cervejaria da família, a Wäls, e replicou o modelo nos EUA: hoje são seis casas na Califórnia e a primeira unidade no Texas, em San Antonio, aberta em 2025.</p>
                 <div className="stats">
                   <div className="stat"><b>7</b><span>Unidades ativas</span></div>
@@ -333,6 +333,7 @@ export default function UsaPage() {
                   <div className="stat"><b>CA · TX</b><span>Estados de operação</span></div>
                 </div>
                 <div className="proof-strip">
+                  <img src="/usa/novo-mission-valley.jpg" alt="Fachada da Novo Brazil, Mission Valley" loading="lazy" />
                   <img src="/usa/novo-otay.jpg" alt="Salão lotado numa unidade da Novo Brazil" loading="lazy" />
                   <img src="/usa/novo-eastlake.jpg" alt="Pátio externo com música ao vivo numa unidade da Novo Brazil" loading="lazy" />
                 </div>
