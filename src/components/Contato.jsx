@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
 const BENE_CONTATOS_URL = 'https://159-65-201-242.sslip.io/api/site-contatos'
+const BENE_VENDAS_PALESTRA_URL = 'https://159-65-201-242.sslip.io/api/vendas-palestra/leads'
 
 const FORMATOS = ['Presencial', 'Online', 'A combinar']
 
@@ -61,6 +62,23 @@ export default function Contato() {
         }),
       }).catch(() => {})
     } catch { /* falha silenciosa — nunca deve afetar o envio do formulário */ }
+
+    // Pipeline de vendas de palestra (JFC Sales AI) — só quando o assunto é
+    // Palestra, mesmo padrão de melhor esforço acima.
+    if (ehPalestra) {
+      try {
+        fetch(BENE_VENDAS_PALESTRA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            origem: 'site',
+            contato: { nome: form.nome, email: form.email },
+            evento: { dataEvento: form.dataEvento, formato: form.formatoEvento, publicoEstimado: form.participantes },
+            mensagem: form.mensagem,
+          }),
+        }).catch(() => {})
+      } catch { /* falha silenciosa */ }
+    }
 
     try {
       const res = await fetch(FORMSUBMIT_URL, {

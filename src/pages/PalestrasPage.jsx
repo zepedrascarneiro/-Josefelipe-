@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Mic, ArrowRight, Check, Users, Globe, Award, Loader2 } from 'lucide-react'
 
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
+const BENE_VENDAS_PALESTRA_URL = 'https://159-65-201-242.sslip.io/api/vendas-palestra/leads'
 
 const temas = [
   {
@@ -68,6 +69,24 @@ export default function PalestrasPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
+
+    // Pipeline de vendas de palestra (JFC Sales AI) — melhor esforço, nunca
+    // trava o envio real (FormSubmit) abaixo.
+    try {
+      fetch(BENE_VENDAS_PALESTRA_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          origem: 'site',
+          empresa: { nome: form.empresa },
+          contato: { nome: form.nome, email: form.email },
+          evento: { nome: form.evento },
+          tema: form.tema,
+          mensagem: form.mensagem,
+        }),
+      }).catch(() => {})
+    } catch { /* falha silenciosa */ }
+
     try {
       const res = await fetch(FORMSUBMIT_URL, {
         method: 'POST',
