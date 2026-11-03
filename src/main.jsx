@@ -10,6 +10,7 @@ import UsaPage from './pages/UsaPage.jsx'
 import GoMilesPage from './pages/GoMilesPage.jsx'
 import SiteTracker from './components/SiteTracker.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
+import { capturarUtm } from './utils/utm.js'
 
 // GitHub Pages SPA redirect handler
 const redirect = sessionStorage.getItem('spa-redirect')
@@ -17,6 +18,10 @@ if (redirect) {
   sessionStorage.removeItem('spa-redirect')
   window.history.replaceState(null, '', redirect)
 }
+
+// Captura utm_source/campaign/gclid (Google Ads) assim que a página carrega,
+// antes de qualquer navegação apagar os parâmetros da URL.
+capturarUtm()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

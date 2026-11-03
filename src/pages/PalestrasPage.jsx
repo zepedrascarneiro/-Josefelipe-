@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Mic, ArrowRight, Check, Users, Globe, Award, Loader2 } from 'lucide-react'
+import { capturarUtm } from '../utils/utm.js'
 
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
 const BENE_VENDAS_PALESTRA_URL = 'https://159-65-201-242.sslip.io/api/vendas-palestra/leads'
@@ -83,6 +84,7 @@ export default function PalestrasPage() {
           evento: { nome: form.evento },
           tema: form.tema,
           mensagem: form.mensagem,
+          utm: capturarUtm(),
         }),
       }).catch(() => {})
     } catch { /* falha silenciosa */ }

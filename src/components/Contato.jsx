@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Send, Mail, MapPin, Instagram } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { capturarUtm } from '../utils/utm.js'
 
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
 const BENE_CONTATOS_URL = 'https://159-65-201-242.sslip.io/api/site-contatos'
@@ -75,6 +76,7 @@ export default function Contato() {
             contato: { nome: form.nome, email: form.email },
             evento: { dataEvento: form.dataEvento, formato: form.formatoEvento, publicoEstimado: form.participantes },
             mensagem: form.mensagem,
+            utm: capturarUtm(),
           }),
         }).catch(() => {})
       } catch { /* falha silenciosa */ }
