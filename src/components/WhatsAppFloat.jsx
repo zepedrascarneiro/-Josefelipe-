@@ -1,6 +1,7 @@
 import { MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
+import { trackEvento } from '../utils/utm.js'
 
 const WA_LINK = 'https://wa.me/5531990997409?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20palestras%20do%20Jos%C3%A9%20Felipe.'
 
@@ -24,7 +25,10 @@ export default function WhatsAppFloat() {
         backgroundColor: '#25D366', color: '#fff',
         boxShadow: '0 4px 20px rgba(37,211,102,0.4)', textDecoration: 'none',
       }}
-      onClick={() => { if (typeof window.gtag === 'function') window.gtag('event', 'contact_whatsapp', { event_category: 'global' }) }}
+      onClick={() => {
+        if (typeof window.gtag === 'function') window.gtag('event', 'contact_whatsapp', { event_category: 'global' })
+        trackEvento('whatsapp_click', pathname)
+      }}
       aria-label="Palestras e orçamento pelo WhatsApp"
     >
       <MessageCircle size={28} className="shrink-0" />

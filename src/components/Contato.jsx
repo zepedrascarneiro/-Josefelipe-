@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Send, Mail, MapPin, Instagram } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { capturarUtm } from '../utils/utm.js'
+import { capturarUtm, trackEvento } from '../utils/utm.js'
 
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
 const BENE_CONTATOS_URL = 'https://159-65-201-242.sslip.io/api/site-contatos'
@@ -240,7 +240,7 @@ export default function Contato() {
 
         {/* Contato direto — discreto */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-20 pt-12 border-t border-gray-800">
-          <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 hover:text-white transition-colors">
+          <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" onClick={() => trackEvento('instagram_click', '/')} className="text-sm text-gray-500 hover:text-white transition-colors">
             @josefelipec
           </a>
           <span className="hidden sm:inline text-gray-700">·</span>

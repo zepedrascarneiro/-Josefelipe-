@@ -1,5 +1,9 @@
+import { useLocation } from 'react-router-dom'
+import { trackEvento } from '../utils/utm.js'
+
 export default function Footer() {
   const year = new Date().getFullYear()
+  const { pathname } = useLocation()
   const scrollTo = href => {
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -24,6 +28,7 @@ export default function Footer() {
               href="https://instagram.com/josefelipec"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvento('instagram_click', pathname)}
               className="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-white transition-colors"
             >
               Instagram
@@ -57,7 +62,7 @@ export default function Footer() {
             <p className="text-xs text-gray-600 uppercase tracking-widest font-bold mb-5">Contato</p>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
+                <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" onClick={() => trackEvento('instagram_click', pathname)} className="text-gray-500 hover:text-white transition-colors">
                   @josefelipec
                 </a>
               </li>
