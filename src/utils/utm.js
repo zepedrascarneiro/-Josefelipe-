@@ -41,6 +41,13 @@ export function obterSessionId() {
   }
 }
 
+// Um id por página vista (não por sessão) — liga o pageview inicial, mandado
+// assim que a página abre, ao evento de duração, mandado só quando o
+// visitante sai dela. Não precisa sobreviver reload nem ir pro storage.
+export function gerarPageviewId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 8)
+}
+
 // Clique em WhatsApp/Instagram — melhor esforço, nunca deve travar a navegação.
 // Mesmo padrão de sendBeacon do SiteTracker, pra sobreviver ao usuário saindo
 // da aba logo depois do clique.
@@ -59,6 +66,22 @@ export function trackEvento(tipo, path) {
       navigator.sendBeacon(EVENTO_URL, new Blob([payload], { type: 'application/json' }))
     } else {
       fetch(EVENTO_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload, keepalive: true }).catch(() => {})
+    }
+  } catch { /* falha silenciosa */ }
+}
+
+// Quanto tempo o visitante ficou numa página — mandado quando ele sai dela
+// (troca de rota no SPA, troca de aba ou fecha o navegador), nunca no
+// momento em que a página abre, porque aí ainda não dá pra saber.
+const DURACAO_URL = 'https://159-65-201-242.sslip.io/api/site-acessos/duracao'
+export function trackDuracao(pageviewId, duracaoMs) {
+  if (!pageviewId) return
+  try {
+    const payload = JSON.stringify({ pageviewId, duracaoMs: Math.round(duracaoMs) })
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(DURACAO_URL, new Blob([payload], { type: 'application/json' }))
+    } else {
+      fetch(DURACAO_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload, keepalive: true }).catch(() => {})
     }
   } catch { /* falha silenciosa */ }
 }
