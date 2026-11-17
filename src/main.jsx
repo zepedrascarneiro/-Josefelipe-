@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import PalestrasPage from './pages/PalestrasPage.jsx'
+import MentoriaPage from './pages/MentoriaPage.jsx'
 import LivroPage from './pages/LivroPage.jsx'
 import NucleoxPage from './pages/NucleoxPage.jsx'
 import UsaPage from './pages/UsaPage.jsx'
@@ -31,6 +32,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/palestras" element={<PalestrasPage />} />
+        <Route path="/mentoria" element={<MentoriaPage />} />
         <Route path="/livro" element={<LivroPage />} />
         <Route path="/nucleox" element={<NucleoxPage />} />
         <Route path="/usa" element={<UsaPage />} />
