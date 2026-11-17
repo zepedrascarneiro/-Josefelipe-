@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { X, ArrowRight, Star, Award } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { capturarUtm } from '../utils/utm.js'
 
 const listas = ['Publish News', 'Veja', 'BookInfo']
 
@@ -9,6 +10,10 @@ export default function PopupNewsletter() {
 
   useEffect(() => {
     if (sessionStorage.getItem('popup-shown')) return
+    // Quem chegou por um anúncio (gclid) está atrás de palestra/orçamento —
+    // empurrar venda de livro na cara na primeira tela só aumenta a saída
+    // antes de ver a oferta real. Vale pra sessão inteira, não só a entrada.
+    if (capturarUtm().gclid) return
     const t = setTimeout(() => { setShow(true); sessionStorage.setItem('popup-shown', '1') }, 3500)
     return () => clearTimeout(t)
   }, [])
