@@ -11,6 +11,7 @@ import UsaPage from './pages/UsaPage.jsx'
 import GoMilesPage from './pages/GoMilesPage.jsx'
 import SiteTracker from './components/SiteTracker.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
+import AdsRedirect from './components/AdsRedirect.jsx'
 import { capturarUtm } from './utils/utm.js'
 
 // GitHub Pages SPA redirect handler
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <SiteTracker />
       <WhatsAppFloat />
+      <AdsRedirect />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/palestras" element={<PalestrasPage />} />
