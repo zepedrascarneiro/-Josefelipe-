@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 const s = { display: 'block', alignItems: 'unset', width: '100%' }
-const MP_LINK = 'https://mpago.la/1nuezTB'
+const MP_LINK = 'https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=86421409-984173b2-c918-4416-82b9-5b8de83730e2'
 const PDF_PT = '/nx-d7f3a2e9.pdf'
 const PDF_EN = '/nx-en-b4c8e1f2.pdf'
 const gold = '#c9a84c'
