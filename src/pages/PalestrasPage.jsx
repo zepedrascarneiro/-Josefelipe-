@@ -353,7 +353,7 @@ export default function PalestrasPage() {
           </div>
           <div style={{ display: 'flex', gap: '24px', fontSize: '12px' }}>
             <a href="/" style={{ color: '#6b7280', textDecoration: 'none' }}>Home</a>
-            <a href="https://www.qualmeuvaluation.com.br" target="_blank" rel="noopener noreferrer" style={{ color: '#6b7280', textDecoration: 'none' }}>Valuation Pro</a>
+            <a href="/nucleox" style={{ color: '#6b7280', textDecoration: 'none' }}>Núcleo X</a>
             <a href="https://instagram.com/josefelipec" target="_blank" rel="noopener noreferrer" onClick={() => trackEvento('instagram_click', '/palestras')} style={{ color: '#6b7280', textDecoration: 'none' }}>Instagram</a>
             <a href="#contratar" onClick={e => { e.preventDefault(); document.querySelector('#contratar')?.scrollIntoView({ behavior: 'smooth' }) }} style={{ color: '#6b7280', textDecoration: 'none' }}>Contato</a>
           </div>

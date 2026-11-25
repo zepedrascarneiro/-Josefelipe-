@@ -7,7 +7,7 @@ import Livro             from './components/Livro'
 import JornadaVideo      from './components/JornadaVideo'
 
 import Palestras         from './components/Palestras'
-import Valuation         from './components/Valuation'
+import NucleoxTeaser     from './components/NucleoxTeaser'
 import Contato           from './components/Contato'
 import Footer            from './components/Footer'
 import PopupNewsletter   from './components/PopupNewsletter'
@@ -29,7 +29,7 @@ export default function App() {
         <JornadaVideo />
 
         <Palestras />
-        <Valuation />
+        <NucleoxTeaser />
         <Contato />
       </main>
 

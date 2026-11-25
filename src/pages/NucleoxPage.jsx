@@ -12,17 +12,17 @@ const cardBg = 'rgba(255,255,255,0.03)'
 const border = 'rgba(255,255,255,0.06)'
 
 const pillars = [
-  { letter: 'N', title: 'Name — Nomear', desc: 'Aprenda a nomear o propósito real de qualquer pensamento, decisão ou projeto. Nomeação imprecisa = geometria borrada.', result: 'Clareza instantânea' },
-  { letter: 'U', title: 'Use Verifiable Criteria — Critérios Verificáveis', desc: 'Domine critérios que eliminam vieses cognitivos e dúvidas paralisantes. Decisões baseadas em estrutura, não emoção.', result: 'Precisão imediata' },
-  { letter: 'C', title: 'Contextualize — Contextualizar o Essencial', desc: 'Separe o essencial do ruído em segundos. Contextualização é a geometria da relevância.', result: 'Foco absoluto' },
-  { letter: 'L', title: 'Limit Scope — Limitar o Escopo', desc: 'Restrinja o escopo e multiplique seus resultados. Limitação não é privação, é concentração de poder.', result: 'Poder exponencial' },
-  { letter: 'E', title: 'Especify Constraints — Especificar Restrições', desc: 'Use restrições para desbloquear criatividade explosiva. Especificação é a mãe da inovação.', result: 'Criatividade estruturada' },
-  { letter: 'O', title: 'Order Logically — Ordenar Logicamente', desc: 'Organize pensamentos em sequências lógicas imparáveis. Ordem não é rigidez, é fluidez geometricamente perfeita.', result: 'Execução fluida' },
-  { letter: 'x', title: 'Expand Exponentially — Expandir Exponencialmente', desc: 'Escale suas ideias exponencialmente sem perder estrutura. Expansão controlada = impacto multiplicado.', result: 'Impacto máximo' },
+  { letter: 'N', title: 'Name — Nomear', desc: 'Nomear com precisão o propósito real de um pensamento, decisão ou projeto, antes de agir sobre ele.', result: 'Mais clareza' },
+  { letter: 'U', title: 'Use Verifiable Criteria — Critérios Verificáveis', desc: 'Usar critérios que reduzem viés e indecisão, apoiando a escolha em estrutura em vez de impulso.', result: 'Decisão mais objetiva' },
+  { letter: 'C', title: 'Contextualize — Contextualizar o Essencial', desc: 'Separar o essencial do ruído, entendendo o contexto antes de reagir a ele.', result: 'Mais foco' },
+  { letter: 'L', title: 'Limit Scope — Limitar o Escopo', desc: 'Restringir o escopo de um problema para executar com mais consistência.', result: 'Execução mais simples' },
+  { letter: 'E', title: 'Especify Constraints — Especificar Restrições', desc: 'Definir restrições claras como ponto de partida para soluções mais criativas.', result: 'Criatividade com direção' },
+  { letter: 'O', title: 'Order Logically — Ordenar Logicamente', desc: 'Organizar pensamentos em sequência lógica, sem perder flexibilidade.', result: 'Execução mais fluida' },
+  { letter: 'x', title: 'Expand Exponentially — Expandir Exponencialmente', desc: 'Escalar uma ideia mantendo a mesma estrutura que a fez funcionar no pequeno.', result: 'Crescimento com base' },
 ]
 
 const before = ['Pensamento disperso e reativo', 'Decisões baseadas em emoção', 'Ideias que não viram ação', 'Sobrecarga de informação', 'Procrastinação disfarçada de planejamento']
-const after = ['Pensamento estruturado e intencional', 'Decisões com critérios verificáveis', 'Execução com clareza e foco', 'Filtro natural do essencial', 'Ação com método e disciplina']
+const after = ['Pensamento mais estruturado e intencional', 'Decisões com critérios mais claros', 'Mais execução, menos só ideia', 'Filtro para o que é essencial', 'Ação com método']
 
 export default function NucleoxPage() {
   const [unlocked, setUnlocked] = useState(() => {
@@ -82,7 +82,7 @@ export default function NucleoxPage() {
           </a>
           <a href={MP_LINK} target="_blank" rel="noopener noreferrer"
             style={{ backgroundColor: gold, color: '#000', fontSize: '12px', fontWeight: 700, padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', letterSpacing: '1px' }}>
-            GARANTIR ACESSO
+COMPRAR
           </a>
         </div>
       </nav>
@@ -92,15 +92,15 @@ export default function NucleoxPage() {
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
           <p style={badge}>E-BOOK · 147 PÁGINAS · PROTOCOLO DE 21 DIAS</p>
           <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '24px' }}>
-            A única metodologia que transforma pensadores comuns em <em style={{ fontStyle: 'normal', color: gold }}>mentes estruturalmente superiores</em>
+            Um método para pensar com <em style={{ fontStyle: 'normal', color: gold }}>mais estrutura e menos ruído</em>
           </h1>
           <p style={{ fontSize: '1.1rem', color: muted, maxWidth: '580px', margin: '0 auto 40px', lineHeight: 1.7 }}>
-            O padrão invisível em todas as mentes brilhantes. 7 pilares do pensamento estruturado, baseados em neurociência aplicada. Dominável em 21 dias.
+            7 pilares para organizar pensamento e decisão no dia a dia de quem constrói algo do zero. Um protocolo prático de 21 dias para aplicar cada um.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href={MP_LINK} target="_blank" rel="noopener noreferrer"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: gold, color: '#000', fontWeight: 700, padding: '18px 40px', borderRadius: '10px', fontSize: '15px', textDecoration: 'none' }}>
-              Garantir Meu Acesso
+              Comprar o E-book
             </a>
             <a href="#pilares" onClick={e => { e.preventDefault(); document.querySelector('#pilares')?.scrollIntoView({ behavior: 'smooth' }) }}
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontWeight: 500, padding: '18px 40px', borderRadius: '10px', fontSize: '15px', textDecoration: 'none' }}>
@@ -114,7 +114,7 @@ export default function NucleoxPage() {
       {/* Números */}
       <div style={{ ...s, padding: '60px 24px', borderTop: `1px solid ${border}`, borderBottom: `1px solid ${border}` }}>
         <div style={{ maxWidth: '960px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', textAlign: 'center' }}>
-          {[['50+', 'Estudos de Neurociência'], ['147', 'Páginas'], ['7', 'Pilares Fundamentais'], ['21', 'Dias de Protocolo']].map(([v, l], i) => (
+          {[['147', 'Páginas'], ['7', 'Pilares'], ['21', 'Dias de Protocolo'], ['2', 'Idiomas (PT + EN)']].map(([v, l], i) => (
             <div key={i}>
               <p style={{ fontSize: '2.2rem', fontWeight: 900, color: gold }}>{v}</p>
               <p style={{ fontSize: '12px', color: dim }}>{l}</p>
@@ -126,9 +126,9 @@ export default function NucleoxPage() {
       {/* Antes vs Depois */}
       <div style={{ ...s, padding: '100px 24px' }}>
         <div style={{ maxWidth: '960px', margin: '0 auto' }}>
-          <p style={badge}>TRANSFORMAÇÃO</p>
-          <h2 style={heading}>De ruído mental para clareza arquitetônica</h2>
-          <p style={{ color: muted, marginBottom: '48px', maxWidth: '540px', lineHeight: 1.7 }}>O NUCLEOx não adiciona informação. Ele reestrutura sua geometria cognitiva.</p>
+          <p style={badge}>O QUE MUDA</p>
+          <h2 style={heading}>De ruído mental para mais clareza</h2>
+          <p style={{ color: muted, marginBottom: '48px', maxWidth: '540px', lineHeight: 1.7 }}>O NUCLEOx não é mais conteúdo pra consumir. É um método pra aplicar.</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
             <div style={{ ...card, background: cardBg }}>
               <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', color: 'rgba(255,255,255,0.3)', marginBottom: '16px' }}>ANTES DO NUCLEOx</p>
@@ -147,7 +147,7 @@ export default function NucleoxPage() {
         <div style={{ maxWidth: '960px', margin: '0 auto' }}>
           <p style={badge}>O MÉTODO</p>
           <h2 style={heading}>Os 7 Pilares N·U·C·L·E·O·x</h2>
-          <p style={{ color: dim, marginBottom: '48px', maxWidth: '540px', lineHeight: 1.7 }}>O sistema completo que transforma caos em clareza. Dominável em 21 dias.</p>
+          <p style={{ color: dim, marginBottom: '48px', maxWidth: '540px', lineHeight: 1.7 }}>Cada pilar tem uma ideia prática e um resultado esperado ao aplicar.</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '20px' }}>
             {pillars.map((p, i) => (
               <div key={i} style={card}>
@@ -211,20 +211,16 @@ export default function NucleoxPage() {
           </>
         ) : (
           <>
-            <p style={badge}>OFERTA ESPECIAL</p>
-            <h2 style={heading}>Invista na sua mente</h2>
-            <div style={{ background: 'linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(212,175,55,0.04) 100%)', border: '2px solid rgba(212,175,55,0.4)', borderRadius: '20px', padding: '48px 40px', textAlign: 'center', maxWidth: '500px', margin: '48px auto 0' }}>
-              <p style={{ fontSize: '20px', textDecoration: 'line-through', color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>De R$ 69,90</p>
+            <p style={badge}>O E-BOOK</p>
+            <h2 style={heading}>Acesso completo</h2>
+            <div style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: '20px', padding: '48px 40px', textAlign: 'center', maxWidth: '500px', margin: '48px auto 0' }}>
               <p style={{ fontSize: 'clamp(56px, 14vw, 80px)', fontWeight: 900, color: goldLight, lineHeight: 1, letterSpacing: '-2px', margin: '8px 0' }}>R$ 49,90</p>
-              <div style={{ display: 'inline-block', background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.3)', borderRadius: '50px', padding: '6px 16px', fontSize: '12px', fontWeight: 600, color: gold, margin: '12px 0' }}>
-                30% OFF — Economia de R$ 20,00
-              </div>
               <p style={{ marginTop: '12px', fontSize: '15px', color: 'rgba(255,255,255,0.7)' }}>ou em até <strong style={{ color: gold }}>12x de R$ 4,16</strong> sem juros</p>
             </div>
             <div style={{ marginTop: '40px' }}>
               <a href={MP_LINK}
                 style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: gold, color: '#000', fontWeight: 700, padding: '20px 48px', borderRadius: '10px', fontSize: '17px', textDecoration: 'none', width: '100%', maxWidth: '420px' }}>
-                Garantir Meu Acesso Agora
+                Comprar o E-book
               </a>
             </div>
             <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap', fontSize: '13px', color: dim }}>

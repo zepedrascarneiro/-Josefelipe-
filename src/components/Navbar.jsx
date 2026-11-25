@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { motion } from 'framer-motion'
 
@@ -6,13 +7,14 @@ const navLinks = [
   { label: 'Sobre',     href: '#sobre' },
   { label: 'Livro',     href: '#livro' },
   { label: 'Palestras', href: '#palestras' },
-  { label: 'Valuation', href: '#valuation' },
+  { label: 'Núcleo X',  href: '/nucleox' },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -23,6 +25,7 @@ export default function Navbar() {
   // Marca o link ativo conforme a seção visível na tela.
   useEffect(() => {
     const sections = navLinks
+      .filter(link => link.href.startsWith('#'))
       .map(link => document.querySelector(link.href))
       .filter(Boolean)
 
@@ -42,8 +45,12 @@ export default function Navbar() {
 
   const handleClick = (href) => {
     setOpen(false)
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (href.startsWith('#')) {
+      const el = document.querySelector(href)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate(href)
+    }
   }
 
   return (
