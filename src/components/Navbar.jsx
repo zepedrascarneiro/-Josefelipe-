@@ -7,7 +7,6 @@ const navLinks = [
   { label: 'Sobre',     href: '#sobre' },
   { label: 'Livro',     href: '#livro' },
   { label: 'Palestras', href: '#palestras' },
-  { label: 'Núcleo X',  href: '/nucleox' },
 ]
 
 export default function Navbar() {
