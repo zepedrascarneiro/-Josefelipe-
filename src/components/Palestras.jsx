@@ -212,6 +212,19 @@ export default function Palestras() {
             Assista antes de continuar
           </p>
           <VideoVSL />
+          <div className="flex justify-center mt-8">
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 px-12 py-5 font-bold text-lg uppercase tracking-wider transition-all hover:brightness-95 hover:scale-[1.02]"
+              style={{ backgroundColor: '#c9a84c', color: '#000' }}
+            >
+              <Mic size={20} />
+              Quero contratar a palestra!
+              <ArrowRight size={18} />
+            </a>
+          </div>
         </div>
 
         {/* Temas de palestra */}
