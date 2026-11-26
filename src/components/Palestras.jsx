@@ -178,9 +178,9 @@ export default function Palestras() {
             O que faz seis mil pessoas pararem para ouvir uma única pessoa?
           </p>
           <p className="text-gray-500 max-w-2xl leading-relaxed text-lg">
-            A vivência de quem construiu a cervejaria mais premiada do mundo,
-            operou globalmente e nunca parou de empreender.
-            No palco, José Felipe entrega experiência real, não teoria.
+            José Felipe construiu a cervejaria mais premiada do mundo, rodou o
+            planeta de perto e nunca deixou de empreender. No palco, ele chega
+            com histórias de verdade, vividas na pele, não teoria de livro.
           </p>
         </motion.div>
 
@@ -238,21 +238,26 @@ export default function Palestras() {
           <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
             <p>
               Tudo começou em 1999, dentro de uma pequena cervejaria de Belo Horizonte.
-              A Wäls virou marca reconhecida internacionalmente e, em 2015, chegou à
-              negociação com a AmBev — o ponto de partida de uma trajetória que passou
-              por gastronomia, tecnologia, indústria e agronegócio, em negócios como
-              Novo Brazil, ZX Ventures, Khappy, Stadt Jever e Fazenda Cervejeira.
+              Com trabalho e muito carinho pelo que fazia, José Felipe ajudou a
+              transformar a Wäls numa marca reconhecida no mundo todo, até chegar,
+              em 2015, à negociação com a AmBev. Dali em diante vieram outros
+              negócios queridos: Novo Brazil, ZX Ventures, Khappy, Stadt Jever e
+              Fazenda Cervejeira, passando por gastronomia, tecnologia, indústria
+              e agronegócio.
             </p>
             <p>
-              Fora das empresas, José Felipe leva o <strong className="text-black">Crie o Impossível</strong> —
-              um projeto de empreendedorismo e inspiração — a jovens da rede pública de
-              ensino, é apaixonado por aviação e esportes, e tem na família o que dá
-              sentido a cada conquista.
+              Fora das empresas, o que move José Felipe é gente. Ele leva o{' '}
+              <strong className="text-black">Crie o Impossível</strong>, um projeto que acredita no
+              potencial de jovens da rede pública de ensino, é apaixonado por
+              aviação e esportes, e tem na família o que dá sentido de verdade a
+              cada conquista.
             </p>
             <p>
-              Essa vivência virou o livro <strong className="text-black">Performance Consciente</strong> e,
-              hoje, vira palestra: histórias reais, sem fórmula pronta, construídas
-              para o público, o setor e o momento de cada evento.
+              Foi essa vivência, cheia de acertos e também de aprendizados difíceis,
+              que virou o livro <strong className="text-black">Performance Consciente</strong>. E é ela
+              que hoje chega até você em forma de palestra: histórias reais,
+              contadas com afeto, pensadas pro público, pro setor e pro momento
+              de cada evento.
             </p>
           </div>
           <p className="text-xl md:text-2xl font-extrabold text-black text-center leading-snug mt-10 pt-10 border-t border-gray-100">
