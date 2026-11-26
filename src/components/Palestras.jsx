@@ -174,6 +174,9 @@ export default function Palestras() {
           <h2 className="text-4xl md:text-5xl font-extrabold text-black leading-[1.05] tracking-tight mb-6">
             PALESTRAS
           </h2>
+          <p className="text-2xl md:text-3xl font-extrabold text-black leading-tight tracking-tight max-w-3xl mb-5">
+            O que faz seis mil pessoas pararem para ouvir uma única pessoa?
+          </p>
           <p className="text-gray-500 max-w-2xl leading-relaxed text-lg">
             A vivência de quem construiu a cervejaria mais premiada do mundo,
             operou globalmente e nunca parou de empreender.
@@ -225,6 +228,36 @@ export default function Palestras() {
               <ArrowRight size={18} />
             </a>
           </div>
+        </div>
+
+        {/* A história — credibilidade por trás do palco, resumo da trajetória real */}
+        <div className="mb-24 max-w-3xl mx-auto">
+          <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-8 text-center">
+            A história por trás do palco
+          </p>
+          <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
+            <p>
+              Tudo começou em 1999, dentro de uma pequena cervejaria de Belo Horizonte.
+              A Wäls virou marca reconhecida internacionalmente e, em 2015, chegou à
+              negociação com a AmBev — o ponto de partida de uma trajetória que passou
+              por gastronomia, tecnologia, indústria e agronegócio, em negócios como
+              Novo Brazil, ZX Ventures, Khappy, Stadt Jever e Fazenda Cervejeira.
+            </p>
+            <p>
+              Fora das empresas, José Felipe leva o <strong className="text-black">Crie o Impossível</strong> —
+              um projeto de empreendedorismo e inspiração — a jovens da rede pública de
+              ensino, é apaixonado por aviação e esportes, e tem na família o que dá
+              sentido a cada conquista.
+            </p>
+            <p>
+              Essa vivência virou o livro <strong className="text-black">Performance Consciente</strong> e,
+              hoje, vira palestra: histórias reais, sem fórmula pronta, construídas
+              para o público, o setor e o momento de cada evento.
+            </p>
+          </div>
+          <p className="text-xl md:text-2xl font-extrabold text-black text-center leading-snug mt-10 pt-10 border-t border-gray-100">
+            Performance não é fazer tudo.<br className="hidden sm:block" /> É saber o que merece o melhor de você.
+          </p>
         </div>
 
         {/* Temas de palestra */}
