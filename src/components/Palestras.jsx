@@ -323,6 +323,9 @@ export default function Palestras() {
               <ArrowRight size={16} />
             </a>
           </div>
+          <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mt-8">
+            Palestrante exclusivo da DMT Palestras
+          </p>
         </div>
       </div>
     </section>

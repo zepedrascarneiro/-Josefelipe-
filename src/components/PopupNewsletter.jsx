@@ -32,7 +32,7 @@ export default function PopupNewsletter() {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9998] flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-[9998] flex items-start sm:items-center justify-center overflow-y-auto p-4 sm:p-6"
       style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

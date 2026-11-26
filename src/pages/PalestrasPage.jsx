@@ -1,6 +1,52 @@
-import { useState, useEffect } from 'react'
-import { Mic, ArrowRight, Check, Users, Globe, Award, Loader2 } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Mic, ArrowRight, Check, Users, Globe, Award, Loader2, Play } from 'lucide-react'
 import { capturarUtm, trackEvento } from '../utils/utm.js'
+
+// VSL da página de anúncio: fica parada no poster até o clique (não autoplay
+// mudo) porque é aqui que o tráfego pago do Google chega, e uma VSL só
+// funciona de verdade com o áudio ligado por escolha de quem assiste.
+function VideoVSL() {
+  const [tocando, setTocando] = useState(false)
+  const videoRef = useRef(null)
+
+  const iniciar = () => {
+    setTocando(true)
+    requestAnimationFrame(() => videoRef.current?.play())
+  }
+
+  return (
+    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', borderRadius: '16px', backgroundColor: '#000', boxShadow: '0 32px 80px rgba(0,0,0,0.5)' }}>
+      {tocando ? (
+        <video
+          ref={videoRef}
+          src="/vsl-palestras.mp4"
+          controls
+          playsInline
+          style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: '#000' }}
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={iniciar}
+          aria-label="Assistir ao vídeo"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', padding: 0, cursor: 'pointer', background: 'none' }}
+        >
+          <img
+            src="/vsl-poster.jpg"
+            alt="José Felipe Carneiro apresentando"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+          <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.25)' }} />
+          <span style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ width: 'clamp(72px, 10vw, 104px)', height: 'clamp(72px, 10vw, 104px)', borderRadius: '50%', backgroundColor: '#f59e0b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Play size={36} fill="black" strokeWidth={0} style={{ marginLeft: '6px' }} />
+            </span>
+          </span>
+        </button>
+      )}
+    </div>
+  )
+}
 
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zepedrascarneiro@gmail.com'
 const BENE_VENDAS_PALESTRA_URL = 'https://159-65-201-242.sslip.io/api/vendas-palestra/leads'
@@ -148,21 +194,31 @@ export default function PalestrasPage() {
         <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
           <p style={{ fontSize: '13px', fontWeight: 600, color: '#f59e0b', letterSpacing: '3px', marginBottom: '24px' }}>PALESTRANTE</p>
           <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.08, letterSpacing: '-0.02em', marginBottom: '24px', color: '#fff' }}>
-            A vivência de quem construiu{' '}
-            <span style={{ color: '#f59e0b' }}>a cervejaria mais premiada do mundo</span>
+            O que faz seis mil pessoas pararem{' '}
+            <span style={{ color: '#f59e0b' }}>para ouvir uma única pessoa?</span>
           </h1>
-          <p style={{ fontSize: '1.1rem', color: '#9ca3af', maxWidth: '640px', margin: '0 auto 40px', lineHeight: 1.7 }}>
-            Co-fundador da Wäls e da ZX Ventures (AB InBev). No palco, José Felipe entrega
-            experiência real, energia e ferramentas práticas que transformam plateia em ação.
+          <p style={{ fontSize: '1.1rem', color: '#9ca3af', maxWidth: '640px', margin: '0 auto 48px', lineHeight: 1.7 }}>
+            José Felipe construiu a cervejaria mais premiada do mundo, rodou o planeta de
+            perto e nunca deixou de empreender. Assista e entenda por que ele é diferente.
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
+        </div>
+
+        <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+          <VideoVSL />
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '32px' }}>
             <a href="#contratar" onClick={e => { e.preventDefault(); document.querySelector('#contratar')?.scrollIntoView({ behavior: 'smooth' }) }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#fff', color: '#000', fontWeight: 700, padding: '16px 32px', borderRadius: '10px', fontSize: '14px', textDecoration: 'none', transition: 'opacity 0.2s' }}>
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', backgroundColor: '#f59e0b', color: '#000', fontWeight: 700, padding: '18px 40px', borderRadius: '10px', fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', textDecoration: 'none' }}>
               <Mic size={18} />
-              Quero Contratar
+              Quero contratar a palestra!
+              <ArrowRight size={16} />
             </a>
+          </div>
+          <p style={{ textAlign: 'center', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#6b7280', marginTop: '16px' }}>
+            Palestrante exclusivo da DMT Palestras
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '28px' }}>
             <a href="#temas" onClick={e => { e.preventDefault(); document.querySelector('#temas')?.scrollIntoView({ behavior: 'smooth' }) }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontWeight: 500, padding: '16px 32px', borderRadius: '10px', fontSize: '14px', textDecoration: 'none', transition: 'background 0.2s' }}>
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontWeight: 500, padding: '14px 28px', borderRadius: '10px', fontSize: '13px', textDecoration: 'none' }}>
               Ver Temas de Palestra
               <ArrowRight size={16} />
             </a>
