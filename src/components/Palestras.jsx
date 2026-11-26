@@ -171,12 +171,9 @@ export default function Palestras() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-black leading-[1.05] tracking-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-black leading-[1.05] tracking-tight mb-6">
             PALESTRAS
           </h2>
-          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#c9a84c] border border-[#c9a84c]/40 rounded-full px-4 py-1.5 mb-6">
-            Palestrante exclusivo da DMT Palestras
-          </p>
           <p className="text-2xl md:text-3xl font-extrabold text-black leading-tight tracking-tight max-w-3xl mb-5">
             O que faz seis mil pessoas pararem para ouvir uma única pessoa?
           </p>
@@ -231,6 +228,9 @@ export default function Palestras() {
               <ArrowRight size={18} />
             </a>
           </div>
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mt-4">
+            Palestrante exclusivo da DMT Palestras
+          </p>
         </div>
 
         {/* A história — credibilidade por trás do palco, resumo da trajetória real */}
