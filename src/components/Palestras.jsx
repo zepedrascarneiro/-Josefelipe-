@@ -1,33 +1,60 @@
-import { useState } from 'react'
-import { Mic, ArrowRight, MessageCircle, FileText, Clock, Monitor, Zap } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { Mic, ArrowRight, MessageCircle, FileText, Clock, Monitor, Zap, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTilt } from '../hooks/useTilt'
 
-// Player do reel de palco: embed do YouTube, entra tocando mudo ao chegar na viewport
-// (navegadores bloqueiam autoplay com som sem interação prévia — o próprio player do YouTube
-// tem o ícone de som pro usuário ativar com 1 clique).
-const YOUTUBE_ID = 'O5_QGnakRf8' // "Performance Consciente | José Felipe Carneiro" — DMT Palestras
+// VSL self-hospedada: fica parada no poster até o clique (não autoplay mudo) porque
+// uma VSL só cumpre o papel dela com o áudio ligado — autoplay mudo ia só queimar a
+// primeira impressão sem ninguém ouvir a mensagem. O play grande sinaliza "isso é um
+// vídeo de verdade, clica" com mais força que um player discreto.
+function VideoVSL() {
+  const [tocando, setTocando] = useState(false)
+  const videoRef = useRef(null)
 
-function VideoPalco() {
-  const [loaded, setLoaded] = useState(false)
+  const iniciar = () => {
+    setTocando(true)
+    // o elemento <video> só existe no DOM depois do próximo render (tocando=true),
+    // então o play precisa esperar o React montar antes de chamar .play()
+    requestAnimationFrame(() => videoRef.current?.play())
+  }
 
   return (
-    <motion.div
-      onViewportEnter={() => setLoaded(true)}
-      viewport={{ once: true, amount: 0.4 }}
-      className="relative w-full overflow-hidden bg-black border border-gray-200"
+    <div
+      className="relative w-full overflow-hidden bg-black shadow-[0_32px_80px_rgba(0,0,0,0.35)]"
       style={{ aspectRatio: '16/9' }}
     >
-      {loaded && (
-        <iframe
-          src={`https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&mute=1&playsinline=1`}
-          title="Performance Consciente | José Felipe Carneiro"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="w-full h-full"
+      {tocando ? (
+        <video
+          ref={videoRef}
+          src="/vsl-palestras.mp4"
+          controls
+          playsInline
+          className="w-full h-full object-contain bg-black"
         />
+      ) : (
+        <button
+          type="button"
+          onClick={iniciar}
+          aria-label="Assistir ao vídeo"
+          className="group absolute inset-0 w-full h-full"
+        >
+          <img
+            src="/vsl-poster.jpg"
+            alt="José Felipe Carneiro apresentando"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/25 group-hover:bg-black/15 transition-colors" />
+          <span className="absolute inset-0 flex items-center justify-center">
+            <span
+              className="flex items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110"
+              style={{ width: 'clamp(72px, 10vw, 104px)', height: 'clamp(72px, 10vw, 104px)', backgroundColor: '#c9a84c' }}
+            >
+              <Play size={36} fill="black" strokeWidth={0} className="ml-1.5" />
+            </span>
+          </span>
+        </button>
       )}
-    </motion.div>
+    </div>
   )
 }
 
@@ -179,11 +206,12 @@ export default function Palestras() {
           </div>
         </div>
 
-        {/* Vídeo no palco (prova social) — largura contida pra não ampliar o 480p e manter nitidez */}
-        <div className="mb-24 flex justify-center">
-          <div style={{ width: '100%', maxWidth: '640px' }}>
-            <VideoPalco />
-          </div>
+        {/* VSL — largura cheia da seção, tratamento de hero pra puxar atenção antes dos temas */}
+        <div className="mb-24">
+          <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 text-center">
+            Assista antes de continuar
+          </p>
+          <VideoVSL />
         </div>
 
         {/* Temas de palestra */}
