@@ -203,7 +203,8 @@ export default function Palestras() {
               idealizadores do{' '}
               <strong className="text-black">Crie o Impossível</strong> e segue
               apoiando o projeto, que acredita no potencial de jovens da rede
-              pública de ensino. É apaixonado por aviação e esportes, e tem na
+              pública de ensino. É apaixonado por artes marciais, luta Muay
+              Thai desde os 15 anos e é faixa preta de Jiu-Jitsu, e tem na
               família o que dá sentido de verdade a cada conquista.
             </p>
             <p>
