@@ -199,11 +199,12 @@ export default function Palestras() {
               e agronegócio.
             </p>
             <p>
-              Fora das empresas, o que move José Felipe é gente. Ele leva o{' '}
-              <strong className="text-black">Crie o Impossível</strong>, um projeto que acredita no
-              potencial de jovens da rede pública de ensino, é apaixonado por
-              aviação e esportes, e tem na família o que dá sentido de verdade a
-              cada conquista.
+              Fora das empresas, o que move José Felipe é gente. Ele foi um dos
+              idealizadores do{' '}
+              <strong className="text-black">Crie o Impossível</strong> e segue
+              apoiando o projeto, que acredita no potencial de jovens da rede
+              pública de ensino. É apaixonado por aviação e esportes, e tem na
+              família o que dá sentido de verdade a cada conquista.
             </p>
             <p>
               Foi essa vivência, cheia de acertos e também de aprendizados difíceis,
