@@ -283,30 +283,6 @@ export default function PalestrasPage() {
         </div>
       </div>
 
-      {/* Apresentacoes */}
-      <div style={{ ...sectionStyle, padding: '100px 24px', background: '#fafafa' }}>
-        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
-          <p style={{ fontSize: '13px', fontWeight: 600, color: GOLD, letterSpacing: '3px', marginBottom: '16px' }}>PREVIEW</p>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '48px', color: '#111' }}>Veja as apresentações</h2>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '32px' }}>
-            {[
-              { titulo: 'Apresentação Geral', thumb: '/palestra-geral-thumb.jpg', pdf: '/palestra-geral.pdf' },
-              { titulo: 'Apresentação Agro', thumb: '/palestra-agro-thumb.jpg', pdf: '/palestra-agro.pdf' },
-            ].map(d => (
-              <a key={d.pdf} href={d.pdf} target="_blank" rel="noopener noreferrer"
-                style={{ display: 'block', textDecoration: 'none' }}>
-                <p style={{ fontSize: '14px', fontWeight: 700, color: '#111', marginBottom: '12px' }}>{d.titulo}</p>
-                <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e2e2e2', aspectRatio: '16/9' }}>
-                  <img src={d.thumb} alt={`Capa da ${d.titulo}`} loading="lazy"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Como funciona */}
       <div style={{ ...sectionStyle, padding: '100px 24px' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>

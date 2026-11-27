@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Mic, ArrowRight, MessageCircle, FileText, Clock, Monitor, Zap, Play } from 'lucide-react'
+import { Mic, ArrowRight, MessageCircle, Clock, Monitor, Zap, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTilt } from '../hooks/useTilt'
 
@@ -81,40 +81,6 @@ function TemaCard({ t, i }) {
   )
 }
 
-// Card de apresentação (deck) com o mesmo tilt 3D.
-function DeckCard({ d }) {
-  const tilt = useTilt(5)
-  return (
-    <motion.a
-      href={d.pdf}
-      target="_blank"
-      rel="noopener noreferrer"
-      onMouseMove={tilt.onMouseMove}
-      onMouseLeave={tilt.onMouseLeave}
-      style={tilt.style}
-      className="group relative block border border-gray-200 hover:border-black transition-[box-shadow,border-color] duration-300 hover:shadow-[0_24px_48px_rgba(0,0,0,0.14)] hover:z-10"
-    >
-      <div className="overflow-hidden border-b border-gray-200" style={{ aspectRatio: '16/9' }}>
-        <img
-          src={d.thumb}
-          alt={`Capa da ${d.titulo}`}
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-        />
-      </div>
-      <div className="p-6 flex items-start justify-between gap-4">
-        <div>
-          <p className="text-base font-bold text-black mb-1">{d.titulo}</p>
-          <p className="text-sm text-gray-500 leading-relaxed">{d.desc}</p>
-        </div>
-        <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-400 group-hover:text-black transition-colors whitespace-nowrap mt-1">
-          <FileText size={14} /> Ver
-        </span>
-      </div>
-    </motion.a>
-  )
-}
-
 const WA_LINK = 'https://wa.me/5531990997409?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20palestras%20do%20Jos%C3%A9%20Felipe.'
 
 // Temas de palestra — RASCUNHO para o José revisar/ajustar o texto.
@@ -139,22 +105,6 @@ const temas = [
     n: '04',
     titulo: 'Alta Performance no Agronegócio',
     desc: 'Inovação, estratégia e execução para o agro. A mentalidade do campo ao copo, aplicada a quem produz de verdade.',
-  },
-]
-
-// Apresentações / media kits — abrem o PDF em nova aba (melhor que iframe, ótimo no mobile).
-const decks = [
-  {
-    titulo: 'Apresentação Geral',
-    desc: 'Media kit completo com trajetória, temas e formatos de palestra.',
-    thumb: '/palestra-geral-thumb.jpg',
-    pdf: '/palestra-geral.pdf',
-  },
-  {
-    titulo: 'Apresentação Agro',
-    desc: 'Versão voltada para eventos e convenções do agronegócio.',
-    thumb: '/palestra-agro-thumb.jpg',
-    pdf: '/palestra-agro.pdf',
   },
 ]
 
@@ -275,16 +225,6 @@ export default function Palestras() {
         <div className="grid sm:grid-cols-2 gap-px bg-gray-200 border border-gray-200 mb-24">
           {temas.map((t, i) => (
             <TemaCard key={t.n} t={t} i={i} />
-          ))}
-        </div>
-
-        {/* Apresentações (decks) — cards com capa, abrem o PDF em nova aba */}
-        <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-8">
-          Apresentações
-        </p>
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
-          {decks.map(d => (
-            <DeckCard key={d.pdf} d={d} />
           ))}
         </div>
 
